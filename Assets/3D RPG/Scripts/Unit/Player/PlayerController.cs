@@ -10,12 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
     public CharacterController controller;
     public Vector2 moveInput;
-    public float PlayerSpeed;
+    public float playerSpeed;
     public float rotationSpeed;
     public float LookRotation;
-    public float CurrentSpeed;
+    public float currentSpeed;
     public float acceleration;
     public float deceleration;
+    public Vector3 playerMoveDir;
 
     public Vector3 velocity;
     public Vector3 lastMoveDirection;
@@ -98,7 +99,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -5f;
         }
     }
     void ProcessJumpInput()
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
         }
-        if (velocity.y < 0.1f && isGrounded)
+        if (velocity.y < 1.7f && isGrounded)
         {
             velocity.y = 0;
         }
@@ -126,20 +127,20 @@ public class PlayerController : MonoBehaviour
         bool isMove = moveInput.magnitude != 0;
         Vector3 lookForward = new Vector3(camera_Point.forward.x, 0f, camera_Point.forward.z).normalized;
         Vector3 lookRight = new Vector3(camera_Point.right.x, 0f, camera_Point.right.z).normalized;
-        Vector3 moveDir = lookForward * moveInput.y + lookRight * moveInput.x;
+        playerMoveDir = lookForward * moveInput.y + lookRight * moveInput.x;
         if (isMove)
         {
-            lastMoveDirection = moveDir;
-            CurrentSpeed = Mathf.Lerp(CurrentSpeed, PlayerSpeed, Time.deltaTime * acceleration);
+            lastMoveDirection = playerMoveDir;
+            currentSpeed = Mathf.Lerp(currentSpeed, playerSpeed, Time.deltaTime * acceleration);
         }
         else if (!isMove && lastMoveDirection != Vector3.zero)
         {
-            CurrentSpeed = Mathf.Lerp(CurrentSpeed, 0, Time.deltaTime * deceleration);
-            moveDir = lastMoveDirection;
+            currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * deceleration);
+            playerMoveDir = lastMoveDirection;
         }
 
-        controller.Move((CurrentSpeed * Time.deltaTime) * moveDir + new Vector3(0, velocity.y, 0) * Time.deltaTime);
-        if (CurrentSpeed < 0.1f)
+        controller.Move((currentSpeed * Time.deltaTime) * playerMoveDir + new Vector3(0, velocity.y, 0) * Time.deltaTime);
+        if (currentSpeed < 0.1f)
         {
             lastMoveDirection = Vector3.zero;
         }
@@ -164,7 +165,6 @@ public class PlayerController : MonoBehaviour
             rotationObj.transform.rotation = Quaternion.Slerp(rotationObj.transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
         }
     }
-
     public void ActivCusor()
     {
         if (isActivMouseCusor)
