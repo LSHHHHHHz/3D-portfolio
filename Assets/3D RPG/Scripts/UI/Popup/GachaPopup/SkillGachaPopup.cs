@@ -45,6 +45,7 @@ public class SkillGachaPopup : MonoBehaviour,IPopup
 
     private IEnumerator SetupGachaAnimaionCoroutine(SkillGachaResult skillGachaResult)
     {
+        gachaImage.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
         gachaImage.transform.DOLocalMove(new Vector3(0, 389, 443), 0.3f).OnComplete(() =>
         {
             gachaImage.transform.DOLocalMove(new Vector3(0, 0, -650), 0.4f);

@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "My Assets/ItemDB")]
 public class ItemDB : ScriptableObject
 {
-    List<ItemInfo> itemDB = new List<ItemInfo>();
+    public List<ItemInfo> itemDB = new List<ItemInfo>();
 }

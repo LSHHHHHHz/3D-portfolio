@@ -11,7 +11,8 @@ public class SkillInventoryPopup : MonoBehaviour
     public Text simpleSkillinfo;
     public Text detailSkillInfo;
     SkillSlot[] skillInventorySlots;
-
+    SkillGachaPopup skillgachaPopup;
+    public SkillDB skilldb;
 
     private void Awake()
     {
@@ -61,6 +62,20 @@ public class SkillInventoryPopup : MonoBehaviour
             SkillSlot slot = skillInventorySlots[number - 1];
             slot.SetData(skill);
         }
+    }
+    public void RunSkillGacha(int count)
+    {
+        if (skillgachaPopup == null)
+        {
+            skillgachaPopup = Instantiate(PopupFactory.instance.skillGachaPopupPrefab, PopupFactory.instance.gachaTransform).GetComponent<SkillGachaPopup>();
+        }
+        SkillGachaResult skillGachaResult = SkillGachaCalculator.Calculate(skilldb, count);
+        foreach (var item in skillGachaResult.skillInfos)
+        {
+            SkillInventoryManager.instance.AddSkill(item);
+        }
+        SkillInventoryManager.instance.Save();
+        skillgachaPopup.Initialize(skillGachaResult, this.RunSkillGacha);
     }
     public void ClosePopup()
     {

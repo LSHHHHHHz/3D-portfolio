@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class NPC : MonoBehaviour
+public class PasserbyNPC : MonoBehaviour
 {
     public NPCWarePoint warePoints;
     private float oringSpeed;
@@ -16,14 +16,6 @@ public class NPC : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            if (dialogueTriggerPopupInstatnce == null)
-            {
-                dialogueTriggerPopupInstatnce = Instantiate(PopupFactory.instance.dialogueTriggerPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<DialogueTriggerPopup>();
-            }
-            else
-            {
-                dialogueTriggerPopupInstatnce.gameObject.SetActive(true);
-            }
             oringSpeed = warePoints.moveSpeed;
             warePoints.moveSpeed = 0;
         }
@@ -33,7 +25,6 @@ public class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             warePoints.moveSpeed = oringSpeed;
-            dialogueTriggerPopupInstatnce.gameObject.SetActive(false);
         }
     }
 }

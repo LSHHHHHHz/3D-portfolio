@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1070f3b70d21f40b3bf587279a59a6, type: 3}
+  m_Name: PortionShopDB
+  m_EditorClassIdentifier: 
+  itemDB:
+  - {fileID: 11400000, guid: e5547f2226f1a844bbd496431e648fd0, type: 2}
+  - {fileID: 11400000, guid: 99a88ccfb2e24c4458d76b70418a1bf5, type: 2}
+  - {fileID: 11400000, guid: 29271e47b0d4cf84a9c6c893667fb2d3, type: 2}
+  - {fileID: 11400000, guid: dbc6bb93d9746f34b89b5bca40fabec8, type: 2}
+  - {fileID: 11400000, guid: a8ad07dbb72c584438ab50fcbe3038fe, type: 2}
+  - {fileID: 11400000, guid: d978d000cae164e47bde6b0fc1063361, type: 2}
+  - {fileID: 11400000, guid: 51fdffff25e475746af121a99c934558, type: 2}
+  - {fileID: 11400000, guid: accdd760c8e4b6849bf48c58003cc4dd, type: 2}
