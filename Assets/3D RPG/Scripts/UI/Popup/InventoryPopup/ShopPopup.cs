@@ -31,19 +31,20 @@ public class ShopPopup : MonoBehaviour,IPopup
             {
                 if (selectShopItemPopup == null)
                 {
-                    selectShopItemPopup = Instantiate(PopupFactory.instance.selectedShopItemPopup, PopupFactory.instance.selectTransform).GetComponent<SelectShopItemPopup>();
+                    selectShopItemPopup = Instantiate(PopupFactory.instance.selectedShopItemPopupPrefab, PopupFactory.instance.selectTransform).GetComponent<SelectShopItemPopup>();
+                    selectShopItemPopup.selectedShopItemInfoData = slot.itemInfo;
                 }
                 else
                 {
+                    selectShopItemPopup.selectedShopItemInfoData = slot.itemInfo;
                     selectShopItemPopup.OpenPopupUI();
                 }
-                ItemInventoryManager.instance.SelectedItemInfoData(slot.itemInfo, PopupType.ItemShop);
             });
             slots.Add(slot);
         }
         return slots.ToArray();
     }
-    void SetData()
+    public void SetData()
     {
         foreach (ItemInfo iteminfo in itemDB.itemDB)
         {

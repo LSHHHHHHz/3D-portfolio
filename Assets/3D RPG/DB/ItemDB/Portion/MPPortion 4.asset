@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243f0595f0f492341a5c82b5f32bf77d, type: 3}
   m_Name: MPPortion 4
   m_EditorClassIdentifier: 
-  itemSort: 1
+  itemSort: 2
   itemName: "MP\uD3EC\uC158 4"
   iconImage: {fileID: 21300000, guid: 6b01344bb57c33b4d86d26181051534b, type: 3}
   itemDescription: "\uD3EC\uC158 \uD68C\uBCF5\uB7C9"
-  HPRecovery: 
+  HPRecovery: 0
   MPRecovery: 400
+  additionalAttack: 0
+  additionalDefence: 0
   itemPrice: 400
   slotNumber: 8

@@ -701,6 +701,7 @@ MonoBehaviour:
   skillInfo: {fileID: 0}
   icon: {fileID: 607112917475090036}
   countText: {fileID: 607112918021948895}
+  skillSlotNumber: 0
 --- !u!114 &4706456734292310071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,7 +947,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 607112917820328472}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 607112916948781075}
+        m_TargetAssemblyTypeName: SkillInventoryPopup, Assembly-CSharp
+        m_MethodName: EquipSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &607112917918049095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,6 +1428,7 @@ MonoBehaviour:
   skillInfo: {fileID: 0}
   icon: {fileID: 6791834631201017070}
   countText: {fileID: 5100993581817427527}
+  skillSlotNumber: 0
 --- !u!114 &7601538326646242984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,6 +1647,7 @@ MonoBehaviour:
   skillInfo: {fileID: 0}
   icon: {fileID: 5652127688184611324}
   countText: {fileID: 8768564756406934793}
+  skillSlotNumber: 0
 --- !u!114 &3790654476825743463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,6 +1866,7 @@ MonoBehaviour:
   skillInfo: {fileID: 0}
   icon: {fileID: 6601668214070917141}
   countText: {fileID: 923079865175200274}
+  skillSlotNumber: 0
 --- !u!114 &632633498006027853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2069,6 +2085,7 @@ MonoBehaviour:
   skillInfo: {fileID: 0}
   icon: {fileID: 4239366204418861278}
   countText: {fileID: 4996226144796154786}
+  skillSlotNumber: 0
 --- !u!114 &6403054437938365323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2207,6 +2224,7 @@ MonoBehaviour:
   skillInfo: {fileID: 0}
   icon: {fileID: 1052235481967688709}
   countText: {fileID: 7559858346257257834}
+  skillSlotNumber: 0
 --- !u!114 &8646070547033003892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2425,6 +2443,7 @@ MonoBehaviour:
   skillInfo: {fileID: 0}
   icon: {fileID: 2222142925074288739}
   countText: {fileID: 9113243552094111215}
+  skillSlotNumber: 0
 --- !u!114 &9178331210571320411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2723,6 +2742,7 @@ MonoBehaviour:
   skillInfo: {fileID: 0}
   icon: {fileID: 1811558469638829888}
   countText: {fileID: 8570671755414490060}
+  skillSlotNumber: 0
 --- !u!114 &2226263832208237955
 MonoBehaviour:
   m_ObjectHideFlags: 0

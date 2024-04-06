@@ -3,17 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemSort
-{
-    HPProtion,
-    MPPortion,
-    Sword,
-    Shield
-}
 [CreateAssetMenu(menuName = "My Assets/ItemInfo")] 
 public class ItemInfo : ScriptableObject
 {
-    public ItemSort itemSort;
+    public InfoType itemSort;
     public string itemName;
     public Sprite iconImage;
     public string itemDescription;

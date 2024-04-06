@@ -30,12 +30,14 @@ public class SkillInventoryPopup : MonoBehaviour
         {
             SkillSlot slot = parent.GetChild(i).GetComponent<SkillSlot>();
             var button = slot.GetComponent<Button>();
-            button.onClick.AddListener(() =>
+            button.onClick.AddListener((UnityEngine.Events.UnityAction)(() =>
             {
                 //버튼 클릭 시 장착이나 데이터 전송, 강화 팝업
+                SelectedSlotInfoManager.instance.SetSkillInfo(slot.skillInfo);
+                EquipSlotIndicateManager.instance.SetIngameSlotIndicate(InfoType.Skill);
                 UpdateSkillInfo(slot.skillInfo);
                 ClickInventorySkillSlot(slot);
-            });
+            }));
             slots.Add(slot);
         }
         return slots.ToArray();

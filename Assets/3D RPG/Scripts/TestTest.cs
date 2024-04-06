@@ -9,7 +9,7 @@ public class TestTest : MonoBehaviour
     {
         if (popup == null)
         {
-            Instantiate(PopupFactory.instance.EquipmentShopPopupPrefab, PopupFactory.instance.popupTransForm);
+            Instantiate(PopupFactory.instance.equipmentShopPopupPrefab, PopupFactory.instance.popupTransForm);
         }
         else
         {

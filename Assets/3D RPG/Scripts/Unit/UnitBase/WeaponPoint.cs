@@ -19,6 +19,4 @@ public class WeaponPoint : MonoBehaviour
             Instantiate(projectile, transform.position, Quaternion.identity);
         }
     }
-
-
 }

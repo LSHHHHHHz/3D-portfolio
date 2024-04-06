@@ -2,12 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum CharacterType
-{
-    Player,
-    MeleeColleague,
-    RangeColleague
-}
+
 public class DetectEnemy : MonoBehaviour
 {
     public CharacterType characterType;

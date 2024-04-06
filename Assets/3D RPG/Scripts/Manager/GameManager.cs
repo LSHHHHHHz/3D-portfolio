@@ -12,11 +12,4 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
     }
-
-    public void StartSkillGacha()
-    {
-        mainCanvas.gameObject.SetActive(false);
-        gachaCanavas.gameObject.SetActive(true);
-        Instantiate(PopupFactory.instance.skillGachaPopupPrefab,PopupFactory.instance.gachaTransform);
-    }
 }

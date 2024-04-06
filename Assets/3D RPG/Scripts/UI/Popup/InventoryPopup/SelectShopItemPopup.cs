@@ -8,17 +8,11 @@ using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class SelectShopItemPopup : MonoBehaviour,IPopup
 {
-    ItemInfo selectedShopItemInfoData;
-    public Button selectButton;
-    public Button closeButton;
+    public ItemInfo selectedShopItemInfoData;
     public Text countText;
     public int itemCount;
     public Text priceText;
     public int itemprice;
-    private void Awake()
-    {
-        ItemInventoryManager.instance.actionSelectedShopItemInfoData += SelectedInfoData;
-    }
     private void Start()
     {
         itemCount = 1;
@@ -26,17 +20,16 @@ public class SelectShopItemPopup : MonoBehaviour,IPopup
     }
     private void OnEnable()
     {
-        itemCount= 1;
-        itemprice = selectedShopItemInfoData.itemPrice;
+        if (selectedShopItemInfoData != null)
+        {
+            itemCount = 1;
+            itemprice = selectedShopItemInfoData.itemPrice;
+        }
     }
     private void Update()
     {
         countText.text = itemCount + "°³";
         priceText.text = (itemprice * itemCount) +"¿ø";
-    }
-    public void SelectedInfoData(ItemInfo info)
-    {
-        selectedShopItemInfoData = info;
     }
     public void ItemCountPlus()
     {

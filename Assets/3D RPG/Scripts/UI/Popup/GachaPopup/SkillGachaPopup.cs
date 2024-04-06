@@ -59,6 +59,7 @@ public class SkillGachaPopup : MonoBehaviour,IPopup
                    {
                        gachaImage.GetComponent<Image>().DOFade(0, 1);
                    });
+        gachaEffect.gameObject.SetActive(true);
         yield return new WaitForSeconds(3);
 
         yield return new WaitForSeconds(2);
@@ -67,7 +68,7 @@ public class SkillGachaPopup : MonoBehaviour,IPopup
             SkillInfo skillInfo = skillGachaResult.skillInfos[i];
             GameObject skillSlotObject;
 
-            skillSlotObject = skillSlotObjects.Find(p => !p.activeSelf);
+            skillSlotObject = skillSlotObjects.Find(skill => !skill.activeSelf);
 
             if (skillSlotObject == null)
             {

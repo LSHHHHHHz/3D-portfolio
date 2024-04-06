@@ -9,8 +9,9 @@ public class PopupFactory : MonoBehaviour
     public GameObject skillGachaPopupPrefab;
     public GameObject skillInventoryPopupPrefab;
     public GameObject portionShopPopupPrefab;
-    public GameObject EquipmentShopPopupPrefab;
-    public GameObject selectedShopItemPopup;
+    public GameObject equipmentShopPopupPrefab;
+    public GameObject selectedShopItemPopupPrefab;
+    public GameObject selectedSkillAndPortionPopupPrefab;
     public static PopupFactory instance;
 
     public Transform popupTransForm;

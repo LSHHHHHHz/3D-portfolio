@@ -3,13 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[Serializable]
-public class SkillInventoryData
-{
-    public List<SkillInstance> mySkills = new();
-    public List<SkillInstance> equippedSkills = new();
-}
 public class SkillInventoryManager : MonoBehaviour
 {
     public static SkillInventoryManager instance;
@@ -22,6 +15,17 @@ public class SkillInventoryManager : MonoBehaviour
     public void Awake()
     {
         instance = this;
+    }
+    private void Start()
+    {
+        InitializeEquippedSkillSlots();
+    }
+    private void InitializeEquippedSkillSlots()
+    {
+        for (int i = 0; i < EquipSlotIndicateManager.instance.ingameSkillSlotsParent.transform.childCount; i++)
+        {
+            equippedSkills.Add(new SkillInstance()); 
+        }
     }
     public void AddSkill(SkillInfo skillInfo)
     {
@@ -44,60 +48,34 @@ public class SkillInventoryManager : MonoBehaviour
         OnSkillInventoryChanged?.Invoke();
     }
 
-    public void ChangeEquipSkillSet(List<SkillInfo> skillList)
+    public void SetEquipSkill(SkillInfo info, int num)
     {
-        var equippedSkillList = equippedSkills;
-
-        equippedSkillList.Clear();
-        foreach (SkillInfo skillInfo in skillList)
+        SkillInstance setSkill = new SkillInstance
         {
-            SkillInstance existItem = mySkills.Find(item => item.skillInfo == skillInfo); //
-            equippedSkillList.Add(existItem);
-        }
-
-        OnEquippedSkillsChanged?.Invoke();
-
-        Save();
-    }
-
-    public void Save()
-    {
-        var skillInventoryData = new SkillInventoryData();
-        skillInventoryData.mySkills = mySkills;
-        skillInventoryData.equippedSkills = equippedSkills;
-
-        string json = JsonUtility.ToJson(skillInventoryData);
-
-        PlayerPrefs.SetString("SkillInventoryData", json);
-        PlayerPrefs.Save();
-    }
-
-    private void Load()
-    {
-        string json = PlayerPrefs.GetString("SkillInventoryData");
-
-        if (string.IsNullOrEmpty(json) == false)
+            skillInfo = info,
+            count = 1,
+            upgradeLevel = 1
+        };
+        for (int i =0; i<equippedSkills.Count; i++) 
         {
-            var data = JsonUtility.FromJson<SkillInventoryData>(json);
-            for (int i = 0; i < data.mySkills.Count; ++i)
+            if(i == num)
             {
-                var item = data.mySkills[i];
-                if (item.skillInfo == null)
-                    continue;
-
-                mySkills.Add(item);
-            }
-
-            for (int i = 0; i < data.equippedSkills.Count; ++i)
-            {
-                var item = data.equippedSkills[i];
-                if (item.skillInfo == null)
-                    continue;
-
-                equippedSkills.Add(item);
+                equippedSkills[i] = setSkill;
             }
         }
-
         OnEquippedSkillsChanged?.Invoke();
+    }
+
+    public void ClearSlotData(SkillSlot slot)
+    {
+        for (int i = 0; i < equippedSkills.Count; i++)
+        {
+            if (i == slot.skillSlotNumber)
+            {
+                equippedSkills[i] = null;
+                OnEquippedSkillsChanged?.Invoke();
+                return;
+            }
+        }
     }
 }
