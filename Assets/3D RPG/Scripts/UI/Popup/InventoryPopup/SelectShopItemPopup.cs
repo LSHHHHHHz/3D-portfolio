@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class SelectShopItemPopup : MonoBehaviour,IPopup
 {
@@ -13,6 +12,9 @@ public class SelectShopItemPopup : MonoBehaviour,IPopup
     public int itemCount;
     public Text priceText;
     public int itemprice;
+
+    public Action onItemPurchased;
+
     private void Start()
     {
         itemCount = 1;
@@ -49,7 +51,20 @@ public class SelectShopItemPopup : MonoBehaviour,IPopup
     }
     public void BuyItem()
     {
-        ItemInventoryManager.instance.AddItem(selectedShopItemInfoData, itemCount);
+        for (int i = 0; i < PlayerData.instance.playerItemInventoryData.Length; i++)
+        {
+            if (PlayerData.instance.playerItemInventoryData[i].GetData() == null)
+            {
+                PlayerData.instance.playerItemInventoryData[i].SetData(new ItemInstance
+                {
+                    itemInfo = selectedShopItemInfoData,
+                    count = itemCount,
+                    upgradeLevel = 1
+                });
+                break;
+            }
+        }
+        GameManager.instance.ItemPurchased();
         PlayerCurrency.Instance.coin -= (itemprice * itemCount);
         gameObject.SetActive(false);
     }

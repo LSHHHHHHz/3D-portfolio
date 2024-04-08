@@ -225,11 +225,11 @@ public class ItemInventoryManager : MonoBehaviour
             OnItemInventoryChanged?.Invoke();
         }
     }
-    public void ClearSlotData(ItemSlot slot, SlotParentType type)
+    public void ClearSlotData(ItemSlot slot, InventoryType type)
     {
         switch (type)
         {
-            case SlotParentType.InGamePortionInventory:
+            case InventoryType.InGamePortionInventory:
                 for (int i = 0; i < equipPortionItems.Count; i++)
                 {
                     if (i == slot.slotNumber)
@@ -240,7 +240,7 @@ public class ItemInventoryManager : MonoBehaviour
                     }
                 }
                 break;
-            case SlotParentType.ItemInventory:
+            case InventoryType.ItemInventory:
                 for (int i = 0; i < myItems.Count; i++)
                 {
                     if (i == slot.slotNumber)

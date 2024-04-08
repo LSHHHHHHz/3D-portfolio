@@ -23,8 +23,9 @@ public class Player : MonoBehaviour
             else if (shopPopup != null && Input.GetButtonDown("Check"))
             {
                 UnityEngine.Debug.Log("shopPopup != null");
-                ///shopPopup.itemDB = npc.itemDB;
-                shopPopup.SetData(npc.itemDB);
+                //여기 shopPopup.SetData(npc.itemDB) 이렇게 수정
+                shopPopup.itemDB = npc.itemDB;
+                shopPopup.SetData();
                 shopPopup.OpenPopupUI();
             }
         }

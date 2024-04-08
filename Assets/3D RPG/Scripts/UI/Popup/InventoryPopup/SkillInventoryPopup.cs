@@ -76,7 +76,6 @@ public class SkillInventoryPopup : MonoBehaviour
         {
             SkillInventoryManager.instance.AddSkill(item);
         }
-        SkillInventoryManager.instance.Save();
         skillgachaPopup.Initialize(skillGachaResult, this.RunSkillGacha);
     }
     public void ClosePopup()

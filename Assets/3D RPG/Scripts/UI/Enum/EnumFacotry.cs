@@ -5,13 +5,14 @@ using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public enum SlotParentType
+public enum InventoryType
 {
+    None,
     ItemInventory,
     ItemEquipInventory,
     InGamePortionInventory,
     SkillInventory,
-    IngameSkillInventory
+    IngameSkillInventory,
 }
 public enum InfoType
 {

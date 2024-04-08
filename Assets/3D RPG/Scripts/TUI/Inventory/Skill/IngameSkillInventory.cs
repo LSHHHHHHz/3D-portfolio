@@ -2,5 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class DragAndDropManager : MonoBehaviour
-{ }
+using UnityEngine.UI;
+public class IngameSkillInventory : SkillInventoryBase
+{
+}
+
+

@@ -5,11 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Canvas mainCanvas;
-    public Canvas gachaCanavas;
-
+    public event Action OnItemPurchased;
     private void Awake()
     {
         instance = this;
+        PlayerData.Load();
+    }
+    public void ItemPurchased()
+    {
+        OnItemPurchased?.Invoke();
     }
 }

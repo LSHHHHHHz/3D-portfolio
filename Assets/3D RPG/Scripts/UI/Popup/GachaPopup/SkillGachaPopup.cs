@@ -22,8 +22,6 @@ public class SkillGachaPopup : MonoBehaviour,IPopup
     SkillGachaResult SkillGachaResultTest;
     private void Awake()
     {
-        mainCanvas = GameManager.instance.mainCanvas;
-        gachaCanvas = GameManager.instance.gachaCanavas;
     }
     private void Start()
     {

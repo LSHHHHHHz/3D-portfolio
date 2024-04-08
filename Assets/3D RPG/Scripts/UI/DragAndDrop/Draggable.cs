@@ -46,7 +46,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             {
                 if (slot != null)
                 {
-                    ItemInventoryManager.instance.ClearSlotData(slot, SlotParentType.ItemInventory);
+                    ItemInventoryManager.instance.ClearSlotData(slot, InventoryType.ItemInventory);
                 }
                 if(skillSlot != null)
                 {

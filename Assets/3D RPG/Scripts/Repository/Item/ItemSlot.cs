@@ -13,7 +13,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     public Transform previousParent;
     public RectTransform slotRectTransform;
 
-    public SlotParentType slotParentType;
+    public InventoryType slotParentType;
     public ItemInfo itemInfo;
     public int slotNumber;
     public Image icon;
@@ -25,34 +25,29 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     public Sprite nullImage;
     public int itemCount;
 
-    public Action onContentChanged { get; set; } = null;
-    public Action onMerged { get; set; } = null;
-    public Action onClicked { get; set; } = null;
-
-    public Action onTouched { get; set; }
+    Button slotButton;
+    public Action clickButton { get; set; } = null;
+    public Action beingDragSlot { get; set; } = null;
+    public Action endDragSlot { get; set; } = null;
+    public Action OnDropSlot { get; set; } = null;
 
     private void Awake()
     {
         canvas = FindObjectOfType<Canvas>().transform;
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        slotButton = GetComponent<Button>();
+        //slotButton.onClick.AddListener(() => {
+        //    clickButton?.Invoke();
+        //});
+    }
 
+    private void Start()
+    {
         if (itemInfo == null)
         {
             icon.sprite = nullImage;
         }
-    }
-    public void OnDragMergeItems()
-    {
-        // item count 증가 
-
-        onContentChanged?.Invoke();
-
-        onClicked?.Invoke();
-    }
-    public void ClickedSlot()
-    {
-        onClicked?.Invoke();
     }
     public void SetData(ItemInfo itemInfo)
     {
@@ -108,11 +103,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
             countText.text = itemInstance.count.ToString();
         }
     }
-    public void SetData(ItemInfo newItemInfo, int newItemCount)
-    {
-        itemInfo = newItemInfo;
-        itemCount = newItemCount;
-    }
     public void ClearData()
     {
         itemInfo = null;
@@ -130,6 +120,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
 
     public void OnDrop(PointerEventData eventData)
     {
+        OnDropSlot?.Invoke();
+        DragAndDropData.instance.UpdateInventoryUI();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -139,18 +131,15 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         transform.SetAsLastSibling();
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
-        onTouched?.Invoke();
+        beingDragSlot?.Invoke();
     }
-    //처음 드래그를 눌렀을 때 첫번째 데이터 저장
-    //드래그 중이 아니면 첫번째 데이터 삭제
     public void OnDrag(PointerEventData eventData)
     {
-        onTouched?.Invoke();
         rect.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
-    {
+    {      
         if (transform.parent == canvas)
         {
             transform.SetParent(previousParent);
@@ -161,5 +150,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         }
         canvasGroup.alpha = 1.0f;
         canvasGroup.blocksRaycasts = true;
+        endDragSlot.Invoke();
     }
+
 }

@@ -6,31 +6,19 @@ public class UIInventory : MonoBehaviour
 {
     public GameObject inventorySlotPrefab;
     public Transform inventorySlotGrid;
-    public PlayerData playerData; 
-    public void SetData(PlayerData data)
+    public PlayerDataSave playerData;
+    public DragAndDropData dragAndDropData;
+    public void SetData(PlayerDataSave data, DragAndDropData dragdropData)
     {
         playerData = data;
+        dragAndDropData = dragdropData;
         Refresh(); 
     }
     public virtual void Refresh()
     {
-        foreach (Transform child in inventorySlotGrid)
-        {
-            Destroy(child.gameObject);
-        }
         if (playerData != null && playerData.equipmentData != null)
         {
             foreach (var item in playerData.equipmentData.equipmentItems)
-            {
-                // 슬롯 프리팹으로부터 새 슬롯 인스턴스 생성
-                GameObject slot = Instantiate(inventorySlotPrefab, inventorySlotGrid);
-                // item 정보를 바탕으로 슬롯을 구성
-                // slot.GetComponent<ItemSlot>().Setup(item);
-            }
-        }
-        if (playerData != null && playerData.ingamePortionData != null)
-        {
-            foreach (var item in playerData.ingamePortionData.ingamePortionItems)
             {
                 // 슬롯 프리팹으로부터 새 슬롯 인스턴스 생성
                 GameObject slot = Instantiate(inventorySlotPrefab, inventorySlotGrid);
