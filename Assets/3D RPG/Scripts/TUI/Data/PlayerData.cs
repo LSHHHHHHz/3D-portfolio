@@ -16,7 +16,7 @@ public class PlayerData
         playerItemInventoryData = new PlayerItemInventoryData[28];
         playerIngamePortionData = new PlayerIngamePortionData[2];
         playerEquipData = new PlayerEquipData[2];
-        playerSkillInventoryData = new PlayerSkillInventoryData[10];
+        playerSkillInventoryData = new PlayerSkillInventoryData[8];
         playerIngameSkillData = new PlayerIngameSkillData[6];
 
     }

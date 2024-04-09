@@ -30,7 +30,6 @@ public abstract class ItemIInventoryBase : MonoBehaviour
                         if (playerItemData[i].GetData() != null)
                         {
                             var itemInstance = playerItemData[i].GetData() as ItemInstance;
-                            slot.GetComponent<ItemSlot>().SetData(itemInstance.itemInfo);
                             slot.GetComponent<ItemSlot>().SetData(itemInstance);
 
                         }

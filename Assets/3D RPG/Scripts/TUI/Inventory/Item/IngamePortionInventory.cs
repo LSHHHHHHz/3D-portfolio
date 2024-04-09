@@ -12,6 +12,18 @@ public class IngamePortionInventory : ItemIInventoryBase
         SetData(PlayerData.instance);
         ConsumptionPortionIngame += Refresh;
     }
+    private void OnEnable()
+    {
+        GameManager.instance.ChangeItemSlot += RefreshData;
+    }
+    private void OnDisable()
+    {
+        GameManager.instance.ChangeItemSlot -= RefreshData;
+    }
+    private void RefreshData()
+    {
+        Refresh();
+    }
     public override void SetData(PlayerData data)
     {
         playerData = data;
@@ -44,10 +56,12 @@ public class IngamePortionInventory : ItemIInventoryBase
     public void SelectDragData(int num)
     {
         DragAndDropManager.instance.dragData = playerItemData[num];
+        DragAndDropManager.instance.dragInventoryType = InventoryType.InGamePortionInventory;
     }
     public void SelectDropData(int num)
     {
         DragAndDropManager.instance.dropData = playerItemData[num];
+        DragAndDropManager.instance.dropInventoryType = InventoryType.InGamePortionInventory;
     }
     public void ConsumptionPortion(int num)
     {

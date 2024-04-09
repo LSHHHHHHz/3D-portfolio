@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class SkillInventoryBase : MonoBehaviour
+public abstract class SkillInventoryBase : MonoBehaviour
 {
     public PlayerData playerData;
     public IPlayerData[] playerSkillData;
@@ -12,14 +12,8 @@ public class SkillInventoryBase : MonoBehaviour
     public RectTransform inventorySlotGrid;
     public SkillSlot[] skillInventorySlots;
 
-    public void SetData(PlayerData data)
-    {
-        playerData = data;
-        playerSkillData = GetSkillInventoryDataByType(inventoryType);
-        skillInventorySlots = GetChildSkillSlots(inventorySlotGrid);
-        InitializeSkillInventoryData(inventoryType, skillInventorySlots.Length);
-        Refresh(); 
-    }
+    public abstract void SetData(PlayerData data);
+    public abstract SkillSlot[] GetChildSkillSlots(RectTransform parent);
     public void Refresh()
     {
         if (playerData != null && playerSkillData != null)
@@ -50,14 +44,12 @@ public class SkillInventoryBase : MonoBehaviour
         switch (type)
         {
             case InventoryType.SkillInventory:
-                playerSkillData = new PlayerSkillInventoryData[inventorySize];
                 for (int i = 0; i < inventorySize; i++)
                 {
                     playerSkillData[i] = new PlayerSkillInventoryData();
                 }
                 break;
             case InventoryType.IngameSkillInventory:
-                playerSkillData = new PlayerIngameSkillData[inventorySize];
                 for (int i = 0; i < inventorySize; i++)
                 {
                     playerSkillData[i] = new PlayerIngameSkillData();
@@ -83,24 +75,7 @@ public class SkillInventoryBase : MonoBehaviour
         }
     }
 
-    SkillSlot[] GetChildSkillSlots(RectTransform parent)
-    {
-        List<SkillSlot> slots = new List<SkillSlot>();
-        for (int i = 0; i < parent.childCount; i++)
-        {
-            Transform imageTransform = parent.GetChild(i);
-            SkillSlot slot = imageTransform.GetComponentInChildren<SkillSlot>();
-            if (slot != null)
-            {
-                Button slotButton = slot.GetComponent<Button>();
-                slotButton.onClick.AddListener(() =>
-                {
-                });
-            }
-            slots.Add(slot);
-        }
-        return slots.ToArray();
-    }
+  
 }
 
 

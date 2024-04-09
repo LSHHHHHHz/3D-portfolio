@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243f0595f0f492341a5c82b5f32bf77d, type: 3}
   m_Name: Sword 2
   m_EditorClassIdentifier: 
-  itemSort: 3
+  itemType: 3
   itemName: "\uC7A5\uBE44 \uC774\uB984"
   iconImage: {fileID: 21300000, guid: 3eeb4936733d8df4b818d128acec1b59, type: 3}
   itemDescription: "\uC7A5\uBE44 \uC124\uBA85"

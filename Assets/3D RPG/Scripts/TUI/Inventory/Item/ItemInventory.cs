@@ -11,13 +11,15 @@ public class ItemInventory: ItemIInventoryBase
     }
     private void OnEnable()
     {
-        GameManager.instance.OnItemPurchased += OnItemPurchased;
+        GameManager.instance.OnItemPurchased += RefreshData;
+        GameManager.instance.ChangeItemSlot += RefreshData;
     }
     private void OnDisable()
     {
-        GameManager.instance.OnItemPurchased -= OnItemPurchased;
+        GameManager.instance.OnItemPurchased -= RefreshData;
+        GameManager.instance.ChangeItemSlot -= RefreshData;
     }
-    private void OnItemPurchased()
+    private void RefreshData()
     {
         Refresh();
     }
@@ -39,7 +41,11 @@ public class ItemInventory: ItemIInventoryBase
             ItemSlot slot = imageTransform.GetComponentInChildren<ItemSlot>();
             if (slot != null)
             {
+                int slotIndex = i;
                 Button slotButton = slot.GetComponent<Button>();
+                slot.beingDragSlot += () => SelectDragData(slotIndex);
+                //  slot.endDragSlot += () => EndDragSlot(slotIndex);
+                slot.OnDropSlot += () => SelectDropData(slotIndex);
                 slotButton.onClick.AddListener(() =>
                 {
                     if (slot.itemInfo != null)
@@ -51,6 +57,16 @@ public class ItemInventory: ItemIInventoryBase
             slots.Add(slot);
         }
         return slots.ToArray();
+    }
+    public void SelectDragData(int num)
+    {
+        DragAndDropManager.instance.dragData = playerItemData[num];
+        DragAndDropManager.instance.dragInventoryType = InventoryType.ItemInventory;
+    }
+    public void SelectDropData(int num)
+    {
+        DragAndDropManager.instance.dropData = playerItemData[num];
+        DragAndDropManager.instance.dropInventoryType = InventoryType.ItemInventory;
     }
 }
 

@@ -37,9 +37,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         slotButton = GetComponent<Button>();
-        //slotButton.onClick.AddListener(() => {
-        //    clickButton?.Invoke();
-        //});
     }
 
     private void Start()
@@ -51,7 +48,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     }
     public void SetData(ItemInfo itemInfo)
     {
-        this.itemInfo = itemInfo;         
+        this.itemInfo = itemInfo;
         if (itemInfo == null)
         {
             return;
@@ -71,19 +68,19 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         }
         if (statsInfo != null)
         {
-            if (itemInfo.itemSort == InfoType.HPPortion)
+            if (itemInfo.itemType == InfoType.HPPortion)
             {
                 statsInfo.text = itemInfo.HPRecovery + "HP를 회복합니다.";
             }
-            if (itemInfo.itemSort == InfoType.MPPortion)
+            if (itemInfo.itemType == InfoType.MPPortion)
             {
                 statsInfo.text = itemInfo.HPRecovery + "MP를 회복합니다.";
             }
-            if (itemInfo.itemSort == InfoType.Sword)
+            if (itemInfo.itemType == InfoType.Sword)
             {
                 statsInfo.text = itemInfo.additionalAttack + "공격력을 증가시킵니다.";
             }
-            if (itemInfo.itemSort == InfoType.Shield)
+            if (itemInfo.itemType == InfoType.Shield)
             {
                 statsInfo.text = itemInfo.additionalDefence + "방어력을 증가시킵니다.";
             }
@@ -120,37 +117,64 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
 
     public void OnDrop(PointerEventData eventData)
     {
+        if (slotParentType == InventoryType.None)
+        {
+            return;
+        }
         OnDropSlot?.Invoke();
-        DragAndDropData.instance.UpdateInventoryUI();
+        DragAndDropManager.instance.SetDataInventorySlot();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (slotParentType == InventoryType.None)
+        {
+            return;
+        }
         previousParent = transform.parent;
         transform.SetParent(canvas);
         transform.SetAsLastSibling();
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
         beingDragSlot?.Invoke();
+        if (countText != null)
+        {
+            countText.gameObject.SetActive(false);
+        }
     }
     public void OnDrag(PointerEventData eventData)
     {
+        if (slotParentType == InventoryType.None)
+        {
+            return;
+        }
         rect.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
-    {      
+    {
+        if (slotParentType == InventoryType.None)
+        {
+            return;
+        }
         if (transform.parent == canvas)
         {
             transform.SetParent(previousParent);
             rect.position = previousParent.GetComponent<RectTransform>().position;
             if (!RectTransformUtility.RectangleContainsScreenPoint(slotRectTransform, eventData.position, null))
             {
+                Debug.Log("버리는 팝업");
+                //선택하면 버리고 선택하지 않으면 return;
+
             }
         }
         canvasGroup.alpha = 1.0f;
         canvasGroup.blocksRaycasts = true;
-        endDragSlot.Invoke();
+        endDragSlot?.Invoke();
+        if (countText != null && itemInfo != null)
+        {
+            countText.gameObject.SetActive(true);
+        }
     }
 
 }

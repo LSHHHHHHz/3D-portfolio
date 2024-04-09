@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "My Assets/ItemInfo")] 
 public class ItemInfo : ScriptableObject
 {
-    public InfoType itemSort;
+    public InfoType itemType;
     public string itemName;
     public Sprite iconImage;
     public string itemDescription;

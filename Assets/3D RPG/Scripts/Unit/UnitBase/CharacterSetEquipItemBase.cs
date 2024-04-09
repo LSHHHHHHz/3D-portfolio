@@ -18,7 +18,7 @@ public abstract class CharacterSetEquipItemBase : MonoBehaviour
         }
         foreach(var equipeditem in ItemInventoryManager.instance.equipWeaponItems)
         {
-            if(equipeditem != null && equipeditem.itemInfo.itemSort == InfoType.Sword)
+            if(equipeditem != null && equipeditem.itemInfo.itemType == InfoType.Sword)
             {
                 int swordIndex = equipeditem.itemInfo.slotNumber-1;
                 if (previousEquippedWeapon == null || previousEquippedWeapon.itemInfo != equipeditem.itemInfo)
@@ -30,7 +30,7 @@ public abstract class CharacterSetEquipItemBase : MonoBehaviour
                     previousEquippedWeapon = equipeditem;
                 }
             }
-            if (equipeditem != null && equipeditem.itemInfo.itemSort == InfoType.Shield)
+            if (equipeditem != null && equipeditem.itemInfo.itemType == InfoType.Shield)
             {
                 int shieldIndex = equipeditem.itemInfo.slotNumber - 1;
                 if (previousEquippedShield == null || previousEquippedShield.itemInfo != equipeditem.itemInfo)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243f0595f0f492341a5c82b5f32bf77d, type: 3}
   m_Name: HPPortion 2
   m_EditorClassIdentifier: 
-  itemSort: 1
+  itemType: 1
   itemName: "HP\uD3EC\uC158 2"
   iconImage: {fileID: 21300000, guid: c8b514758510ed645b77936707ec3e66, type: 3}
   itemDescription: "\uD3EC\uC158 \uD68C\uBCF5\uB7C9"

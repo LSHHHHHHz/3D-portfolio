@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243f0595f0f492341a5c82b5f32bf77d, type: 3}
   m_Name: MPPortion 2
   m_EditorClassIdentifier: 
-  itemSort: 2
+  itemType: 2
   itemName: "MP\uD3EC\uC158 2"
   iconImage: {fileID: 21300000, guid: 28a4cecf8e4b9e54497814df9bf06586, type: 3}
   itemDescription: "\uD3EC\uC158 \uD68C\uBCF5\uB7C9"

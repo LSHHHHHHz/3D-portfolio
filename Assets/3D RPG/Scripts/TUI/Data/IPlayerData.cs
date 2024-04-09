@@ -8,5 +8,6 @@ public interface IPlayerData
     object GetData();
     void RemoveData(int count);
     void ClearData();
+    public InfoType GetItemType();
 
 }

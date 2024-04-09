@@ -9,6 +9,18 @@ public class EquipItemInventory : ItemIInventoryBase
     {
         SetData(PlayerData.instance);
     }
+    private void OnEnable()
+    {
+        GameManager.instance.ChangeItemSlot += RefreshData;
+    }
+    private void OnDisable()
+    {
+        GameManager.instance.ChangeItemSlot -= RefreshData;
+    }
+    private void RefreshData()
+    {
+        Refresh();
+    }
     public override void SetData(PlayerData data)
     {
         playerData = data;
@@ -26,7 +38,11 @@ public class EquipItemInventory : ItemIInventoryBase
             ItemSlot slot = imageTransform.GetComponentInChildren<ItemSlot>();
             if (slot != null)
             {
+                int slotIndex = i;
                 Button slotButton = slot.GetComponent<Button>();
+                slot.beingDragSlot += () => SelectDragData(slotIndex);
+                //  slot.endDragSlot += () => EndDragSlot(slotIndex);
+                slot.OnDropSlot += () => SelectDropData(slotIndex);
                 slotButton.onClick.AddListener(() =>
                 {
                     if (slot.itemInfo != null)
@@ -38,6 +54,16 @@ public class EquipItemInventory : ItemIInventoryBase
             slots.Add(slot);
         }
         return slots.ToArray();
+    }
+    public void SelectDragData(int num)
+    {
+        DragAndDropManager.instance.dragData = playerItemData[num];
+        DragAndDropManager.instance.dragInventoryType = InventoryType.ItemEquipInventory;
+    }
+    public void SelectDropData(int num)
+    {
+        DragAndDropManager.instance.dropData = playerItemData[num];
+        DragAndDropManager.instance.dropInventoryType = InventoryType.ItemEquipInventory;
     }
 }
 

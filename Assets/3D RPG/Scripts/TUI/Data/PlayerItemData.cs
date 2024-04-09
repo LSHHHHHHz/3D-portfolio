@@ -5,10 +5,21 @@ using UnityEngine;
 public class PlayerItemData : IPlayerData
 {
     public ItemInstance item = null;
+    public InfoType type;
 
     public object GetData()
     {
        return item;
+    }
+    public InfoType GetItemType()
+    {
+        return type;
+    }
+
+    //구매할때 꼭
+    public void SetItemType(InfoType setType)
+    {
+        type = setType;
     }
     public void SetData(object newData)
     {

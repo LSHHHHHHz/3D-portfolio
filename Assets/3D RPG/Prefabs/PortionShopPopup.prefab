@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c85c4b7baee7342809f8e495f1052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+  slotRectTransform: {fileID: 0}
+  slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
   icon: {fileID: 5496193296297221329}
@@ -105,6 +108,7 @@ MonoBehaviour:
   statsInfo: {fileID: 5496193295721735240}
   countText: {fileID: 0}
   nullImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  itemCount: 0
 --- !u!114 &5496193294916957601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,6 +645,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c85c4b7baee7342809f8e495f1052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+  slotRectTransform: {fileID: 0}
+  slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
   icon: {fileID: 5496193295655815096}
@@ -650,6 +657,7 @@ MonoBehaviour:
   statsInfo: {fileID: 5496193296305366403}
   countText: {fileID: 0}
   nullImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  itemCount: 0
 --- !u!114 &5496193295058732803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,6 +878,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c85c4b7baee7342809f8e495f1052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+  slotRectTransform: {fileID: 0}
+  slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
   icon: {fileID: 5496193295421624905}
@@ -879,6 +890,7 @@ MonoBehaviour:
   statsInfo: {fileID: 5496193296793900560}
   countText: {fileID: 0}
   nullImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  itemCount: 0
 --- !u!114 &5496193295156108195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,6 +2414,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c85c4b7baee7342809f8e495f1052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+  slotRectTransform: {fileID: 0}
+  slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
   icon: {fileID: 5496193297000346322}
@@ -2411,6 +2426,7 @@ MonoBehaviour:
   statsInfo: {fileID: 5496193295097242005}
   countText: {fileID: 0}
   nullImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  itemCount: 0
 --- !u!114 &5496193295728593234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2863,6 +2879,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c85c4b7baee7342809f8e495f1052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+  slotRectTransform: {fileID: 0}
+  slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
   icon: {fileID: 5496193295005947550}
@@ -2872,6 +2891,7 @@ MonoBehaviour:
   statsInfo: {fileID: 5496193296473916954}
   countText: {fileID: 0}
   nullImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  itemCount: 0
 --- !u!114 &5496193296000619038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3890,7 +3910,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 400, y: 100}
-  m_Spacing: {x: 0, y: 0}
+  m_Spacing: {x: 0, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &5496193296615041522
@@ -4149,6 +4169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c85c4b7baee7342809f8e495f1052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+  slotRectTransform: {fileID: 0}
+  slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
   icon: {fileID: 5496193295902316876}
@@ -4158,6 +4181,7 @@ MonoBehaviour:
   statsInfo: {fileID: 5496193296667027713}
   countText: {fileID: 0}
   nullImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  itemCount: 0
 --- !u!114 &5496193296669669371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4538,6 +4562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c85c4b7baee7342809f8e495f1052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+  slotRectTransform: {fileID: 0}
+  slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
   icon: {fileID: 5496193295805168954}
@@ -4547,6 +4574,7 @@ MonoBehaviour:
   statsInfo: {fileID: 5496193295057217685}
   countText: {fileID: 0}
   nullImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  itemCount: 0
 --- !u!114 &5496193296893987881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5007,6 +5035,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c85c4b7baee7342809f8e495f1052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousParent: {fileID: 0}
+  slotRectTransform: {fileID: 0}
+  slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
   icon: {fileID: 5496193295707303801}
@@ -5016,6 +5047,7 @@ MonoBehaviour:
   statsInfo: {fileID: 5496193296236521847}
   countText: {fileID: 0}
   nullImage: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  itemCount: 0
 --- !u!114 &5496193296965684498
 MonoBehaviour:
   m_ObjectHideFlags: 0
