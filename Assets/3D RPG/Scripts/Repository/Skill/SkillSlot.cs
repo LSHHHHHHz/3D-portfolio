@@ -13,17 +13,18 @@ public class SkillSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHa
     public int skillSlotNumber;
     public InventoryType inventoryType;
 
+   
     private Transform canvas;
     private RectTransform rect;
     private CanvasGroup canvasGroup;
     public Transform previousParent;
     Button slotButton;
     public RectTransform slotRectTransform;
-
-    public Action clickButton { get; set; } = null;
+    public Sprite nullImage;
+    public event Action<SkillInfo> clickButton;
     public Action beingDragSlot { get; set; } = null;
     public Action OnDropSlot { get; set; } = null;
-    public Sprite nullImage;
+    public Action OnDropSlotForRemove { get; set; } = null;
     private void Awake()
     {
         canvas = FindObjectOfType<Canvas>().transform;
@@ -100,8 +101,8 @@ public class SkillSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHa
             if (!RectTransformUtility.RectangleContainsScreenPoint(slotRectTransform, eventData.position, null))
             {
                 Debug.Log("버리는 팝업");
-                //선택하면 버리고 선택하지 않으면 return;
-
+                //선택하면 버리고 선택하지 않으면 return; 
+                OnDropSlotForRemove?.Invoke();
             }
         }
         canvasGroup.alpha = 1.0f;
@@ -111,4 +112,6 @@ public class SkillSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHa
             countText.gameObject.SetActive(true);
         }
     }
+
+   
 }

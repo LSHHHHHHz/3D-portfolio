@@ -13,6 +13,7 @@ public class ItemInventory: ItemIInventoryBase
     {
         GameManager.instance.OnItemPurchased += RefreshData;
         GameManager.instance.ChangeItemSlot += RefreshData;
+        Refresh();
     }
     private void OnDisable()
     {

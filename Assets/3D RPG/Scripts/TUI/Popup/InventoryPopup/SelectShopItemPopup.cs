@@ -51,6 +51,7 @@ public class SelectShopItemPopup : MonoBehaviour,IPopup
     }
     public void BuyItem()
     {
+        // InventoryUI.AddItem(selectedShopItemInfoData, itemCount)
         for (int i = 0; i < PlayerData.instance.playerItemInventoryData.Length; i++)
         {
             if (PlayerData.instance.playerItemInventoryData[i].GetData() == null)

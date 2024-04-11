@@ -13,12 +13,14 @@ public class PopupFactory : MonoBehaviour
     public GameObject selectedShopItemPopupPrefab;
     public GameObject selectedSkillAndPortionPopupPrefab;
     public GameObject playerInventoryPopupPrefab;
+    public GameObject InfoPopupPrefab;
     public static PopupFactory instance;
 
     public Transform popupTransForm;
     public Transform colleagueStatusPopupTransform;
     public Transform gachaTransform;
     public Transform selectTransform;
+    public Transform infoPopupTransform;
     private void Awake()
     {
         instance = this;

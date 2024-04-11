@@ -1,11 +1,13 @@
+using Assets._3D_RPG.Scripts.TUI.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerData
 {
     public static PlayerData instance;
-
+    public UserData UserData;
     public PlayerItemInventoryData[] playerItemInventoryData;
     public PlayerIngamePortionData[] playerIngamePortionData;
     public PlayerEquipData[] playerEquipData;

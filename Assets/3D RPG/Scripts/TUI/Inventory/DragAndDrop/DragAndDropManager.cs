@@ -16,95 +16,160 @@ public class DragAndDropManager : MonoBehaviour
     }
     public void SetDataInventorySlot()
     {
+        if (!CanDrop())
+        {
+            return;
+        }
+        switch (dropInventoryType)
+        {
+            case InventoryType.IngameSkillInventory:
+                SkillInventoryDrop();
+                break;
+            case InventoryType.ItemEquipInventory:
+                EquipInventoryDrop();
+                break;
+            default:
+                EquipInventoryDrop();
+                DefaultDrop();
+                break;
+        }
+        FinalizeDrop();
+    }
+    private bool CanDrop()
+    {
+        return dropInventoryType != InventoryType.SkillInventory && !(dropInventoryType == InventoryType.IngameSkillInventory && dragData.GetItemType() != InfoType.Skill);
+    }
+
+    private void SkillInventoryDrop()
+    {
+        bool matchFound = false;
+        foreach (var skill in PlayerData.instance.playerIngameSkillData)
+        {
+            if (skill.skill != null)
+            {
+                if (skill.skill.skillInfo == (dragData.GetData() as SkillInstance).skillInfo)
+                {
+                    matchFound = true;
+                    break;
+                }
+            }
+        }
+        if(!matchFound)
+        {
+            dropData.SetData(dragData.GetData() as SkillInstance);
+        }
+    }
+    private void EquipInventoryDrop()
+    {
+        ItemInstance dragItem = dragData.GetData() as ItemInstance;
+        ItemInstance dropItem = dropData.GetData() as ItemInstance;
+
+        if (dragData.GetItemType() == InfoType.Sword || dragData.GetItemType() == InfoType.Shield)
+        {
+            if (dropItem == null)
+            {
+                ItemInstance newItem = new ItemInstance
+                {
+                    itemInfo = dragItem.itemInfo,
+                    count = 1
+                };
+                dropData.SetData(newItem);              
+                if (dragItem.count > 1)
+                {
+                    dragItem.count -= 1;
+                    dragData.SetData(dragItem); 
+                }
+                else
+                {
+                    dragData.ClearData(); 
+                }
+            }
+            else
+            {
+                if(dropItem == dragItem)
+                {
+                    return;
+                }
+                ItemInstance newItem = new ItemInstance
+                {
+                    itemInfo = dragItem.itemInfo,
+                    count = 1
+                };
+                dropData.SetData(newItem);
+                if (dragItem.count > 1)
+                {
+                    dragItem.count -= 1;
+                    dragData.SetData(dragItem);
+                }
+                else
+                {
+                    dragData.ClearData();
+                }
+                foreach(var item in PlayerData.instance.playerItemInventoryData)
+                {
+                    if(item.GetData() == null)
+                    {
+                        item.SetData(dropItem);
+                        break;
+                    }
+                }
+            }
+            GameManager.instance.ChangeSlot();
+        }
+    }
+    private void DefaultDrop()
+    {
         ItemInstance dragitem = dragData.GetData() as ItemInstance;
         ItemInstance dropitem = dropData.GetData() as ItemInstance;
-        SkillInstance dragSkill= dragData.GetData() as SkillInstance;
-        SkillInstance dropSkill = dropData.GetData() as SkillInstance;
-        if (dropInventoryType == InventoryType.SkillInventory)
-        {
-            return;
-        }
-        if (dropInventoryType == InventoryType.IngameSkillInventory && (dragData.GetItemType() != InfoType.Skill))
-        {
-            return;
-        }
-        if (dropInventoryType == InventoryType.IngameSkillInventory)
-        {
-            if(dragInventoryType== InventoryType.IngameSkillInventory)
-            {
-                return;
-            }
-            dropData.SetData(dragSkill);
-            ClearData();
-            GameManager.instance.SetSkillI();
-            return;
-        }
 
-        if (dropInventoryType == InventoryType.ItemEquipInventory && (dragData.GetItemType() != InfoType.Sword && dragData.GetItemType() != InfoType.Shield))
+        if (dragData == dropData || dragitem == null) return;
+
+        if (dropitem == null || dragitem.itemInfo != dropitem.itemInfo)
         {
-            return;
+            TransferOrSwapItem(dragitem);
         }
-        if (dropInventoryType == InventoryType.ItemEquipInventory && (dragData.GetItemType() == InfoType.Sword || dragData.GetItemType() == InfoType.Shield))
+        else
+        {
+            MergeItems(dragitem, dropitem);
+        }
+    }
+    private void TransferOrSwapItem(ItemInstance dragitem)
+    {
+        if (dropData.GetData() == null)
         {
             dropData.SetData(dragitem);
-            if(dragitem.count>1)
-            {
-                dropitem.count = 1;
-                dragitem.count--;
-            }
-            if(dragitem.count<=1)
-            {
-                dragData.ClearData();
-            }
-            GameManager.instance.ChangeSlot();
-            ClearData();
-            return;
-        }
-
-        if (dropInventoryType == InventoryType.InGamePortionInventory && (dragData.GetItemType() != InfoType.HPPortion && dragData.GetItemType() != InfoType.MPPortion))
-        {
-            return;
-        }
-
-        if (dragitem != null && dropitem != null && dragitem.itemInfo == dropitem.itemInfo)
-        {
-            dropitem.count += dragitem.count;
-            dragData.ClearData();
-            GameManager.instance.ChangeSlot();
-            ClearData();
-            return;
-        }
-
-        if (dragData == dropData)
-        {
-            return;
-        }
-        
-        if(dropData.GetData() == null)
-        {
-            dropData.SetData(dragData.GetData());
             dragData.ClearData();
         }
         else
         {
             ItemInstance temp = dropData.GetData() as ItemInstance;
-            dropData.SetData(dragData.GetData());
+            dropData.SetData(dragitem);
             dragData.SetData(temp);
         }
+    }
+    private void MergeItems(ItemInstance dragitem, ItemInstance dropitem)
+    {
+        dropitem.count += dragitem.count;
+        dragData.ClearData();
+    }
+    private void FinalizeDrop()
+    {
+        if ((dropInventoryType == InventoryType.IngameSkillInventory) || (dropInventoryType == InventoryType.SkillInventory))
+        {
+            GameManager.instance.SetSkillI();
+            ClearData();
+        }
+        else
+        {
+            GameManager.instance.ChangeSlot();
+        }
         ClearData();
-        GameManager.instance.ChangeSlot();
     }
     public void ClearData()
     {
-        if (dropData != null)
-        {
-            dropData = null;
-            dropInventoryType = InventoryType.None;
-        }
-        if(dragData != null)
-        {
-            dragData = null;
-            dragInventoryType= InventoryType.None;
-        }
+        dropData = null;
+        dropInventoryType = InventoryType.None;
+        dragData = null;
+        dragInventoryType = InventoryType.None;
     }
 }

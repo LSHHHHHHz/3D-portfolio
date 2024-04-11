@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 public class IngameSkillInventory : SkillInventoryBase
 {
+    SetBaseSkill[] skills;
     private void Awake()
     {
         SetData(PlayerData.instance);
@@ -12,10 +14,7 @@ public class IngameSkillInventory : SkillInventoryBase
     private void OnEnable()
     {
         GameManager.instance.SetSkillInventory += RefreshData;
-    }
-    private void OnDisable()
-    {
-        GameManager.instance.SetSkillInventory -= RefreshData;
+        GameManager.instance.SetSkillInventory += RefreshSkill;
     }
     private void RefreshData()
     {
@@ -42,9 +41,11 @@ public class IngameSkillInventory : SkillInventoryBase
                 Button slotButton = slot.GetComponent<Button>();
                 slot.beingDragSlot += () => SelectDragData(slotIndex);
                 slot.OnDropSlot += () => SelectDropData(slotIndex);
+                slot.OnDropSlotForRemove += () => RemoveData(slotIndex);
                 slotButton.onClick.AddListener(() =>
                 {
                     Debug.Log("스킬 공격");
+                    ExecuteSkill(slotIndex, slot.skillInfo.skillDamage);
                 });
             }
             slots.Add(slot);
@@ -60,6 +61,57 @@ public class IngameSkillInventory : SkillInventoryBase
     {
         DragAndDropManager.instance.dropData = playerSkillData[num];
         DragAndDropManager.instance.dropInventoryType = InventoryType.IngameSkillInventory;
+    }
+    public void RemoveData(int num)
+    {
+        playerSkillData[num].ClearData();
+        GameManager.instance.SetSkillI();
+    }
+    private void RefreshSkill()
+    {
+        ClearSkills();
+        List<SetBaseSkill> skills = new();
+        SetBaseSkill(skills);
+        this.skills = skills.ToArray();
+    }
+    void SetBaseSkill(List<SetBaseSkill> skillsList)
+    {
+        foreach (var skill in PlayerData.instance.playerIngameSkillData)
+        {
+            if (skill.skill == null)
+            {
+                skillsList.Add(null);
+            }
+            else
+            {
+                SetBaseSkill skillBase = Instantiate(skill.skill.skillInfo.baseSkill).GetComponent<SetBaseSkill>();
+                skillsList.Add(skillBase);
+            }
+        }
+    }
+    private void ClearSkills()
+    {
+        if (skills == null)
+            return;
+
+        foreach (var skill in skills)
+        {
+            if (skill == null)
+                continue;
+
+            Destroy(skill.gameObject);
+        }
+    }
+    private void ExecuteSkill(int index, int damage)
+    {
+        if (index >= 0 && index < skills.Length)
+        {
+            SetBaseSkill skill = skills[index];
+            if (skill != null)
+            {
+                skill.Execute(damage);
+            }
+        }
     }
 }
 

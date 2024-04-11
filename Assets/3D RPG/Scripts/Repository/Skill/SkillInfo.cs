@@ -20,4 +20,6 @@ public class SkillInfo : ScriptableObject
     public string detailSkillInfo;
     public Sprite iconImage;
     public int number;
+    public GameObject baseSkill;
+    public int skillDamage;
 }

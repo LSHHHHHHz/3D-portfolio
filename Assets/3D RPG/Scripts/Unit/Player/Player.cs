@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     public PlayerController playerController;
     public DetectEnemy detectEnemy;
+    public PlayerTargettingEnemy playerTargettingEnemy;
+    public PlayerStatus playerStatus;
+    public CameraFollow cameraFollow;
     ShopPopup shopPopup;
     ShopNPC npc;
     DialogueTriggerPopup dialogueTriggerPopupInstatnce;

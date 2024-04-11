@@ -7,6 +7,9 @@ public class PlayerItemData : IPlayerData
     public ItemInstance item = null;
     public InfoType type;
 
+    public string ItemName;
+    public int HPRecovery;
+
     public object GetData()
     {
        return item;
@@ -24,6 +27,8 @@ public class PlayerItemData : IPlayerData
     public void SetData(object newData)
     {
         item = newData as ItemInstance;
+        type = item.itemInfo.itemType;
+        ItemName = (newData as ItemInstance).itemInfo.itemName;
     }
     public void ClearData()
     {
@@ -37,6 +42,18 @@ public class PlayerItemData : IPlayerData
 public class PlayerItemInventoryData : PlayerItemData
 {
 }
+
+public class SlotData2
+{
+    public PlayerItemData ItemData;
+    public int Count;
+}
+
+public class QuickSlotData
+{
+    public List<SlotData> SlotDatas = new List<SlotData>() { new SlotData(), new SlotData(), new SlotData(), new SlotData()};
+}
+
 public class PlayerIngamePortionData : PlayerItemData
 {
 }

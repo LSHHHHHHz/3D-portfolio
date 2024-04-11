@@ -61,7 +61,7 @@ public class SkillInventory : SkillInventoryBase
     {
         DragAndDropManager.instance.dropData = playerSkillData[num];
         DragAndDropManager.instance.dropInventoryType = InventoryType.SkillInventory;
-    }
+    }    
     public void SetData(int num)
     {
         if(playerSkillData[num].GetData() != null)

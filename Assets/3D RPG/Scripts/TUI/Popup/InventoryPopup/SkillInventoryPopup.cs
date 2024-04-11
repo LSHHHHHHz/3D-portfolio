@@ -9,11 +9,12 @@ public class SkillInventoryPopup : MonoBehaviour
     public Text skillName;
     public Text simpleSkillinfo;
     public Text detailSkillInfo;
-    LaunchSkillGachaPopup launchSkillgachaPopup;
+    StartSkillGachaPopup launchSkillgachaPopup;
     public SkillDB skilldb;
-    void ClickInventorySkillSlot(SkillSlot slot)
+
+    private void Awake()
     {
-        SkillInventoryManager.instance.skillSlotData = slot;
+        
     }
     void UpdateSkillInfo(SkillInfo Info)
     {
@@ -25,7 +26,7 @@ public class SkillInventoryPopup : MonoBehaviour
     {
         if (launchSkillgachaPopup == null)
         {
-            launchSkillgachaPopup = Instantiate(PopupFactory.instance.skillGachaPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<LaunchSkillGachaPopup>();
+            launchSkillgachaPopup = Instantiate(PopupFactory.instance.skillGachaPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<StartSkillGachaPopup>();
         }
         else
         {

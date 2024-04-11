@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - FxTemporaire
   - ShopNPC
+  - ForPlayerDetection
+  - ForEnemyDetection
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - UI
   - Ground
   - Gacha
-  - 
-  - 
-  - 
+  - Enemy
+  - PostProcessing
+  - ForPlayerDetectionCollider
   - 
   - 
   - 

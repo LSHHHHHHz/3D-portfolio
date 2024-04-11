@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerExitHandler, IPointerEnterHandler
 {
     private Transform canvas;
     private RectTransform rect;
@@ -13,6 +13,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     public Transform previousParent;
     public RectTransform slotRectTransform;
 
+    public InfoPopup infoPopupInstance;
     public InventoryType slotParentType;
     public ItemInfo itemInfo;
     public int slotNumber;
@@ -176,5 +177,32 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
             countText.gameObject.SetActive(true);
         }
     }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (slotParentType != InventoryType.ItemInventory || itemInfo == null)
+        {
+            return;
+        }
+        infoPopupInstance.ClosePopupUI();
+    }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(slotParentType != InventoryType.ItemInventory || itemInfo == null)
+        {
+            return;
+        }
+        if (infoPopupInstance == null)
+        {
+            infoPopupInstance = Instantiate(PopupFactory.instance.InfoPopupPrefab, PopupFactory.instance.infoPopupTransform).GetComponent<InfoPopup>();
+            infoPopupInstance.transform.position = this.transform.position - new Vector3(200,0,0);
+            infoPopupInstance.SetText(itemInfo);
+        }
+        else
+        {
+            infoPopupInstance.SetText(itemInfo);
+            infoPopupInstance.transform.position = this.transform.position - new Vector3(200, 0, 0);
+            infoPopupInstance.OpenPopupUI();
+        }
+    }
 }
