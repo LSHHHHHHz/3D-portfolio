@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 public class HUDSystemUI : MonoBehaviour
 {
-    SkillInventoryPopup skillInventoryPopup;
-    PlayerInventoryPopup playerInventoryPopup;
+    SkillInventoryUI skillInventoryPopup;
+    InventoryUI playerInventoryPopup;
 
-    public void RunItemGacha()
+    public void OpenPlayerSkillInventory()
     {
         if (skillInventoryPopup == null)
         {
-            skillInventoryPopup = Instantiate(PopupFactory.instance.skillInventoryPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<SkillInventoryPopup>();
+            skillInventoryPopup = Instantiate(PopupFactory.instance.skillInventoryPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<SkillInventoryUI>();
         }
         else
         {
-            skillInventoryPopup.gameObject.SetActive(true);
+            skillInventoryPopup.OpenPopupUI();
         }
     }
 
@@ -23,11 +23,11 @@ public class HUDSystemUI : MonoBehaviour
     {
         if (playerInventoryPopup == null)
         {
-            playerInventoryPopup = Instantiate(PopupFactory.instance.playerInventoryPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<PlayerInventoryPopup>();
+            playerInventoryPopup = Instantiate(PopupFactory.instance.InventoryPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<InventoryUI>();
         }
         else
         {
-            playerInventoryPopup.gameObject.SetActive(true);
+            playerInventoryPopup.OpenPopupUI();
         }
     }
 }

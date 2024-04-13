@@ -15,7 +15,7 @@ public class SlotDatanitialize
     }
 }
 [System.Serializable]
-public class SlotData : IData
+public class SlotData
 {
     public ItemData item;
     public int count;
@@ -27,15 +27,15 @@ public class SlotData : IData
             return;
         }
 
-        if (this.item == null || this.item != newItem)
+        if (item == null || item != newItem)
         {
-            this.item = newItem;
-            this.count = newCount;
+            item = newItem;
+            count = newCount;
         }
         else
         {
-            this.count += newCount;
-            if (this.count > maxCount)
+            count += newCount;
+            if (count > maxCount)
             {
                 return;
             }
@@ -47,7 +47,7 @@ public class SlotData : IData
     }
 }
 [System.Serializable]
-public class QuickPortionSlotData : SlotDatanitialize
+public class QuickPortionSlotData : SlotDatanitialize, IData
 {
     public List<SlotData> slotDatas;
     public QuickPortionSlotData()
@@ -56,7 +56,7 @@ public class QuickPortionSlotData : SlotDatanitialize
     }
 }
 [System.Serializable]
-public class QuickSkillSlotData : SlotDatanitialize
+public class QuickSkillSlotData : SlotDatanitialize, IData
 {
     public List<SlotData> slotDatas;
     public QuickSkillSlotData()
@@ -65,7 +65,7 @@ public class QuickSkillSlotData : SlotDatanitialize
     }
 }
 [System.Serializable]
-public class InventoryData : SlotDatanitialize
+public class InventoryData : SlotDatanitialize, IData
 {
     public List<SlotData> slotDatas;
     public InventoryData()
@@ -74,7 +74,7 @@ public class InventoryData : SlotDatanitialize
     }
 }
 [System.Serializable]
-public class SkillInventoryData : SlotDatanitialize
+public class SkillInventoryData : SlotDatanitialize, IData
 {
     public List<SlotData> slotDatas;
     public SkillInventoryData()
@@ -83,7 +83,7 @@ public class SkillInventoryData : SlotDatanitialize
     }
 }
 [System.Serializable]
-public class EquipmentData : SlotDatanitialize
+public class EquipmentData : SlotDatanitialize, IData
 {
     public List<SlotData> slotDatas;
     public EquipmentData()
@@ -92,7 +92,7 @@ public class EquipmentData : SlotDatanitialize
     }
 }
 [System.Serializable]
-public class ShopData : SlotDatanitialize
+public class ShopData : SlotDatanitialize, IData
 {
     public List<SlotData> portionShopSlotDatas;
     public List<SlotData> equipShopSlotData;

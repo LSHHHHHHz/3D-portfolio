@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public PlayerTargettingEnemy playerTargettingEnemy;
     public PlayerStatus playerStatus;
     public CameraFollow cameraFollow;
-    ShopPopup shopPopup;
+    NPCShopUI shopPopup;
     ShopNPC npc;
     DialogueTriggerPopup dialogueTriggerPopupInstatnce;
     private void Update()
@@ -19,15 +19,15 @@ public class Player : MonoBehaviour
             if (shopPopup == null && Input.GetButtonDown("Check"))
             {
                 UnityEngine.Debug.Log("shopPopup == null");
-                shopPopup = Instantiate(PopupFactory.instance.portionShopPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<ShopPopup>();
-                shopPopup.itemDB = npc.itemDB;
+                shopPopup = Instantiate(PopupFactory.instance.ShopPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<NPCShopUI>();
+                shopPopup.shopNumer = npc.shopNum;
                 shopPopup.SetData();
             }
             else if (shopPopup != null && Input.GetButtonDown("Check"))
             {
                 UnityEngine.Debug.Log("shopPopup != null");
                 //여기 shopPopup.SetData(npc.itemDB) 이렇게 수정
-                shopPopup.itemDB = npc.itemDB;
+                shopPopup.shopNumer = npc.shopNum;
                 shopPopup.SetData();
                 shopPopup.OpenPopupUI();
             }

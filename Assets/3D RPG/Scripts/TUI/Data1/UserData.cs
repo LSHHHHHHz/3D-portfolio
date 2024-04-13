@@ -15,6 +15,9 @@ public class UserData : MonoBehaviour
     public QuickSkillSlotData quickSkillSlotData;
     public SkillInventoryData skillInventoryData;
     public ShopData shopData;
+    public PortionData[] portionShopData;
+    public EquipData[] equipShopData;
+    public SkillData[] skillData;
     [ContextMenu("Save To Json Data")]
     private void Awake()
     {

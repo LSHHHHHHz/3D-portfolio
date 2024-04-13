@@ -12,6 +12,7 @@ public class SlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandl
     public Text itemCountText;
 
     private SlotData currentSlotData;
+    private IData currentData;
     private InfoPopup infoPopupInstance;
     
     private Transform canvas;
@@ -30,27 +31,38 @@ public class SlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandl
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
-    public void SetData(SlotData slotData)
+    public void SetData(SlotData slotData, IData userData)
     {
         currentSlotData = slotData;
+        currentData = userData;
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        if (currentSlotData != null && currentSlotData.item != null)
+        if (currentSlotData != null && currentSlotData.item != null && currentSlotData.count > 0)
         {
-            itemIcon.sprite = Resources.Load(currentSlotData.item.iconPath) as Sprite;
-            itemCountText.text = currentSlotData.count.ToString();
+            itemIcon.sprite = Resources.Load<Sprite>(currentSlotData.item.iconPath);
+            if (itemCountText != null)
+            {
+                itemCountText.text = currentSlotData.count.ToString();
+                itemCountText.enabled = true;
+            }
         }
         else
         {
             itemIcon.sprite = nullImage;
-            itemCountText.enabled = false;
+            if (itemCountText != null)
+            {
+                itemCountText.enabled = false;
+            }
         }
-        if(currentSlotData.count == 0)
+        if (currentSlotData.count == 0)
         {
-            itemCountText.enabled = false;
+            if (itemCountText != null)
+            {
+                itemCountText.enabled = false;
+            }
         }
     }
     public void OnDrop(PointerEventData eventData)
@@ -96,20 +108,28 @@ public class SlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandl
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (currentData == UserData.instance.quickPortionSlotData || currentData == UserData.instance.quickSkillSlotData || currentSlotData.item.itemPrice <=0)
+        {
+            return;
+        }
         infoPopupInstance.ClosePopupUI();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if(currentData == UserData.instance.quickPortionSlotData || currentData == UserData.instance.quickSkillSlotData || currentSlotData.item.itemPrice <= 0)
+        {
+            return;
+        }
         if (infoPopupInstance == null)
         {
             infoPopupInstance = Instantiate(PopupFactory.instance.InfoPopupPrefab, PopupFactory.instance.infoPopupTransform).GetComponent<InfoPopup>();
             infoPopupInstance.transform.position = this.transform.position - new Vector3(200, 0, 0);
-           // infoPopupInstance.SetText(itemInfo);
+            infoPopupInstance.SetText(currentSlotData.item);
         }
         else
         {
-           // infoPopupInstance.SetText(itemInfo);
+            infoPopupInstance.SetText(currentSlotData.item);
             infoPopupInstance.transform.position = this.transform.position - new Vector3(200, 0, 0);
             infoPopupInstance.OpenPopupUI();
         }

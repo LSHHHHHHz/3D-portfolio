@@ -22,3 +22,10 @@ public class EquipData : ItemData
     public int addAttack;
     public int addHp;
 }
+[System.Serializable]
+public class SkillData : ItemData
+{
+    public int damage;
+    public int coolDown;
+    public string prefabPath;
+}

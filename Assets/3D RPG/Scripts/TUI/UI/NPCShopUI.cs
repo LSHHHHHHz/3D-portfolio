@@ -4,19 +4,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-public class NPCShopUI : MonoBehaviour
+public class NPCShopUI : MonoBehaviour,IPopup
 {
     public int shopNumer;
     public GameObject slotPrefab;
     public Transform slotsTransform;
     private ShopData shopData;
-
-    private void Start()
+    public void SetData()
     {
         shopData = UserData.instance.shopData;
         RefreshSlots();
     }
-
     private void RefreshSlots()
     {
         List<SlotData> slots = shopData.GetSlotsByNumber(shopNumer);
@@ -25,7 +23,20 @@ public class NPCShopUI : MonoBehaviour
             Debug.Log("데이터 없음");
             return;
         }
-        foreach(Transform slot in slotsTransform)
+        if(shopNumer ==1)
+        {
+            for(int i =0; i<slots.Count;i++)
+            { slots[i].item= UserData.instance.portionShopData[i];
+            }
+        }
+        if (shopNumer == 2)
+        {
+            for (int i = 0; i < slots.Count; i++)
+            {
+                slots[i].item = UserData.instance.equipShopData[i];
+            }
+        }
+        foreach (Transform slot in slotsTransform)
         {
             Destroy(slot.gameObject);
         }
@@ -40,4 +51,15 @@ public class NPCShopUI : MonoBehaviour
             }
         }
     }
+
+    public void OpenPopupUI()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void ClosePopupUI()
+    {
+        gameObject.SetActive(false);
+    }
 }
+
