@@ -9,7 +9,7 @@ public class ShopPopup : MonoBehaviour,IPopup
     public ItemDB itemDB;
     public RectTransform slotsParent;
     ItemSlot[] itemShopSlots;
-    public SelectShopItemPopup selectShopItemPopup;
+     SelectShopItemPopup selectShopItemPopup;
 
     private void Awake()
     {
@@ -32,11 +32,10 @@ public class ShopPopup : MonoBehaviour,IPopup
                 if (selectShopItemPopup == null)
                 {
                     selectShopItemPopup = Instantiate(PopupFactory.instance.selectedShopItemPopupPrefab, PopupFactory.instance.selectTransform).GetComponent<SelectShopItemPopup>();
-                    selectShopItemPopup.selectedShopItemInfoData = slot.itemInfo;
+                   
                 }
                 else
                 {
-                    selectShopItemPopup.selectedShopItemInfoData = slot.itemInfo;
                     selectShopItemPopup.OpenPopupUI();
                 }
             });

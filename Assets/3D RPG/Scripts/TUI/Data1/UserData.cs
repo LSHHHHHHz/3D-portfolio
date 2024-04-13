@@ -2,25 +2,40 @@ using Assets._3D_RPG.Scripts.TUI.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using Unity.IO.LowLevel.Unsafe;
 
-
-public class UserData
+public class UserData : MonoBehaviour
 {
     public static UserData instance;
 
     public InventoryData inventoryData;
     public EquipmentData equipmentData;
-    public QuickSlotData quickSlotData;
-
+    public QuickPortionSlotData quickPortionSlotData;
+    public QuickSkillSlotData quickSkillSlotData;
+    public SkillInventoryData skillInventoryData;
+    public ShopData shopData;
+    [ContextMenu("Save To Json Data")]
+    private void Awake()
+    {
+        instance = this;
+    }
     public void Save()
     {
-        // 데이터 저장
+        string jsonData = JsonUtility.ToJson(this, true);
+        string path = Path.Combine(Application.dataPath, "playerData.json");
+        File.WriteAllText(path, jsonData);
     }
 
-    public static UserData Load()
+    [ContextMenu("Load From Json Data")]
+    public void Load()
     {
-        // 데이터 불러오기
-        return new UserData();
+        string path = Path.Combine(Application.dataPath, "playerData.json");
+        if (File.Exists(path))
+        {
+            string jsonData = File.ReadAllText(path);
+            JsonUtility.FromJsonOverwrite(jsonData, instance);
+        }
     }
 
 }

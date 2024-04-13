@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
   slotRectTransform: {fileID: 0}
+  infoPopupInstance: {fileID: 0}
   slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
@@ -647,6 +648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
   slotRectTransform: {fileID: 0}
+  infoPopupInstance: {fileID: 0}
   slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
@@ -880,6 +882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
   slotRectTransform: {fileID: 0}
+  infoPopupInstance: {fileID: 0}
   slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
@@ -1334,7 +1337,7 @@ GameObject:
   - component: {fileID: 5496193295449082571}
   - component: {fileID: 5496193295449082569}
   - component: {fileID: 5496193295449082568}
-  - component: {fileID: 5496193295449082574}
+  - component: {fileID: -3004575588863350204}
   m_Layer: 5
   m_Name: PortionShopPopup
   m_TagString: Untagged
@@ -1401,7 +1404,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5496193295449082574
+--- !u!114 &-3004575588863350204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1410,11 +1413,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 5496193295449082570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899873d89abc51e4b9b9d4ce6de30197, type: 3}
+  m_Script: {fileID: 11500000, guid: c819436192e4fbf40bde03acc3d2f3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDB: {fileID: 11400000, guid: 0d0d454ee82479040988f8e3fa851bc2, type: 2}
-  slotsParent: {fileID: 5496193296482964462}
+  shopItems:
+  - itemName: 
+    itemDescription: 
+    itemPrice: 0
+    hpRecovery: 0
+    mpRecovery: 0
+  - itemName: 
+    itemDescription: 
+    itemPrice: 0
+    hpRecovery: 0
+    mpRecovery: 0
+  - itemName: 
+    itemDescription: 
+    itemPrice: 0
+    hpRecovery: 0
+    mpRecovery: 0
+  - itemName: 
+    itemDescription: 
+    itemPrice: 0
+    hpRecovery: 0
+    mpRecovery: 0
+  - itemName: 
+    itemDescription: 
+    itemPrice: 0
+    hpRecovery: 0
+    mpRecovery: 0
+  - itemName: 
+    itemDescription: 
+    itemPrice: 0
+    hpRecovery: 0
+    mpRecovery: 0
+  - itemName: 
+    itemDescription: 
+    itemPrice: 0
+    hpRecovery: 0
+    mpRecovery: 0
+  - itemName: 
+    itemDescription: 
+    itemPrice: 0
+    hpRecovery: 0
+    mpRecovery: 0
+  slotsParent: {fileID: 0}
   selectShopItemPopup: {fileID: 0}
 --- !u!1 &5496193295455740644
 GameObject:
@@ -2416,6 +2459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
   slotRectTransform: {fileID: 0}
+  infoPopupInstance: {fileID: 0}
   slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
@@ -2881,6 +2925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
   slotRectTransform: {fileID: 0}
+  infoPopupInstance: {fileID: 0}
   slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
@@ -4171,6 +4216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
   slotRectTransform: {fileID: 0}
+  infoPopupInstance: {fileID: 0}
   slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
@@ -4564,6 +4610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
   slotRectTransform: {fileID: 0}
+  infoPopupInstance: {fileID: 0}
   slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0
@@ -5037,6 +5084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
   slotRectTransform: {fileID: 0}
+  infoPopupInstance: {fileID: 0}
   slotParentType: 0
   itemInfo: {fileID: 0}
   slotNumber: 0

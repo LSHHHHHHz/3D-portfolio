@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347317ef14b7ff14fa7dafd67bbca7f0, type: 3}
+  m_Name: Data
+  m_EditorClassIdentifier: 
+  ItemData:
+  - itemID: 1001
+    itemName: "\uAE30\uCD08HP\uD3EC\uC158"
+    itemDescription: "HP\uB97C 100 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 100
+  - itemID: 1002
+    itemName: "\uAE30\uBCF8HP\uD3EC\uC158"
+    itemDescription: "HP\uB97C 500 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 500
+  - itemID: 1003
+    itemName: "\uC911\uAE09HP\uD3EC\uC158"
+    itemDescription: "HP\uB97C 1000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 1000
+  - itemID: 1004
+    itemName: "\uACE0\uAE09HP\uD3EC\uC158"
+    itemDescription: "HP\uB97C 2000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 2000
+  - itemID: 1501
+    itemName: "\uAE30\uCD08MP\uD3EC\uC158"
+    itemDescription: "MP\uB97C 10 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 100
+  - itemID: 1502
+    itemName: "\uAE30\uBCF8MP\uD3EC\uC158"
+    itemDescription: "MP\uB97C 50 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 500
+  - itemID: 1503
+    itemName: "\uC911\uAE09MP\uD3EC\uC158"
+    itemDescription: "MP\uB97C 100 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 1000
+  - itemID: 1504
+    itemName: "\uACE0\uAE09MP\uD3EC\uC158"
+    itemDescription: "MP\uB97C 200 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 2000
+  - itemID: 2001
+    itemName: "\uAE30\uCD08 \uBB34\uAE30"
+    itemDescription: "\uACF5\uACA9\uB825\uC744 100 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 100
+  - itemID: 2002
+    itemName: "\uAE30\uBCF8 \uBB34\uAE30"
+    itemDescription: "\uACF5\uACA9\uB825\uC744 500 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 500
+  - itemID: 2003
+    itemName: "\uC911\uAE09 \uBB34\uAE30"
+    itemDescription: "\uACF5\uACA9\uB825\uC744 1000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 1000
+  - itemID: 2004
+    itemName: "\uACE0\uAE09 \uBB34\uAE30"
+    itemDescription: "\uACF5\uACA9\uB825\uC744 2000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 2000
+  - itemID: 2501
+    itemName: "\uAE30\uCD08 \uBC29\uD328"
+    itemDescription: "\uCCB4\uB825\uC744 100 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 100
+  - itemID: 2502
+    itemName: "\uAE30\uBCF8 \uBC29\uD328"
+    itemDescription: "\uCCB4\uB825\uC744 500 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 500
+  - itemID: 2503
+    itemName: "\uC911\uAE09 \uBC29\uD328"
+    itemDescription: "\uCCB4\uB825\uC744 1000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 1000
+  - itemID: 2504
+    itemName: "\uACE0\uAE09 \uBC29\uD328"
+    itemDescription: "\uCCB4\uB825\uC744 2000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 2000
+  PortionData:
+  - itemID: 1001
+    itemName: "\uAE30\uCD08HP\uD3EC\uC158"
+    itemDescription: "HP\uB97C 100 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 100
+    hpRecovery: 100
+    mpRecovery: 0
+  - itemID: 1002
+    itemName: "\uAE30\uBCF8HP\uD3EC\uC158"
+    itemDescription: "HP\uB97C 500 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 500
+    hpRecovery: 500
+    mpRecovery: 0
+  - itemID: 1003
+    itemName: "\uC911\uAE09HP\uD3EC\uC158"
+    itemDescription: "HP\uB97C 1000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 1000
+    hpRecovery: 1000
+    mpRecovery: 0
+  - itemID: 1004
+    itemName: "\uACE0\uAE09HP\uD3EC\uC158"
+    itemDescription: "HP\uB97C 2000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 2000
+    hpRecovery: 2000
+    mpRecovery: 0
+  - itemID: 1501
+    itemName: "\uAE30\uCD08MP\uD3EC\uC158"
+    itemDescription: "MP\uB97C 10 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 100
+    hpRecovery: 0
+    mpRecovery: 10
+  - itemID: 1502
+    itemName: "\uAE30\uBCF8MP\uD3EC\uC158"
+    itemDescription: "MP\uB97C 50 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 500
+    hpRecovery: 0
+    mpRecovery: 50
+  - itemID: 1503
+    itemName: "\uC911\uAE09MP\uD3EC\uC158"
+    itemDescription: "MP\uB97C 100 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 1000
+    hpRecovery: 0
+    mpRecovery: 100
+  - itemID: 1504
+    itemName: "\uACE0\uAE09MP\uD3EC\uC158"
+    itemDescription: "MP\uB97C 200 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 2000
+    hpRecovery: 0
+    mpRecovery: 200
+  EquipData:
+  - itemID: 2001
+    itemName: "\uAE30\uCD08 \uBB34\uAE30"
+    itemDescription: "\uACF5\uACA9\uB825\uC744 100 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 100
+    addAttack: 100
+    addHp: 0
+  - itemID: 2002
+    itemName: "\uAE30\uBCF8 \uBB34\uAE30"
+    itemDescription: "\uACF5\uACA9\uB825\uC744 500 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 500
+    addAttack: 500
+    addHp: 0
+  - itemID: 2003
+    itemName: "\uC911\uAE09 \uBB34\uAE30"
+    itemDescription: "\uACF5\uACA9\uB825\uC744 1000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 1000
+    addAttack: 1000
+    addHp: 0
+  - itemID: 2004
+    itemName: "\uACE0\uAE09 \uBB34\uAE30"
+    itemDescription: "\uACF5\uACA9\uB825\uC744 2000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 2000
+    addAttack: 2000
+    addHp: 0
+  - itemID: 2501
+    itemName: "\uAE30\uCD08 \uBC29\uD328"
+    itemDescription: "\uCCB4\uB825\uC744 100 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 100
+    addAttack: 0
+    addHp: 100
+  - itemID: 2502
+    itemName: "\uAE30\uBCF8 \uBC29\uD328"
+    itemDescription: "\uCCB4\uB825\uC744 500 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 500
+    addAttack: 0
+    addHp: 500
+  - itemID: 2503
+    itemName: "\uC911\uAE09 \uBC29\uD328"
+    itemDescription: "\uCCB4\uB825\uC744 1000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 1000
+    addAttack: 0
+    addHp: 1000
+  - itemID: 2504
+    itemName: "\uACE0\uAE09 \uBC29\uD328"
+    itemDescription: "\uCCB4\uB825\uC744 2000 \uC0C1\uC2B9\uC2DC\uD0A8\uB2E4."
+    itemPrice: 2000
+    addAttack: 0
+    addHp: 2000

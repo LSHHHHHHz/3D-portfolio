@@ -3,25 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-public class IdleState : IState
+public class IdleState : IState<FSMController>
 {
-    CharacterFSMBase character;
-    public IdleState(CharacterFSMBase character)
+    public void Enter(FSMController sender)
     {
-        this.character = character;
-    }
-    public void Enter(CharacterFSMBase pos)
-    {
-        Debug.Log("Idle 입장");
+        Debug.Log("기본상태 시작");
     }
 
-    public void Execute(CharacterStatusBase target)
+    public void Exit(FSMController sender)
     {
-        Debug.Log("Idle execute");
+        Debug.Log("기본 상태 아님");
     }
 
-    public void Exit()
+    public void Update(FSMController sender)
     {
-        Debug.Log("Idle 퇴장");
+        if (sender.enemyStatus.detectPlayer.closeTarget != null)
+        {
+            sender.ChangeState(new WalkState());
+        }
+        if (sender.enemyStatus.detectPlayer.closeTarget != null && Vector3.Distance(sender.transform.position, sender.enemyStatus.detectPlayer.closeTarget.transform.position)<sender.attackRange)
+        {
+            sender.ChangeState(new AttackState());
+        }
     }
 }

@@ -2,34 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-
-public class AttackState : IState
+public class AttackState :  IState<FSMController>
 {
-    CharacterFSMBase character;
-    int originSpeed;
-    
-    public AttackState(CharacterFSMBase character)
+    public void Enter(FSMController sender)
     {
-        this.character = character;
-    }
-    public void Enter(CharacterFSMBase pos)
-    {
-        originSpeed = character.moveSpeed;
+        Debug.Log("공격 시작");
+        sender.anim.SetBool("Attack", true);
     }
 
-    public void Execute(CharacterStatusBase target)
+    public void Exit(FSMController sender)
     {
-        character.anim.SetBool("IsAttack", true);
-        character.moveSpeed = 0;
-        character.transform.LookAt(target.transform.position);
+        sender.anim.SetBool("Attack", false);
+        Debug.Log("공격 끝");
     }
 
-    public void Exit()
+    public void Update(FSMController sender)
     {
-        character.anim.SetBool("IsAttack", false);
-        character.moveSpeed = originSpeed;
+        if (Vector3.Distance(sender.transform.position, sender.enemyStatus.detectPlayer.closeTarget.transform.position) > sender.attackRange + 0.5f)
+        {
+            sender.ChangeState(new WalkState());
+        }
     }
 }

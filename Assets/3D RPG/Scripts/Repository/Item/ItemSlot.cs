@@ -196,11 +196,11 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         {
             infoPopupInstance = Instantiate(PopupFactory.instance.InfoPopupPrefab, PopupFactory.instance.infoPopupTransform).GetComponent<InfoPopup>();
             infoPopupInstance.transform.position = this.transform.position - new Vector3(200,0,0);
-            infoPopupInstance.SetText(itemInfo);
+           // infoPopupInstance.SetText();
         }
         else
         {
-            infoPopupInstance.SetText(itemInfo);
+            //infoPopupInstance.SetText(itemInfo);
             infoPopupInstance.transform.position = this.transform.position - new Vector3(200, 0, 0);
             infoPopupInstance.OpenPopupUI();
         }

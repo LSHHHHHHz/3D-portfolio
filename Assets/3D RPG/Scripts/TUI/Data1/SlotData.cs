@@ -2,9 +2,10 @@ using Assets._3D_RPG.Scripts.TUI.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class SlotDatanitialize : IData
+[System.Serializable]
+public class SlotDatanitialize 
 {
-    protected void InitializeSlots(List<SlotData> slots, int count)
+    protected void InitializeSlots(ref List<SlotData> slots, int count)
     {
         slots = new List<SlotData>(count);
         for (int i = 0; i < count; i++)
@@ -13,62 +14,106 @@ public class SlotDatanitialize : IData
         }
     }
 }
-public class SlotData 
+[System.Serializable]
+public class SlotData : IData
 {
     public ItemData item;
     public int count;
-  
-    public void AddItem(ItemData item, int count)
+    public int maxCount = 99;
+    public void AddItem(ItemData newItem, int newCount)
     {
-        this.item = item;
-        this.count = count;
-    }   
-}
-public class PortionQuickSlotData : SlotDatanitialize
-{
-    public List<SlotData> SlotDatas;
-    public PortionQuickSlotData()
+        if (newItem == null || newCount <= 0)
+        {
+            return;
+        }
+
+        if (this.item == null || this.item != newItem)
+        {
+            this.item = newItem;
+            this.count = newCount;
+        }
+        else
+        {
+            this.count += newCount;
+            if (this.count > maxCount)
+            {
+                return;
+            }
+        }
+    }
+    public ItemData GetItem()
     {
-        InitializeSlots(SlotDatas, UserDataConstants.QUICKPORTIONSLOTSDATA_COUNT);
+        return item;
     }
 }
+[System.Serializable]
+public class QuickPortionSlotData : SlotDatanitialize
+{
+    public List<SlotData> slotDatas;
+    public QuickPortionSlotData()
+    {
+        InitializeSlots(ref slotDatas, UserDataConstants.QUICKPORTIONSLOTSDATA_COUNT);
+    }
+}
+[System.Serializable]
 public class QuickSkillSlotData : SlotDatanitialize
 {
-    public List<SlotData> SlotDatas;
+    public List<SlotData> slotDatas;
     public QuickSkillSlotData()
     {
-        InitializeSlots(SlotDatas, UserDataConstants.QUICKSKILLSLOTDATA_COUNT);
+        InitializeSlots(ref slotDatas, UserDataConstants.QUICKSKILLSLOTDATA_COUNT);
     }
 }
+[System.Serializable]
 public class InventoryData : SlotDatanitialize
 {
-    public List<SlotData> SlotDatas;
+    public List<SlotData> slotDatas;
     public InventoryData()
     {
-        InitializeSlots(SlotDatas, 28);
+        InitializeSlots(ref slotDatas, 28);
     }
 }
+[System.Serializable]
 public class SkillInventoryData : SlotDatanitialize
 {
-    public List<SlotData> SlotDatas;
+    public List<SlotData> slotDatas;
     public SkillInventoryData()
     {
-        InitializeSlots(SlotDatas, 8);
+        InitializeSlots(ref slotDatas, 8);
     }
 }
+[System.Serializable]
 public class EquipmentData : SlotDatanitialize
 {
-    public List<SlotData> SlotDatas;
+    public List<SlotData> slotDatas;
     public EquipmentData()
     {
-        InitializeSlots(SlotDatas, 2);
+        InitializeSlots(ref slotDatas, 2);
     }
 }
+[System.Serializable]
 public class ShopData : SlotDatanitialize
 {
-    public List<SlotData> SlotDatas;
+    public List<SlotData> portionShopSlotDatas;
+    public List<SlotData> equipShopSlotData;
     public ShopData()
     {
-        InitializeSlots(SlotDatas, 8);
+        InitializeSlots(ref portionShopSlotDatas, 8);
+        InitializeSlots(ref equipShopSlotData, 8);
+    }
+    public List<SlotData> GetSlotsByNumber(int shopNumber)
+    {
+        if (shopNumber == 1)
+        {
+            return portionShopSlotDatas;
+        }
+        else if (shopNumber == 2)
+        {
+            return equipShopSlotData;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

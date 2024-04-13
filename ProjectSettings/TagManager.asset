@@ -9,6 +9,7 @@ TagManager:
   - ShopNPC
   - ForPlayerDetection
   - ForEnemyDetection
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemy
   - PostProcessing
   - ForPlayerDetectionCollider
-  - 
+  - EnemyStatus
   - 
   - 
   - 

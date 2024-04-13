@@ -2,24 +2,53 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class DetectPlayer : DetectBase
+public class DetectPlayer : MonoBehaviour
 {
-    public bool detectedPlayer = false;
-    private new void OnTriggerEnter(Collider other)
+    public List<CharacterStatusBase> targetStatus = new List<CharacterStatusBase>();
+    public CharacterStatusBase closeTarget;
+
+    private void Update()
     {
-        base.OnTriggerEnter(other);
-        if(other.CompareTag("Player"))
+        closeTarget = null;
+
+        if (targetStatus.Count != 0)
         {
-            detectedPlayer = true;
+            float closestDistance = 10;
+            CharacterStatusBase closestTarget = null;
+
+            for (int i = 0; i < targetStatus.Count; i++)
+            {
+                float dis = Vector3.Distance(transform.position, targetStatus[i].transform.position);
+                if (dis < closestDistance)
+                {
+                    closestDistance = dis;
+                    closestTarget = targetStatus[i];
+                }
+            }
+            closeTarget = closestTarget;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            CharacterStatusBase target = other.GetComponent<CharacterStatusBase>();
+            if (target != null)
+            {
+                targetStatus.Add(target);
+            }
         }
     }
 
-    private new void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        base.OnTriggerExit(other);
         if (other.CompareTag("Player"))
         {
-            detectedPlayer = false;
+            CharacterStatusBase target = other.GetComponent<CharacterStatusBase>();
+            if (target != null)
+            {
+                targetStatus.Remove(target);
+            }
         }
     }
 }
