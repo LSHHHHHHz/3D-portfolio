@@ -60,6 +60,9 @@ public class InventoryUI : MonoBehaviour,IPopup
     public void ClosePopupUI()
     {
         gameObject.SetActive(false);
-        equipInventoryPopup.gameObject.SetActive(false);
+        if (equipInventoryPopup != null)
+        {
+            equipInventoryPopup.gameObject.SetActive(false);
+        }
     }
 }

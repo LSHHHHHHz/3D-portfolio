@@ -11,7 +11,7 @@ public class QuickSkillSlotsUI : MonoBehaviour
     public Transform slotsTransform; 
     private QuickSkillSlotData quickSkillSlotData;
     private List<GameObject> slotsObject;
-
+    SetBaseSkill[] skills;
     private void Start()
     {
         slotsObject= new List<GameObject>();
@@ -37,11 +37,31 @@ public class QuickSkillSlotsUI : MonoBehaviour
         }
         for (int i = 0; i < quickSkillSlotData.slotDatas.Count; i++)
         {
-            SlotUI slotUI = slotsObject[i].GetComponentInChildren<SlotUI>();
+            SkillSlotUI slotUI = slotsObject[i].GetComponentInChildren<SkillSlotUI>();
             if (slotUI != null)
             {
-                slotUI.SetData(quickSkillSlotData.slotDatas[i], quickSkillSlotData);
+                slotUI.SetData(quickSkillSlotData.slotDatas[i]);
             }
+        }
+    }
+    private void RefreshSkill()
+    {
+        ClearSkills();
+        List<SetBaseSkill> skills = new();
+        SetBaseSkill(skills);
+        this.skills = skills.ToArray();
+    }
+    private void ClearSkills()
+    {
+        if (skills == null)
+            return;
+
+        foreach (var skill in skills)
+        {
+            if (skill == null)
+                continue;
+
+            Destroy(skill.gameObject);
         }
     }
     private void SetBaseSkill(List<SetBaseSkill> skillList)
@@ -50,13 +70,24 @@ public class QuickSkillSlotsUI : MonoBehaviour
         {
             if(skill.item != null)
             {
-
+                skillList.Add(null);
             }
             else
             {
                 string path = (skill.item as SkillData).prefabPath;
                 SetBaseSkill skillBase = Instantiate(Resources.Load<Sprite>(path)).GetComponent<SetBaseSkill>();
                 skillList.Add(skillBase);
+            }
+        }
+    }
+    private void ExecuteSkill(int index, int damage)
+    {
+        if (index >= 0 && index < skills.Length)
+        {
+            SetBaseSkill skill = skills[index];
+            if (skill != null)
+            {
+                skill.Execute(damage);
             }
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerStatus : CharacterStatusBase
 {
+    public int currentLevel;
     public StatusPopup playerStatuspopup;
     private void Start()
     {

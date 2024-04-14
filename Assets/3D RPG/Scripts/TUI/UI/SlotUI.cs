@@ -51,7 +51,10 @@ public class SlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandl
         }
         else
         {
-            itemIcon.sprite = nullImage;
+            if (nullImage != null)
+            {
+                itemIcon.sprite = nullImage;
+            }
             if (itemCountText != null)
             {
                 itemCountText.enabled = false;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-public class NPCShopUI : MonoBehaviour,IPopup
+public class NPCShopUI : MonoBehaviour, IPopup
 {
     public int shopNumer;
     public GameObject slotPrefab;
@@ -18,15 +18,16 @@ public class NPCShopUI : MonoBehaviour,IPopup
     private void RefreshSlots()
     {
         List<SlotData> slots = shopData.GetSlotsByNumber(shopNumer);
-        if(slots == null )
+        if (slots == null)
         {
             Debug.Log("데이터 없음");
             return;
         }
-        if(shopNumer ==1)
+        if (shopNumer == 1)
         {
-            for(int i =0; i<slots.Count;i++)
-            { slots[i].item= UserData.instance.portionShopData[i];
+            for (int i = 0; i < slots.Count; i++)
+            {
+                slots[i].item = UserData.instance.portionShopData[i];
             }
         }
         if (shopNumer == 2)

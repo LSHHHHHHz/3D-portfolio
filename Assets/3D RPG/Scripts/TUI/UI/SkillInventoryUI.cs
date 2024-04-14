@@ -1,3 +1,4 @@
+using Assets._3D_RPG.Scripts.TUI.Inventory.DragAndDrop;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,28 @@ using UnityEngine.UI;
 
 public class SkillInventoryUI : MonoBehaviour,IPopup
 {
-    private SkillInventoryData skillInventoryData;
+    private SkillInventoryData skillInventoryDatas;
     public Transform slotsParent;
     private void Start()
     {
-        skillInventoryData = UserData.instance.skillInventoryData;
+        skillInventoryDatas = UserData.instance.skillInventoryData;
         RefreshSlots();
     }
 
     private void RefreshSlots()
     {
-        for(int i =0; i< slotsParent.childCount; i++)
+        for(int i =0; i< skillInventoryDatas.slotDatas.Count; i++)
         {
-            SlotUI slotUI = slotsParent.GetChild(i).GetComponent<SlotUI>();
-            if(slotUI != null)
+            skillInventoryDatas.slotDatas[i].item = UserData.instance.skillData[i];
+        }
+
+        for (int i = 0; i < slotsParent.childCount; i++)
+        {
+            Transform child = slotsParent.GetChild(i);
+            SkillSlotUI slotUI = child.GetComponentInChildren<SkillSlotUI>();
+            if (slotUI != null)
             {
-                slotUI.SetData(skillInventoryData.slotDatas[i], skillInventoryData);
+                slotUI.SetData(skillInventoryDatas.slotDatas[i]);
             }
         }
     }

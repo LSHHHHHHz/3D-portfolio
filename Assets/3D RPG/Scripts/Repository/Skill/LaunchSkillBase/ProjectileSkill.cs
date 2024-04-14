@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public abstract class LaunchBaseSkill2 : LaunchBaseSkill
+public abstract class ProjectileSkill : MonoBehaviour
 {
+    public int damage;
 }
