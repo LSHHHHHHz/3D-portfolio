@@ -27,7 +27,7 @@ public class SkillInventoryUI : MonoBehaviour,IPopup
             SkillSlotUI slotUI = child.GetComponentInChildren<SkillSlotUI>();
             if (slotUI != null)
             {
-                slotUI.SetData(skillInventoryDatas.slotDatas[i]);
+                slotUI.SetData(skillInventoryDatas.slotDatas[i], skillInventoryDatas);
             }
         }
     }

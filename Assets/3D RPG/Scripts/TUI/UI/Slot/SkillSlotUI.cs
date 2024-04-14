@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillSlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class SkillSlotUI : MonoBehaviour,ISlot
 {
     public Image itemIcon;
     public Sprite nullIcon;
-
+    public IData currentDatatype;
     private SlotData currentSlotData;
 
     public int unlockLevel;
@@ -32,9 +32,10 @@ public class SkillSlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDrag
         canvasGroup = GetComponent<CanvasGroup>();
         slotButton = GetComponent<Button>();
     }
-    public void SetData(SlotData slotData)
+    public void SetData(SlotData slotData, IData dataType)
     {
         currentSlotData = slotData;
+        currentDatatype = dataType;
         UpdateUI();
         CheckUnlockSlot();
     }
@@ -72,7 +73,7 @@ public class SkillSlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        DragDropManager.instance.BeginDrag(currentSlotData,transform);
+        DragDropManager.instance.BeginDrag(currentSlotData,transform, currentDatatype);
         previousParent = transform.parent;
         transform.SetParent(canvas);
         transform.SetAsLastSibling();
@@ -102,5 +103,15 @@ public class SkillSlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDrag
         canvasGroup.alpha = 1.0f;
         canvasGroup.blocksRaycasts = true;
         endDragSlot?.Invoke();
-    }    
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        throw new NotImplementedException();
+    }
 }

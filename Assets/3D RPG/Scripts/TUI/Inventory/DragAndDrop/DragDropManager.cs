@@ -6,6 +6,7 @@ public class DragDropManager : MonoBehaviour
 {
     public static DragDropManager instance;
 
+    public IData currentDragSlotDataType;
     public SlotData currentDragData;
     public Transform currentDragTransform;
 
@@ -21,10 +22,11 @@ public class DragDropManager : MonoBehaviour
         }
     }
 
-    public void BeginDrag(SlotData slotData, Transform slotTransform)
+    public void BeginDrag(SlotData slotData, Transform slotTransform, IData SlotDataType)
     {
         currentDragData = slotData;
         currentDragTransform = slotTransform;
+        currentDragSlotDataType = SlotDataType;
     }
 
     public void EndDrag()
@@ -38,7 +40,7 @@ public class DragDropManager : MonoBehaviour
         if (currentDragData != null && dropTransform != null)
         {
             SkillSlotUI slot =  dropTransform.GetComponent<SkillSlotUI>();
-            slot.SetData(currentDragData);
+            slot.SetData(currentDragData, currentDragSlotDataType);
         }
     }
 }

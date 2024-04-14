@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerExitHandler, IPointerEnterHandler
+public class SlotUI : MonoBehaviour, ISlot
 {
     public Image itemIcon;
     public Sprite nullImage;
@@ -30,6 +30,10 @@ public class SlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandl
         canvas = FindObjectOfType<Canvas>().transform;
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+    }
+    public void SetData(SlotData slotData)
+    {
+        throw new NotImplementedException();
     }
     public void SetData(SlotData slotData, IData userData)
     {
@@ -137,4 +141,6 @@ public class SlotUI : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandl
             infoPopupInstance.OpenPopupUI();
         }
     }
+
+   
 }

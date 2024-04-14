@@ -88,14 +88,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3599694660432805979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e9b4ad1794c18249a629ed0baa62a72, type: 3}
+  m_Script: {fileID: 11500000, guid: d28ae6a29822da542965cdaf324112c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 8004165659188855679}
   nullIcon: {fileID: 21300000, guid: 00540e33eacf6874cbea6fb4bec2a1e6, type: 3}
   unlockLevel: 0
   previousParent: {fileID: 0}
-  slotRectTransform: {fileID: 34999766021847363}
+  slotRectTransform: {fileID: 7083931855688037447}
 --- !u!114 &9019477213906953480
 MonoBehaviour:
   m_ObjectHideFlags: 0

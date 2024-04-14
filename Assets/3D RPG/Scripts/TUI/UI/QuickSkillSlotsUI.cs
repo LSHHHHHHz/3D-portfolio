@@ -40,7 +40,7 @@ public class QuickSkillSlotsUI : MonoBehaviour
             SkillSlotUI slotUI = slotsObject[i].GetComponentInChildren<SkillSlotUI>();
             if (slotUI != null)
             {
-                slotUI.SetData(quickSkillSlotData.slotDatas[i]);
+                slotUI.SetData(quickSkillSlotData.slotDatas[i],quickSkillSlotData);
             }
         }
     }
