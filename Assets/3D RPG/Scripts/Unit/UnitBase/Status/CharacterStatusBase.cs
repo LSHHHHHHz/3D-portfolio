@@ -7,7 +7,7 @@ public class CharacterStatusBase : MonoBehaviour, IActor
 {
     public GameObject textPrefab;
     List<GameObject> pools;
-    MonsterType monsterType;
+    public MonsterType monsterType;
     public Sprite characerImage;
     public float max_HP;
     public float current_HP;
@@ -25,14 +25,6 @@ public class CharacterStatusBase : MonoBehaviour, IActor
     public void OnReceiveEvent(IEvent source)
     {
         source.ExcuteEvent(this);
-    }
-    public Vector3 GetPos()
-    { 
-        return transform.position;
-    }
-    MonsterType IActor.GetType()
-    {
-        return monsterType;
     }
     public void Damaged(int damage)
     {

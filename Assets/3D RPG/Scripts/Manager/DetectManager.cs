@@ -6,7 +6,6 @@ public class DetectManager : MonoBehaviour
 {
     public static DetectManager instance;
     public PlayerStatus playerStatus;
-    public ColleagueStatus colleagueStatus;
     public EnemyStatus playerDetectedEnemyStatus;
     public EnemyStatus meleeColleagueDetectedEnemyStatus;
     public EnemyStatus rangeColleagueDetectedEnemyStatus;

@@ -22,7 +22,7 @@ public class EnemyStatus : CharacterStatusBase
     bool isRewardExp =false;
     private void OnEnable()
     {
-        normarMonster = UserData.instance.normarMonster[monsterNumber];
+        normarMonster = EnemyData.instance.normarMonster[monsterNumber];
         characterName= normarMonster.monsterName;
         max_HP = normarMonster.maxHP;
         current_HP = max_HP;

@@ -3,22 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
-public class SendDamageEvent : IEvent
+public class SendHealEvent : IEvent
 {
-    public int damage;
-    private IActor attacker;
+    public int heal;
+    private IActor healer;
 
-    public SendDamageEvent(IActor attacker, int damage)
+    public SendHealEvent(IActor healer, int heal)
     {
-        this.attacker = attacker;
-        this.damage = damage;
+        this.healer = healer;
+        this.heal = heal;
     }
 
     public void ExcuteEvent(IActor excute)
     {
         if(excute is CharacterStatusBase characterStatus)
         {
-            characterStatus.Damaged(damage);
+            characterStatus.RecoveryHP(heal);
         }
     }
 }

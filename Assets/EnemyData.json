@@ -1,0 +1,34 @@
+{
+    "normarMonster": [
+        {
+            "monsterName": "그루트",
+            "iconPath": "",
+            "maxHP": 300,
+            "exp": 10,
+            "damage": 10
+        },
+        {
+            "monsterName": "그루트병사",
+            "iconPath": "",
+            "maxHP": 500,
+            "exp": 15,
+            "damage": 15
+        },
+        {
+            "monsterName": "그루트대장",
+            "iconPath": "",
+            "maxHP": 900,
+            "exp": 20,
+            "damage": 20
+        }
+    ],
+    "bossMonster": [
+        {
+            "monsterName": "보스보스",
+            "iconPath": "",
+            "maxHP": 2222,
+            "exp": 100,
+            "damage": 50
+        }
+    ]
+}

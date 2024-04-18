@@ -6,7 +6,6 @@ public class UnitManager : MonoBehaviour
 {
     public static UnitManager instance;
     public Player player;
-    public Colleague[] colleague;
 
     private void Awake()
     {

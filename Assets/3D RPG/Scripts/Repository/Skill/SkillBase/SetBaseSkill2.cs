@@ -53,17 +53,20 @@ public class SetBaseSkill2 : SetBaseSkill
             IActor actor = other.GetComponent<IActor>();
             if (actor != null)
             {
-                if (actor.GetType() == MonsterType.Normar)
+                if (actor is CharacterStatusBase actorstatus)
                 {
-                    EnemyStatus status = other.GetComponent<EnemyStatus>();
-                    status.current_HP = 0;
-                    StartCoroutine(DeActiveGameObject());
-                }
-                else
-                {
-                    SendDamageEvent sendDamageEvent = new SendDamageEvent(subject, damage);
-                    actor.OnReceiveEvent(sendDamageEvent);
-                    StartCoroutine(DeActiveGameObject());
+                    if (actorstatus.monsterType == MonsterType.Normar)
+                    {
+                        EnemyStatus status = other.GetComponent<EnemyStatus>();
+                        status.current_HP = 0;
+                        StartCoroutine(DeActiveGameObject());
+                    }
+                    else
+                    {
+                        SendDamageEvent sendDamageEvent = new SendDamageEvent(subject, damage);
+                        actor.OnReceiveEvent(sendDamageEvent);
+                        StartCoroutine(DeActiveGameObject());
+                    }
                 }
             }
         }

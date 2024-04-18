@@ -19,7 +19,7 @@ public class SkillInventoryUI : MonoBehaviour,IPopup
     {
         for(int i =0; i< skillInventoryDatas.slotDatas.Count; i++)
         {
-            skillInventoryDatas.slotDatas[i].item = UserData.instance.skillData[i];
+            skillInventoryDatas.slotDatas[i].item = StaticData.instance.skillData[i];
         }
 
         for (int i = 0; i < slotsParent.childCount; i++)
