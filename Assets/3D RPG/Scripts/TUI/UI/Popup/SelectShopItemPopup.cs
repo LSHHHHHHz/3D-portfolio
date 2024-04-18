@@ -53,7 +53,7 @@ public class SelectShopItemPopup : MonoBehaviour,IPopup
     {
         for(int i=0; i< UserData.instance.inventoryData.slotDatas.Count; i++)
         {
-            if (UserData.instance.inventoryData.slotDatas[i].GetItem().itemPrice == 0)
+            if (UserData.instance.inventoryData.slotDatas[i].GetItem() == null || UserData.instance.inventoryData.slotDatas[i].GetItem().itemPrice == 0)
             {
                 UserData.instance.inventoryData.slotDatas[i].AddItem(itemData, itemCount);
                 break;

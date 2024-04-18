@@ -13,8 +13,9 @@ public class StatusPopup : MonoBehaviour, IPopup
     public Text mpBarText;
     public Text characterName;
 
-    public void SetData(float maxHP, float currentHP, float maxMP, float currentMP)
+    public void SetData(string name, float maxHP, float currentHP, float maxMP, float currentMP)
     {
+        characterName.text = name;
         hpBarText.text = currentHP + "/" + maxHP;
         hpBar.fillAmount = currentHP / maxHP;
         mpBarText.text =(currentMP + "/" + maxMP);

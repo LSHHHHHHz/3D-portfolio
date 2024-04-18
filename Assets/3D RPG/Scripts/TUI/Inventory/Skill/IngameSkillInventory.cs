@@ -109,7 +109,6 @@ public class IngameSkillInventory : SkillInventoryBase
             SetBaseSkill skill = skills[index];
             if (skill != null)
             {
-                skill.Execute(damage);
             }
         }
     }

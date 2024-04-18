@@ -10,6 +10,7 @@ TagManager:
   - ForPlayerDetection
   - ForEnemyDetection
   - PlayerAttack
+  - Skill
   layers:
   - Default
   - TransparentFX

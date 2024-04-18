@@ -6,43 +6,29 @@ using UnityEngine;
 public class SetBaseSkill3 : SetBaseSkill
 {
     List<GameObject> objList= new List<GameObject>();
-    GameObject effectPrefab;
-    public float objSpeed =0.1f;
+    public GameObject effectPrefab;
     public override void Start()
     {
         base.Start();
-        transform.position = UnitManager.instance.player.transform.position + new Vector3(0, 3, 0);
-        StartCoroutine(MultipleGuidedMissiles(10));
     }
-    public override void Execute(int damage)
+    public override void Execute(IActor actor, int damage)
     {
+        transform.position = UnitManager.instance.player.transform.position + new Vector3(0, 3f, 0);
+        this.subject = actor;
+        this.damage = damage;
+        StartCoroutine(SetSkill());
     }
-    IEnumerator MultipleGuidedMissiles(int count)
+    IEnumerator SetSkill()
     {
-        int num = 0;
-        while (num < count)
+        int i = 0;
+        while (i < 10)
         {
-            num++;
-            CheckObject();
+            GameObject obj = Instantiate(effectPrefab, transform.position, Quaternion.identity);
+            obj.GetComponent<ProjectileSkill3>().actor = subject;
+            obj.GetComponent<ProjectileSkill3>().damage = damage;
+            objList.Add(obj); 
+            i++;
             yield return new WaitForSeconds(0.1f);
-        }
-    }
-    void CheckObject()
-    {
-        GameObject obj = null;
-        for (int i = 0; i < objList.Count; i++)
-        {
-            if (objList[i].activeSelf)
-            {
-                obj = objList[i];
-                break;
-            }
-        }
-        if (obj == null)
-        {
-            GameObject objprefab = Instantiate(effectPrefab, transform);
-            obj = objprefab;
-            objList.Add(obj);
         }
     }
 }

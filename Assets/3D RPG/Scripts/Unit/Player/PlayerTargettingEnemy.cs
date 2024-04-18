@@ -9,36 +9,61 @@ public class PlayerTargettingEnemy : MonoBehaviour
     public int distanceObj;
     public GameObject targetObj;
     private float elapsedTime;
+    private StatusPopup targetObjPrefab;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, layerMask))
-            {
-                Debug.Log(targetObj);
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
-                if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= distanceObj)
-                {
-                    if (targetObj != null)
-                    {
-                       // PopupManager.Instance.CloseIndicateMonsterPopup(targetObj);
-                    }
-                    targetObj = enemy.gameObject;
-                  //  PopupManager.Instance.IndicateMonsterPopup(targetObj);
-                    elapsedTime = 0;
-                }
-            }
+            SelectTarget();
         }
+
         if (targetObj != null)
         {
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime > 2)
+            UpdateTargetUI();
+            CheckTargetTimeout();
+        }
+    }
+    void SelectTarget()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity, layerMask))
+        {
+            CharacterStatusBase enemy = hit.collider.GetComponent<CharacterStatusBase>();
+            if (enemy != null && Vector3.Distance(transform.position, enemy.transform.position) <= distanceObj)
             {
-              //  PopupManager.Instance.CloseIndicateMonsterPopup(targetObj);
-                targetObj = null;
+                targetObj = enemy.gameObject;
+                UpdatePopup(enemy);
                 elapsedTime = 0;
             }
+        }
+    }
+    void UpdatePopup(CharacterStatusBase enemy)
+    {
+        if (targetObjPrefab == null)
+        {
+            targetObjPrefab = Instantiate(PopupFactory.instance.monsterStatusPopupPrefab, PopupFactory.instance.monsterStatusPopupTransform).GetComponent<StatusPopup>();
+        }
+        targetObjPrefab.OpenPopupUI();
+        targetObjPrefab.SetData(enemy.characterName, enemy.max_HP, enemy.current_HP, enemy.max_MP, enemy.current_MP);
+    }
+
+    void UpdateTargetUI()
+    {
+        CharacterStatusBase enemy = targetObj.GetComponent<CharacterStatusBase>();
+        if (enemy != null)
+        {
+            targetObjPrefab.SetData(enemy.characterName, enemy.max_HP, enemy.current_HP, enemy.max_MP, enemy.current_MP);
+        }
+    }
+    void CheckTargetTimeout()
+    {
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime > 5)
+        {
+            targetObjPrefab.ClosePopupUI();
+            targetObj = null;
+            elapsedTime = 0;
         }
     }
 }

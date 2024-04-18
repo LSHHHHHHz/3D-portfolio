@@ -9,7 +9,9 @@ public class DragDropManager : MonoBehaviour
     public IData currentDragSlotDataType;
     public SlotData currentDragData;
     public Transform currentDragTransform;
-
+    public IData currentDropSlotDataType;
+    public SlotData currentDropData;
+    public Transform currentDropTransform;
     private void Awake()
     {
         if (instance == null)
@@ -28,6 +30,12 @@ public class DragDropManager : MonoBehaviour
         currentDragTransform = slotTransform;
         currentDragSlotDataType = SlotDataType;
     }
+    public void OnDrop(SlotData slotData, Transform slotTransform, IData SlotDataType)
+    {
+        currentDropData = slotData;
+        currentDropTransform = slotTransform;
+        currentDropSlotDataType = SlotDataType;
+    }
 
     public void EndDrag()
     {
@@ -35,12 +43,12 @@ public class DragDropManager : MonoBehaviour
         currentDragTransform = null;
     }
 
-    public void DropItem(Transform dropTransform)
+    public void SetDropItem(Transform dropTransform)
     {
         if (currentDragData != null && dropTransform != null)
         {
-            SkillSlotUI slot =  dropTransform.GetComponent<SkillSlotUI>();
-            slot.SetData(currentDragData, currentDragSlotDataType);
+            ISlot slot =  dropTransform.GetComponent<ISlot>();
+            slot.SetData(currentDragData);
         }
     }
 }

@@ -4,6 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Unity.IO.LowLevel.Unsafe;
+using Newtonsoft.Json;
+
+public class UserData11
+{
+    
+}
+
+public class UserDataViewer : MonoBehaviour
+{
+    public UserData data;
+
+
+}
+
 
 public class UserData : MonoBehaviour
 {
@@ -18,6 +32,8 @@ public class UserData : MonoBehaviour
     public PortionData[] portionShopData;
     public EquipData[] equipShopData;
     public SkillData[] skillData;
+    public NormarMonster[] normarMonster;
+    public BossMonster[] bossMonster;
     [ContextMenu("Save To Json Data")]
     private void Awake()
     {

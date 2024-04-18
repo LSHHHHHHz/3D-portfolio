@@ -53,14 +53,10 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        UnityEngine.Debug.Log("Trigger Stay");
         if (other.CompareTag("ShopNPC"))
         {
-            UnityEngine.Debug.Log("Trigger Stay2");
 
             var buttonDown = Input.GetButtonDown("Check");
-            UnityEngine.Debug.Log($"button down : ${buttonDown}");
-
             //if (shopPopup == null && buttonDown)
             //{
             //    UnityEngine.Debug.Log("shopPopup == null");

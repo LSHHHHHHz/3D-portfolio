@@ -9,7 +9,6 @@ public class EnemyCiollider : MonoBehaviour
     {
         if (other.CompareTag("PlayerAttack"))
         {
-            monsterController.OnGetHit(); 
         }
     }
 }

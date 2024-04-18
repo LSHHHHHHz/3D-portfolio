@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class SkillInventoryUI : MonoBehaviour,IPopup
 {
     private SkillInventoryData skillInventoryDatas;
-    public Transform slotsParent;
+    public RectTransform slotsParent;
     private void Start()
     {
         skillInventoryDatas = UserData.instance.skillInventoryData;
         RefreshSlots();
+        SetChildSkillSlots(slotsParent);
     }
 
     private void RefreshSlots()
@@ -31,7 +32,23 @@ public class SkillInventoryUI : MonoBehaviour,IPopup
             }
         }
     }
-
+    private void SetChildSkillSlots(RectTransform parent)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform imageTransform = parent.GetChild(i);
+            SkillSlotUI slot = imageTransform.GetComponentInChildren<SkillSlotUI>();
+            if (slot != null)
+            {
+                int slotIndex = i;
+                Button slotButton = slot.GetComponent<Button>();
+                slotButton.onClick.AddListener(() =>
+                {
+                    Debug.Log("여긴 구현 안함 삭제 예정");
+                });
+            }
+        }
+    }
     public void OpenPopupUI()
     {
         gameObject.SetActive(true);

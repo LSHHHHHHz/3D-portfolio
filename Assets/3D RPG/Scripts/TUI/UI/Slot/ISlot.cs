@@ -7,5 +7,5 @@ using UnityEngine.UI;
 
 public interface ISlot: IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerExitHandler, IPointerEnterHandler
 {
-    public void SetData(SlotData slotData, IData dataType);
+    public void SetData(SlotData slotData);
 }

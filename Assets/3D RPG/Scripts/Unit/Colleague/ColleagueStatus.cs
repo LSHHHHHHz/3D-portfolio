@@ -11,7 +11,7 @@ public class ColleagueStatus : CharacterStatusBase
     }
     private void Update()
     {
-        statusPopup.SetData(max_HP, current_HP, max_MP, current_MP);
+        statusPopup.SetData(characterName, max_HP, current_HP, max_MP, current_MP);
         statusPopup.SetData(characerImage, characterName);
     }
 }

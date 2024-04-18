@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Jobs;
 using UnityEngine;
 
-public class DetectEnemy : DetectBase
+public class DetectEnemy : MonoBehaviour
 {
     public List<EnemyStatus> enemyStatus = new List<EnemyStatus>();
     public EnemyStatus closeEnemy;
@@ -30,18 +30,16 @@ public class DetectEnemy : DetectBase
             closeEnemy = closestEnemy;
         }
     }
-    private new void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
         if (other.CompareTag("ForPlayerDetection"))
         {
             EnemyStatus enemy = other.GetComponent<EnemyStatus>();
             enemyStatus.Add(enemy);
         }
     }
-    private new void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        base.OnTriggerEnter(other);
         if (other.CompareTag("ForPlayerDetection"))
         {
             EnemyStatus enemy = other.GetComponent<EnemyStatus>();

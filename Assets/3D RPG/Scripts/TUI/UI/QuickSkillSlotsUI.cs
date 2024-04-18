@@ -7,26 +7,23 @@ using UnityEngine.UI;
 
 public class QuickSkillSlotsUI : MonoBehaviour
 {
+    public PlayerStatus playerStatus;
     public GameObject slotPrefab;
-    public Transform slotsTransform; 
+    public RectTransform slotsTransform;
     private QuickSkillSlotData quickSkillSlotData;
     private List<GameObject> slotsObject;
     SetBaseSkill[] skills;
+    SlotData slotData;
     private void Start()
     {
-        slotsObject= new List<GameObject>();
+        slotsObject = new List<GameObject>();
         quickSkillSlotData = UserData.instance.quickSkillSlotData;
-        RefreshSlots();
-    }
-    private void OnEnable()
-    {
-    }
-    private void OnDisable()
-    {
+        RefreshData();
     }
     private void RefreshData()
     {
         RefreshSlots();
+        SetChildSkillSlots(slotsTransform);
     }
     private void RefreshSlots()
     {
@@ -40,11 +37,48 @@ public class QuickSkillSlotsUI : MonoBehaviour
             SkillSlotUI slotUI = slotsObject[i].GetComponentInChildren<SkillSlotUI>();
             if (slotUI != null)
             {
-                slotUI.SetData(quickSkillSlotData.slotDatas[i],quickSkillSlotData);
+                slotUI.SetData(quickSkillSlotData.slotDatas[i], quickSkillSlotData);
             }
         }
     }
-    private void RefreshSkill()
+    private void SetChildSkillSlots(RectTransform parent)
+    {
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform imageTransform = parent.GetChild(i);
+            SkillSlotUI slot = imageTransform.GetComponentInChildren<SkillSlotUI>();
+            if (slot != null)
+            {
+                int slotIndex = i;
+                Button slotButton = slot.GetComponent<Button>();
+                slot.OnDropSlot += (slotData) => SetSlotData(slotData, slotIndex);
+                slotButton.onClick.AddListener(() =>
+                {
+                    ClickSkillQuickSlot(slot, slotIndex);
+                });
+            }
+        }
+    }
+    void SetSlotData(SlotData slot, int num)
+    {
+        for (int i = 0; i < quickSkillSlotData.slotDatas.Count; i++)
+        {
+            if (quickSkillSlotData.slotDatas[i].item.itemName == slot.item.itemName)
+            {
+                return;
+            }
+        }
+        for (int i = 0; i < quickSkillSlotData.slotDatas.Count; i++)
+        {
+            if (i == num)
+            {
+                quickSkillSlotData.slotDatas[i].item = slot.item;
+            }
+        }
+        RefreshSetQuilSlotSkill();
+        RefreshData();
+    }
+    private void RefreshSetQuilSlotSkill()
     {
         ClearSkills();
         List<SetBaseSkill> skills = new();
@@ -66,29 +100,51 @@ public class QuickSkillSlotsUI : MonoBehaviour
     }
     private void SetBaseSkill(List<SetBaseSkill> skillList)
     {
-        foreach(var skill in UserData.instance.quickSkillSlotData.slotDatas)
+        foreach (var skill in UserData.instance.quickSkillSlotData.slotDatas)
         {
-            if(skill.item != null)
+            if (skill.item != null && skill.item is SkillData skillData)
+            {
+                string path = skillData.prefabPath;
+                if (skill.item.itemName == "")
+                {
+                    skillList.Add(null);
+                }
+                else
+                {
+                    if (path == "")
+                    {
+                        skillList.Add(null);
+                    }
+                    else
+                    {
+                        SetBaseSkill skillBase = Instantiate(Resources.Load<GameObject>(path)).GetComponent<SetBaseSkill>();
+                        skillList.Add(skillBase);
+                    }
+                }
+            }
+            if (skill.item.iconPath == "")
             {
                 skillList.Add(null);
             }
-            else
-            {
-                string path = (skill.item as SkillData).prefabPath;
-                SetBaseSkill skillBase = Instantiate(Resources.Load<Sprite>(path)).GetComponent<SetBaseSkill>();
-                skillList.Add(skillBase);
-            }
         }
+
     }
-    private void ExecuteSkill(int index, int damage)
+    void ClickSkillQuickSlot(SkillSlotUI slot, int slotNum)
     {
-        if (index >= 0 && index < skills.Length)
+        if (slotNum < 0 || slotNum >= quickSkillSlotData.slotDatas.Count)
         {
-            SetBaseSkill skill = skills[index];
+            return;
+        }
+        if (slot.currentSlotData.item.itemName != "" && !slot.activeCoolDown && quickSkillSlotData.slotDatas[slotNum].item is SkillData skillData)
+        {
+            slot.CoolDown(skillData.coolDown);
+            SetBaseSkill skill = skills[slotNum];
             if (skill != null)
             {
-                skill.Execute(damage);
+                playerStatus.ConsumMP(skillData.consumMP);
+                skill.Execute(playerStatus, skillData.damage);
             }
         }
+        RefreshSlots();
     }
 }

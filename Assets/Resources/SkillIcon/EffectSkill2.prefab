@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 9074595421540237520}
   - component: {fileID: 5021924403665202469}
   - component: {fileID: 1820205273358607747}
+  - component: {fileID: 4524602037036106560}
   m_Layer: 0
   m_Name: EffectSkill2
   m_TagString: Untagged
@@ -63,7 +64,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1165233061177094828}
   - {fileID: 2546469752489141099}
@@ -4862,6 +4863,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fc715b7970d424eabac739d474bdb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  MPConsum: 0
+  damage: 999
+  targetPos: {x: 0, y: 0, z: 0}
+  objSpeed: 5
+--- !u!136 &4524602037036106560
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180268408184453300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 8
+  m_Height: 8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1784417626578361363
 GameObject:
   m_ObjectHideFlags: 0
@@ -34020,7 +34040,6 @@ GameObject:
   - component: {fileID: 3398639401158924032}
   - component: {fileID: 2615090350799738810}
   - component: {fileID: 7676974621514554552}
-  - component: {fileID: 35303571732606555}
   m_Layer: 0
   m_Name: Effect_02-BlackHoleSphere
   m_TagString: Untagged
@@ -34093,19 +34112,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &35303571732606555
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2579095391077671195}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3325940601998681778
 GameObject:
   m_ObjectHideFlags: 0
@@ -34121,7 +34127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2448372774034133680
 Transform:
   m_ObjectHideFlags: 0

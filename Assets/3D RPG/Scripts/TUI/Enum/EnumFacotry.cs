@@ -28,6 +28,11 @@ public enum CharacterType
     MeleeColleague,
     RangeColleague
 }
+public enum MonsterType
+{
+   Normar,
+   Boss
+}
 public class EnumFacotry 
 {
 }

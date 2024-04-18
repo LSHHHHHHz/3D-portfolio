@@ -55,7 +55,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     void PlayerAttackAnim()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && UnitManager.instance.player.playerTargettingEnemy.targetObj != null)
         {
             anim.SetTrigger("IsAttack");
         }

@@ -1,54 +1,59 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 public class DetectPlayer : MonoBehaviour
 {
-    public List<CharacterStatusBase> targetStatus = new List<CharacterStatusBase>();
-    public CharacterStatusBase closeTarget;
-
-    private void Update()
+    public List<CharacterStatusBase> targets = new List<CharacterStatusBase>();
+    public CharacterStatusBase closestTarget;
+    public float checkDistance = 10;
+    Vector3 originPos;
+    private void Awake()
     {
-        closeTarget = null;
-
-        if (targetStatus.Count != 0)
+        originPos = transform.position;
+    }
+    void Update()
+    {
+        closestTarget = null;
+        Collider[] colliders = Physics.OverlapSphere(originPos, checkDistance);
+        foreach (var collider in colliders)
         {
-            float closestDistance = 10;
-            CharacterStatusBase closestTarget = null;
-
-            for (int i = 0; i < targetStatus.Count; i++)
+            if (collider.CompareTag("ForEnemyDetection"))
             {
-                float dis = Vector3.Distance(transform.position, targetStatus[i].transform.position);
-                if (dis < closestDistance)
+                CharacterStatusBase target = collider.GetComponent<CharacterStatusBase>();
+                if (target != null && !targets.Contains(target))
                 {
-                    closestDistance = dis;
-                    closestTarget = targetStatus[i];
+                    targets.Add(target);
                 }
             }
-            closeTarget = closestTarget;
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        int i = 0;
+        foreach (var collider in colliders)
         {
-            CharacterStatusBase target = other.GetComponent<CharacterStatusBase>();
-            if (target != null)
+            if (collider.CompareTag("ForEnemyDetection"))
             {
-                targetStatus.Add(target);
+                i++;
             }
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        if(i ==0 && targets.Count>0)
         {
-            CharacterStatusBase target = other.GetComponent<CharacterStatusBase>();
-            if (target != null)
-            {
-                targetStatus.Remove(target);
-            }
+            targets.RemoveAt(0);
         }
+        if (targets.Count > 0)
+        {
+            int number = UnityEngine.Random.Range(0, targets.Count);
+            closestTarget = targets[number];
+        }
+        else
+        {
+            closestTarget = null;
+        }
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(originPos, checkDistance);
     }
 }

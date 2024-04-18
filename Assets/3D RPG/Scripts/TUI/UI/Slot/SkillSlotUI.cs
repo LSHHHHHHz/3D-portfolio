@@ -10,8 +10,10 @@ public class SkillSlotUI : MonoBehaviour,ISlot
     public Image itemIcon;
     public Sprite nullIcon;
     public IData currentDatatype;
-    private SlotData currentSlotData;
+    public SlotData currentSlotData;
 
+    public Image coolDownImage;
+    public bool activeCoolDown = false;
     public int unlockLevel;
     private Button slotButton;
 
@@ -22,7 +24,7 @@ public class SkillSlotUI : MonoBehaviour,ISlot
     public RectTransform slotRectTransform;
     public Action beingDragSlot { get; set; } = null;
     public Action endDragSlot { get; set; } = null;
-    public Action OnDropSlot { get; set; } = null;
+    public Action<SlotData> OnDropSlot { get; set; } = null;
     public Action CheckPlayerLevel { get; set; } = null;
 
     private void Awake()
@@ -31,6 +33,10 @@ public class SkillSlotUI : MonoBehaviour,ISlot
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         slotButton = GetComponent<Button>();
+    }
+    public void SetData(SlotData slotData)
+    {
+        currentSlotData = slotData;
     }
     public void SetData(SlotData slotData, IData dataType)
     {
@@ -64,11 +70,32 @@ public class SkillSlotUI : MonoBehaviour,ISlot
             itemIcon.sprite = nullIcon;
         }
     }
+    public void CoolDown(int coolDownTime)
+    {
+        if (coolDownImage != null)
+        {
+            coolDownImage.gameObject.SetActive(true);
+            StartCoroutine(CoolDownCoroutine(coolDownTime));
+        }
+    }
+    private IEnumerator CoolDownCoroutine(int coolDownTime)
+    {
+        float elapsed = 0;
+        activeCoolDown = true;
+        while (elapsed < coolDownTime)
+        {
+            elapsed += Time.deltaTime;
+            coolDownImage.fillAmount = 1f - (elapsed / coolDownTime);
+            yield return null;
+        }
+        coolDownImage.fillAmount = 0;
+        coolDownImage.gameObject.SetActive(false);
+        activeCoolDown = false;
+    }
     public void OnDrop(PointerEventData eventData)
     {
-        DragDropManager.instance.DropItem(transform);
-        OnDropSlot?.Invoke();
-        DragAndDropManager.instance.SetDataInventorySlot();
+        DragDropManager.instance.SetDropItem(transform);
+        OnDropSlot?.Invoke(currentSlotData);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -88,7 +115,6 @@ public class SkillSlotUI : MonoBehaviour,ISlot
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        DragDropManager.instance.EndDrag();
         if (transform.parent == canvas)
         {
             transform.SetParent(previousParent);
@@ -107,11 +133,9 @@ public class SkillSlotUI : MonoBehaviour,ISlot
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new NotImplementedException();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        throw new NotImplementedException();
     }
 }
