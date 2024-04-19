@@ -8,29 +8,44 @@ using Newtonsoft.Json;
 
 public class DataView : MonoBehaviour
 {
-    public static DataView instance;
-
-    private void Awake()
+    private static DataView _instance;
+    public static DataView Instance
     {
-        instance = this;
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<DataView>();
+                if (_instance == null)
+                {
+                    GameObject container = new GameObject("DataView");
+                    _instance = container.AddComponent<DataView>();
+                }
+            }
+            return _instance;
+        }
     }
+    public StaticData staticData;
+    public EnemyData enemyData;
 
     private void Start()
     {
         Load();
+        staticData = StaticData.Instance;
+        enemyData = EnemyData.Instance;
     }
 
     [ContextMenu("Save All Data")]
     public void Save()
     {
-        StaticData.instance.Save(); 
-        EnemyData.instance.Save(); 
+        StaticData.Instance.Save();
+        EnemyData.Instance.Save();
     }
 
     [ContextMenu("Load All Data")]
     public void Load()
     {
-        StaticData.instance.Load(); 
-        EnemyData.instance.Load(); 
+        StaticData.Instance.Load();
+        EnemyData.Instance.Load();
     }
 }

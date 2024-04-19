@@ -10,22 +10,20 @@ public class Player : MonoBehaviour
     public CameraFollow cameraFollow;
     NPCShopUI shopPopup;
     ShopNPC npc;
+    bool closedShopNPC = false;
     DialogueTriggerPopup dialogueTriggerPopupInstatnce;
     private void Update()
     {
-        if(npc != null)
+        if(npc != null && closedShopNPC)
         {
             if (shopPopup == null && Input.GetButtonDown("Check"))
             {
-                UnityEngine.Debug.Log("shopPopup == null");
                 shopPopup = Instantiate(PopupFactory.instance.ShopPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<NPCShopUI>();
                 shopPopup.shopNumer = npc.shopNum;
                 shopPopup.SetData();
             }
             else if (shopPopup != null && Input.GetButtonDown("Check"))
             {
-                UnityEngine.Debug.Log("shopPopup != null");
-                //여기 shopPopup.SetData(npc.itemDB) 이렇게 수정
                 shopPopup.shopNumer = npc.shopNum;
                 shopPopup.SetData();
                 shopPopup.OpenPopupUI();
@@ -38,8 +36,9 @@ public class Player : MonoBehaviour
         {
             npc=other.GetComponent<ShopNPC>();
         }
-        if (other.CompareTag("ShopNPC"))
+        if (npc != null)
         {
+            closedShopNPC = true;
             if (dialogueTriggerPopupInstatnce == null)
             {
                 dialogueTriggerPopupInstatnce = Instantiate(PopupFactory.instance.dialogueTriggerPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<DialogueTriggerPopup>();
@@ -50,30 +49,12 @@ public class Player : MonoBehaviour
             }
         }
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("ShopNPC"))
         {
-
-            var buttonDown = Input.GetButtonDown("Check");
-            //if (shopPopup == null && buttonDown)
-            //{
-            //    UnityEngine.Debug.Log("shopPopup == null");
-            //    shopPopup = Instantiate(PopupFactory.instance.portionShopPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<ShopPopup>();
-            //    shopPopup.itemDB = other.GetComponent<ShopNPC>().itemDB;
-            //    shopPopup.SetData();
-            //}
-            //else if (shopPopup != null && buttonDown)
-            //{
-            //    UnityEngine.Debug.Log("shopPopup != null");
-            //    shopPopup.itemDB = other.GetComponent<ShopNPC>().itemDB;
-            //    shopPopup.SetData();
-            //    shopPopup.OpenPopupUI();
-            //}
+            closedShopNPC = false;
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
         if (shopPopup != null)
         {
             shopPopup.ClosePopupUI();

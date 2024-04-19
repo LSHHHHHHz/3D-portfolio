@@ -19,6 +19,10 @@ public class NPCWarePoint : MonoBehaviour
 
     private void Update()
     {
+        if (moveSpeed <= 0)
+        {
+            return;
+        }
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
         Vector3 direction = targetPosition - transform.position;

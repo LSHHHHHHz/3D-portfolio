@@ -20,6 +20,5 @@ public class PlayerCurrency : MonoBehaviour
     private void Update()
     {
         coinText.text = coin.ToString();
-        diamondText.text= diamond.ToString();
     }
 }

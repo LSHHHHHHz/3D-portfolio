@@ -8,7 +8,7 @@ public class CharacterStatusBase : MonoBehaviour, IActor
     public GameObject textPrefab;
     List<GameObject> pools;
     public MonsterType monsterType;
-    public Sprite characerImage;
+    public Sprite characterImage;
     public float max_HP;
     public float current_HP;
     public int baseAttack;

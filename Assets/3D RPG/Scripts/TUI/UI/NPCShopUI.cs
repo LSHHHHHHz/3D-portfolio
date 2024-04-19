@@ -12,7 +12,7 @@ public class NPCShopUI : MonoBehaviour, IPopup
     private ShopData shopData;
     public void SetData()
     {
-        shopData = StaticData.instance.shopData;
+        shopData = StaticData.Instance.shopData;
         RefreshSlots();
     }
     private void RefreshSlots()
@@ -27,14 +27,14 @@ public class NPCShopUI : MonoBehaviour, IPopup
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                slots[i].item = StaticData.instance.portionShopData[i];
+                slots[i].item = StaticData.Instance.portionShopData[i];
             }
         }
         if (shopNumer == 2)
         {
             for (int i = 0; i < slots.Count; i++)
             {
-                slots[i].item = StaticData.instance.equipShopData[i];
+                slots[i].item = StaticData.Instance.equipShopData[i];
             }
         }
         foreach (Transform slot in slotsTransform)

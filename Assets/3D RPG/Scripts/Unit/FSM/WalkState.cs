@@ -8,13 +8,11 @@ public class WalkState : IState<FSMController>
 {
     public void Enter(FSMController sender)
     {
-        Debug.Log("움직임 시작");
         sender.anim.SetBool("Walk", true);
         sender.enemyStatus.navMeshAgent.speed = sender.speed;
     }
     public void Exit(FSMController sender)
     {
-        Debug.Log("움직임 끝");
         sender.anim.SetBool("Walk", false);
     }
     public void Update(FSMController sender)

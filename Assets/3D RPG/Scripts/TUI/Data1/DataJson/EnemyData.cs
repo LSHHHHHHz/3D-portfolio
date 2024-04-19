@@ -6,18 +6,27 @@ using System.IO;
 using Unity.IO.LowLevel.Unsafe;
 using Newtonsoft.Json;
 using System;
+using Unity.VisualScripting;
 
 [Serializable]
-public class EnemyData : MonoBehaviour
+public class EnemyData
 {
-    public static EnemyData instance;
-
+    public static EnemyData _instance;
+    public static EnemyData Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new EnemyData();
+            }
+            return _instance;
+        }
+    }
     public List<NormarMonster> normarMonster;
     public List<BossMonster> bossMonster;
-    [ContextMenu("Save To Json Data")]
-    private void Awake()
+    private EnemyData()
     {
-        instance = this;
         normarMonster = new List<NormarMonster>
         {
             new NormarMonster("±×·çÆ®", "", 300,10,10),
@@ -36,14 +45,13 @@ public class EnemyData : MonoBehaviour
         File.WriteAllText(path, jsonData);
     }
 
-    [ContextMenu("Load From Json Data")]
     public void Load()
     {
         string path = Path.Combine(Application.dataPath, "EnemyData.json");
         if (File.Exists(path))
         {
             string jsonData = File.ReadAllText(path);
-            JsonUtility.FromJsonOverwrite(jsonData, instance);
+            JsonUtility.FromJsonOverwrite(jsonData, Instance);
         }
     }
 

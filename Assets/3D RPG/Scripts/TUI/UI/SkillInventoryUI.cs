@@ -8,6 +8,9 @@ public class SkillInventoryUI : MonoBehaviour,IPopup
 {
     private SkillInventoryData skillInventoryDatas;
     public RectTransform slotsParent;
+
+    public Text skillName;
+    public Text skillDescription;
     private void Start()
     {
         skillInventoryDatas = UserData.instance.skillInventoryData;
@@ -19,7 +22,7 @@ public class SkillInventoryUI : MonoBehaviour,IPopup
     {
         for(int i =0; i< skillInventoryDatas.slotDatas.Count; i++)
         {
-            skillInventoryDatas.slotDatas[i].item = StaticData.instance.skillData[i];
+            skillInventoryDatas.slotDatas[i].item = StaticData.Instance.skillData[i];
         }
 
         for (int i = 0; i < slotsParent.childCount; i++)
@@ -44,10 +47,15 @@ public class SkillInventoryUI : MonoBehaviour,IPopup
                 Button slotButton = slot.GetComponent<Button>();
                 slotButton.onClick.AddListener(() =>
                 {
-                    Debug.Log("여긴 구현 안함 삭제 예정");
+                    ViewSkilInfo(slot.currentSlotData.item.itemName, slot.currentSlotData.item.itemDescription);
                 });
             }
         }
+    }
+    void ViewSkilInfo(string name, string description)
+    {
+        skillName.text = name;
+        skillDescription.text = description;
     }
     public void OpenPopupUI()
     {

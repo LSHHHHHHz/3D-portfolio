@@ -14,9 +14,9 @@ public class SendDamageEvent : IEvent
         this.damage = damage;
     }
 
-    public void ExcuteEvent(IActor excute)
+    public void ExcuteEvent(IActor target)
     {
-        if(excute is CharacterStatusBase characterStatus)
+        if(target is CharacterStatusBase characterStatus)
         {
             characterStatus.Damaged(damage);
         }

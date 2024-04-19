@@ -3,88 +3,88 @@
         "portionShopSlotDatas": [
             {
                 "item": {
-                    "iconPath": "Portion/HpPortion1",
-                    "itemName": "기초 HP 포션",
-                    "itemDescription": "체력이 100만큼 회복됩니다.",
-                    "type": "HP",
-                    "itemPrice": 100
+                    "iconPath": "",
+                    "itemName": "",
+                    "itemDescription": "",
+                    "type": "",
+                    "itemPrice": 0
                 },
                 "count": 0,
                 "maxCount": 99
             },
             {
                 "item": {
-                    "iconPath": "Portion/HpPortion2",
-                    "itemName": "기본 HP 포션",
-                    "itemDescription": "체력이 300만큼 회복됩니다.",
-                    "type": "HP",
-                    "itemPrice": 300
+                    "iconPath": "",
+                    "itemName": "",
+                    "itemDescription": "",
+                    "type": "",
+                    "itemPrice": 0
                 },
                 "count": 0,
                 "maxCount": 99
             },
             {
                 "item": {
-                    "iconPath": "Portion/HpPortion3",
-                    "itemName": "중급 HP 포션",
-                    "itemDescription": "체력이 500만큼 회복됩니다.",
-                    "type": "HP",
-                    "itemPrice": 500
+                    "iconPath": "",
+                    "itemName": "",
+                    "itemDescription": "",
+                    "type": "",
+                    "itemPrice": 0
                 },
                 "count": 0,
                 "maxCount": 99
             },
             {
                 "item": {
-                    "iconPath": "Portion/HpPortion4",
-                    "itemName": "고급 HP 포션",
-                    "itemDescription": "체력이 1000만큼 회복됩니다.",
-                    "type": "HP",
-                    "itemPrice": 1000
+                    "iconPath": "",
+                    "itemName": "",
+                    "itemDescription": "",
+                    "type": "",
+                    "itemPrice": 0
                 },
                 "count": 0,
                 "maxCount": 99
             },
             {
                 "item": {
-                    "iconPath": "Portion/MpPortion1",
-                    "itemName": "기초 MP 포션",
-                    "itemDescription": "마력이 100만큼 회복됩니다.",
-                    "type": "MP",
-                    "itemPrice": 100
+                    "iconPath": "",
+                    "itemName": "",
+                    "itemDescription": "",
+                    "type": "",
+                    "itemPrice": 0
                 },
                 "count": 0,
                 "maxCount": 99
             },
             {
                 "item": {
-                    "iconPath": "Portion/MpPortion2",
-                    "itemName": "기본 MP 포션",
-                    "itemDescription": "마력이 300만큼 회복됩니다.",
-                    "type": "MP",
-                    "itemPrice": 300
+                    "iconPath": "",
+                    "itemName": "",
+                    "itemDescription": "",
+                    "type": "",
+                    "itemPrice": 0
                 },
                 "count": 0,
                 "maxCount": 99
             },
             {
                 "item": {
-                    "iconPath": "Portion/MpPortion3",
-                    "itemName": "중급 MP 포션",
-                    "itemDescription": "마력이 500만큼 회복됩니다.",
-                    "type": "MP",
-                    "itemPrice": 500
+                    "iconPath": "",
+                    "itemName": "",
+                    "itemDescription": "",
+                    "type": "",
+                    "itemPrice": 0
                 },
                 "count": 0,
                 "maxCount": 99
             },
             {
                 "item": {
-                    "iconPath": "Portion/MpPortion4",
-                    "itemName": "고급 MP 포션",
-                    "itemDescription": "마력이 1000만큼 회복됩니다.",
-                    "type": "MP",
-                    "itemPrice": 1000
+                    "iconPath": "",
+                    "itemName": "",
+                    "itemDescription": "",
+                    "type": "",
+                    "itemPrice": 0
                 },
                 "count": 0,
                 "maxCount": 99
@@ -186,7 +186,7 @@
             "iconPath": "Portion/HpPortion1",
             "itemName": "기초 HP 포션",
             "itemDescription": "체력이 100만큼 회복됩니다.",
-            "type": "HP",
+            "type": "Portion",
             "itemPrice": 100,
             "hpRecovery": 100,
             "mpRecovery": 0,
@@ -196,7 +196,7 @@
             "iconPath": "Portion/HpPortion2",
             "itemName": "기본 HP 포션",
             "itemDescription": "체력이 300만큼 회복됩니다.",
-            "type": "HP",
+            "type": "Portion",
             "itemPrice": 300,
             "hpRecovery": 300,
             "mpRecovery": 0,
@@ -206,7 +206,7 @@
             "iconPath": "Portion/HpPortion3",
             "itemName": "중급 HP 포션",
             "itemDescription": "체력이 500만큼 회복됩니다.",
-            "type": "HP",
+            "type": "Portion",
             "itemPrice": 500,
             "hpRecovery": 500,
             "mpRecovery": 0,
@@ -216,7 +216,7 @@
             "iconPath": "Portion/HpPortion4",
             "itemName": "고급 HP 포션",
             "itemDescription": "체력이 1000만큼 회복됩니다.",
-            "type": "HP",
+            "type": "Portion",
             "itemPrice": 1000,
             "hpRecovery": 1000,
             "mpRecovery": 0,
@@ -225,8 +225,8 @@
         {
             "iconPath": "Portion/MpPortion1",
             "itemName": "기초 MP 포션",
-            "itemDescription": "마력이 100만큼 회복됩니다.",
-            "type": "MP",
+            "itemDescription": "마력이 10만큼 회복됩니다.",
+            "type": "Portion",
             "itemPrice": 100,
             "hpRecovery": 0,
             "mpRecovery": 10,
@@ -235,8 +235,8 @@
         {
             "iconPath": "Portion/MpPortion2",
             "itemName": "기본 MP 포션",
-            "itemDescription": "마력이 300만큼 회복됩니다.",
-            "type": "MP",
+            "itemDescription": "마력이 30만큼 회복됩니다.",
+            "type": "Portion",
             "itemPrice": 300,
             "hpRecovery": 0,
             "mpRecovery": 30,
@@ -245,8 +245,8 @@
         {
             "iconPath": "Portion/MpPortion3",
             "itemName": "중급 MP 포션",
-            "itemDescription": "마력이 500만큼 회복됩니다.",
-            "type": "MP",
+            "itemDescription": "마력이 50만큼 회복됩니다.",
+            "type": "Portion",
             "itemPrice": 500,
             "hpRecovery": 0,
             "mpRecovery": 50,
@@ -255,8 +255,8 @@
         {
             "iconPath": "Portion/MpPortion4",
             "itemName": "고급 MP 포션",
-            "itemDescription": "마력이 1000만큼 회복됩니다.",
-            "type": "MP",
+            "itemDescription": "마력이 100만큼 회복됩니다.",
+            "type": "Portion",
             "itemPrice": 1000,
             "hpRecovery": 0,
             "mpRecovery": 100,
@@ -268,7 +268,7 @@
             "iconPath": "EquipIcon/Sword1",
             "itemName": "기초 무기",
             "itemDescription": "공격력 100을 증가시킵니다.",
-            "type": "Sword",
+            "type": "Equip",
             "itemPrice": 100,
             "addAttack": 100,
             "addHp": 0
@@ -277,7 +277,7 @@
             "iconPath": "EquipIcon/Sword2",
             "itemName": "기본 무기",
             "itemDescription": "공격력 200을 증가시킵니다.",
-            "type": "Sword",
+            "type": "Equip",
             "itemPrice": 200,
             "addAttack": 200,
             "addHp": 0
@@ -286,7 +286,7 @@
             "iconPath": "EquipIcon/Sword3",
             "itemName": "중급 무기",
             "itemDescription": "공격력 300을 증가시킵니다.",
-            "type": "Sword",
+            "type": "Equip",
             "itemPrice": 300,
             "addAttack": 300,
             "addHp": 0
@@ -295,7 +295,7 @@
             "iconPath": "EquipIcon/Sword4",
             "itemName": "고급 무기",
             "itemDescription": "공격력 400을 증가시킵니다.",
-            "type": "Sword",
+            "type": "Equip",
             "itemPrice": 400,
             "addAttack": 400,
             "addHp": 0
@@ -304,7 +304,7 @@
             "iconPath": "EquipIcon/Shield1",
             "itemName": "기초 방패",
             "itemDescription": "체력 100을 증가시킵니다.",
-            "type": "Shield",
+            "type": "Equip",
             "itemPrice": 100,
             "addAttack": 0,
             "addHp": 100
@@ -313,7 +313,7 @@
             "iconPath": "EquipIcon/Shield2",
             "itemName": "기본 방패",
             "itemDescription": "체력 200을 증가시킵니다.",
-            "type": "Shield",
+            "type": "Equip",
             "itemPrice": 200,
             "addAttack": 0,
             "addHp": 200
@@ -322,7 +322,7 @@
             "iconPath": "EquipIcon/Shield3",
             "itemName": "중급 방패",
             "itemDescription": "체력 300을 증가시킵니다.",
-            "type": "Shield",
+            "type": "Equip",
             "itemPrice": 300,
             "addAttack": 0,
             "addHp": 300
@@ -331,7 +331,7 @@
             "iconPath": "EquipIcon/Shield4",
             "itemName": "고급 방패",
             "itemDescription": "체력 400을 증가시킵니다.",
-            "type": "Shield",
+            "type": "Equip",
             "itemPrice": 400,
             "addAttack": 0,
             "addHp": 400

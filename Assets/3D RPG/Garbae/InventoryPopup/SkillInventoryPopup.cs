@@ -26,7 +26,6 @@ public class SkillInventoryPopup : MonoBehaviour
     {
         if (launchSkillgachaPopup == null)
         {
-            launchSkillgachaPopup = Instantiate(PopupFactory.instance.skillGachaPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<StartSkillGachaPopup>();
         }
         else
         {

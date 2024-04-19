@@ -7,16 +7,6 @@ using UnityEngine.UI;
 public class StatusText : MonoBehaviour
 {
     public TextMesh textMesh;
-    Vector3 originPos;
-
-    private void Start()
-    {
-     //   transform.localPosition = originPos;
-      //  textMesh.color = new Color(1, 1, 1, 1);
-    }
-    private void OnEnable()
-    {
-    }
     private void OnDisable()
     {
         transform.localPosition = new Vector3(0, 0, 0);

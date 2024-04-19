@@ -14,11 +14,9 @@ public class InfoPopup : MonoBehaviour, IPopup
     {
         if (description != null && data != null)
         {
-            if (data.itemName == "기초HP포션")
-            {                
-                description.text = (data as PortionData).hpRecovery + "HP를 회복합니다.";
-                price.text = data.itemPrice.ToString();
-            }
+            dataName.text = data.itemName;
+            description.text = data.itemDescription;
+            price.text = data.itemPrice.ToString();            
             
         }
     }

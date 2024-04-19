@@ -7,7 +7,6 @@ public class PopupFactory : MonoBehaviour
     public GameObject dialogueTriggerPopupPrefab;
     public GameObject statusPopupPrefab;
     public GameObject monsterStatusPopupPrefab;
-    public GameObject skillGachaPopupPrefab;
     public GameObject skillInventoryPopupPrefab;
     public GameObject ShopPopupPrefab;
     public GameObject selectedShopItemPopupPrefab;
@@ -15,11 +14,12 @@ public class PopupFactory : MonoBehaviour
     public GameObject InventoryPopupPrefab;
     public GameObject equipInventoryPopupPrefab;
     public GameObject InfoPopupPrefab;
+    public GameObject healerPopupPrefab;
+    public GameObject lvUpPopupPrefab;
     public static PopupFactory instance;
 
     public Transform popupTransForm;
     public Transform colleagueStatusPopupTransform;
-    public Transform gachaTransform;
     public Transform selectTransform;
     public Transform infoPopupTransform;
     public Transform monsterStatusPopupTransform;
