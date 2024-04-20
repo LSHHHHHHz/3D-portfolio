@@ -50,6 +50,10 @@ public class CharacterStatusBase : MonoBehaviour, IActor
     {
         totalAttack = baseAttack + additionalAttack;
     }
+    public void UpdateToTalHP(int additionalHp)
+    {
+        max_HP = 200 + additionalHp;
+    }
     public void DisplayStatus(Vector3 pos, int textStatus, string color, bool isPositive)
     {
         string sign = isPositive ? "+" : "-";

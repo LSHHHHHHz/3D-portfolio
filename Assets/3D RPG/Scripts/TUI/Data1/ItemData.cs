@@ -35,7 +35,8 @@ public class EquipData : ItemData
 {
     public int addAttack;
     public int addHp;
-    public EquipData(string iconPath, string itemName, string itemDescription, string type, int addAttack, int addHp, int itemPrice)
+    public int itemNum;
+    public EquipData(string iconPath, string itemName, string itemDescription, string type, int addAttack, int addHp, int itemPrice, int itemNum)
     {
         this.iconPath = iconPath;
         this.itemName = itemName;
@@ -44,6 +45,7 @@ public class EquipData : ItemData
         this.addAttack = addAttack;
         this.addHp = addHp;
         this.itemPrice = itemPrice;
+        this.itemNum = itemNum;
     }
 }
 [System.Serializable]

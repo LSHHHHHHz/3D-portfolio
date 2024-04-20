@@ -1,3 +1,4 @@
+using Assets._3D_RPG.Scripts.TUI.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,75 +8,70 @@ public class PlayerSetEquipItem : MonoBehaviour
 {
     public GameObject[] swords;
     public GameObject[] shields;
-    private ItemInfo previousEquippedWeapon = null;
-    private ItemInfo previousEquippedShield = null;
     public CharacterStatusBase characterStatus;
-    private int previousWeaponAttack = 0;
-    private int previousShieldAttack = 0;
     private void Start()
     {
-        GameManager.instance.ChangeItemSlot += RefreshWeapon;
+        EventManager.instance.ChangeItemSlot += RefreshWeapon;
     }
-    void RefreshWeapon()
+    void RefreshWeapon(ItemData item)
     {
-        if (PlayerData.instance.playerEquipData == null)
+        if (UserData.instance.equipmentData == null)
         {
             return;
         }
-        foreach(var equipItem in PlayerData.instance.playerEquipData)
+        if(UserData.instance.equipmentData.slotDatas[0].item is EquipData equipSwordData)
         {
-            if (equipItem.item != null && equipItem.item.itemInfo.itemType == InfoType.Sword)
+            if(equipSwordData == item)
             {
-                int swordIndex = equipItem.item.itemInfo.slotNumber - 1;
-                if (previousEquippedWeapon == null || previousEquippedWeapon != equipItem.item.itemInfo)
-                {
-                    for (int i = 0; i < swords.Length; i++)
-                    {
-                        swords[i].SetActive(i == swordIndex);
-                    }
-                    if (previousEquippedWeapon != null)
-                    {
-                        previousWeaponAttack = previousEquippedWeapon.additionalAttack;
-                    }
-                    previousEquippedWeapon = equipItem.item.itemInfo;
-                    SetEquipItem();
-                }
+                EquipItem(equipSwordData, swords, new EquipSwordEvent(equipSwordData.addAttack));
             }
-            if (equipItem.item != null && equipItem.item.itemInfo.itemType == InfoType.Shield)
+        }
+        if (UserData.instance.equipmentData.slotDatas[1].item is EquipData equipShieldData)
+        {
+            if (equipShieldData == item)
             {
-                int swordIndex = equipItem.item.itemInfo.slotNumber - 5;
-                if (previousEquippedShield == null || previousEquippedShield != equipItem.item.itemInfo)
-                {
-                    for (int i = 0; i < shields.Length; i++)
-                    {
-                        shields[i].SetActive(i == swordIndex);
-                    }
-                    previousEquippedShield = equipItem.item.itemInfo;
-                }
+                EquipItem(equipShieldData, shields, new EquipShieldEvent(equipShieldData.addHp));
             }
-            if (equipItem.item == null && equipItem.type == InfoType.Sword)
+        }
+        for(int i =0; i< UserData.instance.equipmentData.slotDatas.Count; i++)
+        {
+            if(UserData.instance.equipmentData.slotDatas[i].item.iconPath == "")
             {
-                previousEquippedWeapon = null;
-                SetEquipItem();
+                if(i==0)
+                {
+                    UnEquipItem(swords, new EquipSwordEvent(0));
+                }
+                if(i==1)
+                {
+                    UnEquipItem(shields, new EquipShieldEvent(0));
+                }
             }
         }
     }
-    public void SetEquipItem()
+
+    void EquipItem(EquipData equipData, GameObject[] items, IEvent eventSource)
     {
-        if (previousEquippedWeapon != null)
+        IActor actor = characterStatus.GetComponent<IActor>();
+        for(int i =0; i < items.Length;i++)
         {
-            characterStatus.UpdateTotalAttack(-previousWeaponAttack);
-        }
-
-        if (previousEquippedWeapon != null)
+            if (i == equipData.itemNum)
+            {
+                items[i].SetActive(true);
+                eventSource.ExcuteEvent(actor);
+            }
+            else
+            {
+                items[i].SetActive(false);
+            }
+        }        
+    }
+    void UnEquipItem(GameObject[] items, IEvent eventSource)
+    {
+        IActor actor = characterStatus.GetComponent<IActor>();
+        for (int i = 0; i < items.Length; i++)
         {
-            characterStatus.UpdateTotalAttack(previousEquippedWeapon.additionalAttack);
-            previousWeaponAttack = previousEquippedWeapon.additionalAttack;
+            items[i].SetActive(false);            
         }
-
-        else
-        {
-            characterStatus.UpdateTotalAttack(0);
-        }
+        eventSource.ExcuteEvent(actor);
     }
 }

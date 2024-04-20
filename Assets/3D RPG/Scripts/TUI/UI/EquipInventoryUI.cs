@@ -1,6 +1,8 @@
 using Assets._3D_RPG.Scripts.TUI.Data;
+using Assets._3D_RPG.Scripts.TUI.Inventory.DragAndDrop;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +10,9 @@ public class EquipInventoryUI : MonoBehaviour, IPopup
 {
     private EquipmentData equipmentData;
     public RectTransform slotsTransform;
+    private ItemData itemData;
+    private ItemData preEquipSword;
+    private ItemData preEquipShield;
     private void Start()
     {
         equipmentData = UserData.instance.equipmentData;
@@ -26,6 +31,14 @@ public class EquipInventoryUI : MonoBehaviour, IPopup
                 slotUI.SetData(equipmentData.slotDatas[i], equipmentData);
             }
         }
+        for(int i =0; i<equipmentData.slotDatas.Count; i++)
+        {
+            if (equipmentData.slotDatas[i].item.itemName == "")
+            {
+                EventManager.instance.UnEquipItem(i);
+            }
+        }
+        EventManager.instance.ChangeEquipSlot(itemData);
     }
     private void SetChildItemSlots(RectTransform parent)
     {
@@ -50,6 +63,7 @@ public class EquipInventoryUI : MonoBehaviour, IPopup
                 equipmentData.slotDatas[i]= slot;
             }
         }
+        itemData = slot.item;
         RefreshSlots();
     }
     public void OpenPopupUI()

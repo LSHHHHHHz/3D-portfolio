@@ -2198,6 +2198,7 @@ GameObject:
   - component: {fileID: 115059275}
   - component: {fileID: 115059274}
   - component: {fileID: 115059283}
+  - component: {fileID: 115059284}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2264,6 +2265,18 @@ MonoBehaviour:
     count: 0
     maxCount: 99
   currentDropTransform: {fileID: 0}
+--- !u!114 &115059284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115059272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19aa695722f93e4aa2631e79eb5d660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &116472732
 GameObject:
   m_ObjectHideFlags: 0
@@ -6983,6 +6996,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4896083173671185792, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
   m_PrefabInstance: {fileID: 6801626668036526255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &357942859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357942850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62fa740b46044a48a46b11ef0e27fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordName: "\uACE0 \uBB34\uAE30"
+  swordData:
+    iconPath: 
+    itemName: 
+    itemDescription: 
+    type: 
+    itemPrice: 0
 --- !u!1001 &358947990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7849,6 +7881,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3992173153720498782, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
   m_PrefabInstance: {fileID: 6801626668036526255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &393738483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393738474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62fa740b46044a48a46b11ef0e27fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordName: "\uAE30\uCD08 \uBB34\uAE30"
+  swordData:
+    iconPath: 
+    itemName: 
+    itemDescription: 
+    type: 
+    itemPrice: 0
 --- !u!1 &398512445
 GameObject:
   m_ObjectHideFlags: 0
@@ -13927,6 +13978,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3767707028239634986, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
   m_PrefabInstance: {fileID: 6801626668036526255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &749427604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749427600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ce183f84910145a288f5693690eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldName: "\uACE0\uAE09 \uBC29\uD328"
+  shieldData:
+    iconPath: 
+    itemName: 
+    itemDescription: 
+    type: 
+    itemPrice: 0
 --- !u!1001 &750197137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17588,6 +17658,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2656387696214595399, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
   m_PrefabInstance: {fileID: 6801626668036526255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &901153728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901153719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62fa740b46044a48a46b11ef0e27fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordName: "\uAE30\uBCF8 \uBB34\uAE30"
+  swordData:
+    iconPath: 
+    itemName: 
+    itemDescription: 
+    type: 
+    itemPrice: 0
 --- !u!1 &902384802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1069567032315564, guid: bdf8e7438a7816543998181bd3067573, type: 3}
@@ -21628,6 +21717,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5843230429810231541, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
   m_PrefabInstance: {fileID: 6801626668036526255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1141053983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141053974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62fa740b46044a48a46b11ef0e27fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordName: "\uC911\uAE09 \uBB34\uAE30"
+  swordData:
+    iconPath: 
+    itemName: 
+    itemDescription: 
+    type: 
+    itemPrice: 0
 --- !u!1001 &1146250931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28787,6 +28895,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5806117228151703739, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
   m_PrefabInstance: {fileID: 6801626668036526255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1494662998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494662994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ce183f84910145a288f5693690eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldName: "\uAE30\uCD08 \uBC29\uD328"
+  shieldData:
+    iconPath: 
+    itemName: 
+    itemDescription: 
+    type: 
+    itemPrice: 0
 --- !u!1001 &1495959691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51905,6 +52032,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6110272336581670987, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
   m_PrefabInstance: {fileID: 6801626668036526255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1889806269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889806265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ce183f84910145a288f5693690eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldName: "\uC911\uAE09 \uBC29\uD328"
+  shieldData:
+    iconPath: 
+    itemName: 
+    itemDescription: 
+    type: 
+    itemPrice: 0
 --- !u!1001 &1892263535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52138,6 +52284,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7515432859205336414, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
   m_PrefabInstance: {fileID: 6801626668036526255}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1905174821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905174817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043ce183f84910145a288f5693690eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shieldName: "\uAE30\uBCF8 \uBC29\uD328"
+  shieldData:
+    iconPath: 
+    itemName: 
+    itemDescription: 
+    type: 
+    itemPrice: 0
 --- !u!1001 &1905642376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58727,6 +58892,7 @@ MonoBehaviour:
       itemPrice: 100
       addAttack: 100
       addHp: 0
+      itemNum: 0
     - iconPath: EquipIcon/Sword2
       itemName: "\uAE30\uBCF8 \uBB34\uAE30"
       itemDescription: "\uACF5\uACA9\uB825 200\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -58734,6 +58900,7 @@ MonoBehaviour:
       itemPrice: 200
       addAttack: 200
       addHp: 0
+      itemNum: 1
     - iconPath: EquipIcon/Sword3
       itemName: "\uC911\uAE09 \uBB34\uAE30"
       itemDescription: "\uACF5\uACA9\uB825 300\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -58741,6 +58908,7 @@ MonoBehaviour:
       itemPrice: 300
       addAttack: 300
       addHp: 0
+      itemNum: 2
     - iconPath: EquipIcon/Sword4
       itemName: "\uACE0\uAE09 \uBB34\uAE30"
       itemDescription: "\uACF5\uACA9\uB825 400\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -58748,6 +58916,7 @@ MonoBehaviour:
       itemPrice: 400
       addAttack: 400
       addHp: 0
+      itemNum: 3
     - iconPath: EquipIcon/Shield1
       itemName: "\uAE30\uCD08 \uBC29\uD328"
       itemDescription: "\uCCB4\uB825 100\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -58755,6 +58924,7 @@ MonoBehaviour:
       itemPrice: 100
       addAttack: 0
       addHp: 100
+      itemNum: 0
     - iconPath: EquipIcon/Shield2
       itemName: "\uAE30\uBCF8 \uBC29\uD328"
       itemDescription: "\uCCB4\uB825 200\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -58762,6 +58932,7 @@ MonoBehaviour:
       itemPrice: 200
       addAttack: 0
       addHp: 200
+      itemNum: 1
     - iconPath: EquipIcon/Shield3
       itemName: "\uC911\uAE09 \uBC29\uD328"
       itemDescription: "\uCCB4\uB825 300\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -58769,6 +58940,7 @@ MonoBehaviour:
       itemPrice: 300
       addAttack: 0
       addHp: 300
+      itemNum: 2
     - iconPath: EquipIcon/Shield4
       itemName: "\uACE0\uAE09 \uBC29\uD328"
       itemDescription: "\uCCB4\uB825 400\uC744 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
@@ -58776,6 +58948,7 @@ MonoBehaviour:
       itemPrice: 400
       addAttack: 0
       addHp: 400
+      itemNum: 3
     skillData:
     - iconPath: SkillIcon/Skill1
       itemName: "\uD06C\uB798\uC26C"
@@ -58789,8 +58962,8 @@ MonoBehaviour:
       prefabPath: SkillIcon/EffectSkill1
     - iconPath: SkillIcon/Skill2
       itemName: "\uC6D0\uAE30\uC625"
-      itemDescription: "\uC751\uCD95\uB41C \uD798\uC73C\uB85C \uC801\uC744 \uC99D\uBC1C\uC2DC\uD0A8\uB2E4..\n
-        \uCFE8\uB2E4\uC6B4 10\uCD08"
+      itemDescription: "\uC751\uCD95\uB41C \uD798\uC73C\uB85C \uC801\uC744 \uC99D\uBC1C\uC2DC\uD0A8\uB2E4..\n\uCFE8\uB2E4\uC6B4
+        10\uCD08"
       type: Skill
       itemPrice: 0
       damage: 1000
@@ -58799,8 +58972,8 @@ MonoBehaviour:
       prefabPath: SkillIcon/EffectSkill2
     - iconPath: SkillIcon/Skill3
       itemName: "\uC720\uB3C4\uBBF8\uC0AC\uC77C"
-      itemDescription: "10\uAC1C\uC758 \uC5D0\uB108\uC9C0\uBC14 \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4.\n
-        \uCFE8\uB2E4\uC6B4 10\uCD08"
+      itemDescription: "10\uAC1C\uC758 \uC5D0\uB108\uC9C0\uBC14 \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4.\n\uCFE8\uB2E4\uC6B4
+        10\uCD08"
       type: Skill
       itemPrice: 0
       damage: 10
@@ -58809,8 +58982,8 @@ MonoBehaviour:
       prefabPath: SkillIcon/EffectSkill3
     - iconPath: SkillIcon/Skill4
       itemName: "\uBC94\uC704\uACF5\uACA9"
-      itemDescription: "\uBC94\uC704 \uB0B4\uC5D0 \uBAA8\uB4E0 \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4.\n
-        \uCFE8\uB2E4\uC6B4 10\uCD08"
+      itemDescription: "\uBC94\uC704 \uB0B4\uC5D0 \uBAA8\uB4E0 \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4.\n\uCFE8\uB2E4\uC6B4
+        10\uCD08"
       type: Skill
       itemPrice: 0
       damage: 100
@@ -63181,7 +63354,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4592721060287810207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dabab1523c719124ea782ca262fb93b3, type: 3}
   m_Name: 
@@ -63196,7 +63369,7 @@ MonoBehaviour:
   - {fileID: 1905174817}
   - {fileID: 1889806265}
   - {fileID: 749427600}
-  characterStatus: {fileID: 0}
+  characterStatus: {fileID: 1990185663}
 --- !u!114 &4592721060287810215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63359,6 +63532,28 @@ MonoBehaviour:
   - {fileID: 1745551975}
   - {fileID: 1913412555}
   - {fileID: 1697403056}
+--- !u!114 &4592721060287810225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592721060287810207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b1e5ae8f9a3274b93337210cd9d36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipItems:
+  - {fileID: 1494662994}
+  - {fileID: 1905174817}
+  - {fileID: 1889806265}
+  - {fileID: 749427600}
+  - {fileID: 393738474}
+  - {fileID: 901153719}
+  - {fileID: 1141053974}
+  - {fileID: 357942850}
+  characterStatus: {fileID: 1990185663}
 --- !u!4 &4747428399845834909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2271638924928323634, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
@@ -63738,12 +63933,20 @@ PrefabInstance:
       value: PlayerAttack
       objectReference: {fileID: 0}
     - target: {fileID: 4336083500838691044, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336083500838691044, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
       propertyPath: m_TagString
       value: PlayerAttack
       objectReference: {fileID: 0}
     - target: {fileID: 5240414358860756794, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
       propertyPath: m_TagString
       value: PlayerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806117228151703739, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6511223959234007631, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
       propertyPath: m_TagString

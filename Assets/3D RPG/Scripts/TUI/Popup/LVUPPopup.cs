@@ -40,9 +40,13 @@ public class LVUPPopup : MonoBehaviour, IPopup
         popupSequence.Append(rectTransform.DOScale(0.9f, 0.15f));
         popupSequence.Append(rectTransform.DOScale(1.0f, 0.1f));
 
-        yield return new WaitForSeconds(3);
-        popupSequence.Append(rectTransform.DOScale(0f, 0.25f));
-        yield return new WaitForSeconds(0.3f);
-        gameObject.SetActive(false);
+        //yield return new WaitForSeconds(3);
+        popupSequence.AppendInterval(3);
+        popupSequence.Append(rectTransform.DOScale(1.3f, 0.2f));
+        popupSequence.Append(rectTransform.DOScale(0f, 0.2f));
+        //yield return new WaitForSeconds(1f);
+        popupSequence.onComplete += () => gameObject.SetActive(false);
+
+        yield return popupSequence.WaitForCompletion();
     }
 }

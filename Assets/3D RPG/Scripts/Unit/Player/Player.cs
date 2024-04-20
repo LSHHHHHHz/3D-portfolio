@@ -51,10 +51,8 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("ShopNPC"))
-        {
-            closedShopNPC = false;
-        }
+        closedShopNPC = false;
+        npc = null;
         if (shopPopup != null)
         {
             shopPopup.ClosePopupUI();

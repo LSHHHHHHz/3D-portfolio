@@ -12,6 +12,8 @@ public class PlayerStatus : CharacterStatusBase
     public int currentLevel = 1;
     public StatusPopup playerStatusPopup;
     LVUPPopup lvUPPopup;
+
+    //UI는 여기있으면안될듯 이동 예정
     private void Start()
     {
         playerStatusPopup.SetData(characterImage, characterName);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -157,7 +158,7 @@ public class SlotUI : MonoBehaviour, ISlot
         canvasGroup.blocksRaycasts = false;
         if (itemCountText == null)
         {
-            itemCountText.gameObject.SetActive(false);
+           // itemCountText.gameObject.SetActive(false);
         }
     }
     public void OnDrag(PointerEventData eventData)

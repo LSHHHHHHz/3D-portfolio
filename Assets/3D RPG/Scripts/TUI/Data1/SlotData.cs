@@ -46,17 +46,6 @@ public class SlotData
         item = null;
         count = 0;
     }
-    public void ChangeItem(SlotData drag, SlotData drop)
-    {
-        SlotData temp = drop;
-        drop = drag;
-        drag = temp;
-    }
-    public void MergeItem(SlotData drag, SlotData drop)
-    {
-        drop.count += drag.count;
-        drag.RemoveItem();
-    }
     public ItemData GetItem()
     {
         return item;
