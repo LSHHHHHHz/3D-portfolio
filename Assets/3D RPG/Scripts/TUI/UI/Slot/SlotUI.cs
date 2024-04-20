@@ -19,7 +19,7 @@ public class SlotUI : MonoBehaviour, ISlot
 
     private SlotData currentSlotData;
     private SlotData savedCurrentSlotData;
-    private IData currentDatatype;
+    public IData currentDatatype;
     private InfoPopup infoPopupInstance;
 
     private Transform canvas;
@@ -107,7 +107,6 @@ public class SlotUI : MonoBehaviour, ISlot
     }
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop");
         //드랍 데이터 매니저에 저장 2
         DragDropManager.instance.OnDrop(currentSlotData, transform, currentDatatype);
 

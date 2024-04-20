@@ -9,7 +9,11 @@ public class SetBaseSkill4 : SetBaseSkill
 {
     public override void Start()
     {
-        base.Start();
+        base.Start(); 
+    }
+    private void OnEnable()
+    {
+        gameObject.SetActive(true);
     }
     public override void Execute(IActor actor,int damage)
     {
@@ -21,7 +25,7 @@ public class SetBaseSkill4 : SetBaseSkill
     }
     IEnumerator SetSkil()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         gameObject.SetActive(false);
     }
 

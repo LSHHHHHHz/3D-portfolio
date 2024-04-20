@@ -32,6 +32,7 @@ public class EnemyStatus : CharacterStatusBase
     }
     private void OnDisable()
     {
+        elapsed = 0;
         isRewardExp = false;
         navMeshAgent.enabled = true;
         capsuleCollider.enabled = true; ;
@@ -40,6 +41,7 @@ public class EnemyStatus : CharacterStatusBase
     {
         if (current_HP <= 0)
         {
+            current_HP = 0;
             if (!isRewardExp)
             {
                 UnitManager.instance.player.playerStatus.currentExp += rewardExp;

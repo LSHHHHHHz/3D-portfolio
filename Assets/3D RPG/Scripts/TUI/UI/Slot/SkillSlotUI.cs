@@ -94,6 +94,14 @@ public class SkillSlotUI : MonoBehaviour,ISlot
     }
     public void OnDrop(PointerEventData eventData)
     {
+        ISlot data = eventData.pointerDrag.GetComponent<ISlot>();
+        if(data is SlotUI slotUI)
+        {
+            if(slotUI.currentDatatype != currentDatatype)
+            {
+                return;
+            }
+        }
         DragDropManager.instance.SetDropItem(transform);
         OnDropSlot?.Invoke(currentSlotData);
     }

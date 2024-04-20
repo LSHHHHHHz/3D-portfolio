@@ -4867,7 +4867,7 @@ MonoBehaviour:
   MPConsum: 0
   damage: 999
   targetPos: {x: 0, y: 0, z: 0}
-  objSpeed: 5
+  objSpeed: 8
 --- !u!136 &4524602037036106560
 CapsuleCollider:
   m_ObjectHideFlags: 0

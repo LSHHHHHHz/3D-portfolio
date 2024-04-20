@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float acceleration;
     public float deceleration;
     public Vector3 playerMoveDir;
-
+    public bool canMove = true;
     public Vector3 velocity;
     public Vector3 lastMoveDirection;
     public Vector3 playerDir;
@@ -57,7 +57,14 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        KeyBoardMove();
+        if (canMove)
+        {
+            KeyBoardMove();
+        }
+    }
+    public void EnableMovement(bool enable)
+    {
+        canMove = enable;
     }
     void WalkPlayer()
     {

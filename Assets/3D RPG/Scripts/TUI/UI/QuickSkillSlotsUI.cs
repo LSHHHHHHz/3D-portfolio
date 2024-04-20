@@ -142,7 +142,8 @@ public class QuickSkillSlotsUI : MonoBehaviour
             if (skill != null)
             {
                 playerStatus.ConsumMP(skillData.consumMP);
-                skill.Execute(playerStatus, skillData.damage);
+                    skill.Execute(playerStatus, skillData.damage);
+                
             }
         }
         RefreshSlots();
