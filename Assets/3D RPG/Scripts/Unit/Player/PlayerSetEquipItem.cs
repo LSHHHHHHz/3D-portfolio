@@ -11,7 +11,7 @@ public class PlayerSetEquipItem : MonoBehaviour
     public CharacterStatusBase characterStatus;
     private void Start()
     {
-        EventManager.instance.ChangeItemSlot += RefreshWeapon;
+        EventManager.instance.changeItemSlot += RefreshWeapon;
     }
     void RefreshWeapon(ItemData item)
     {

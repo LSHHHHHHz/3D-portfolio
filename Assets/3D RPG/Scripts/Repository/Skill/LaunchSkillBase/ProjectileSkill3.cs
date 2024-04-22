@@ -56,6 +56,7 @@ public class ProjectileSkill3 : ProjectileSkill
 
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.isKinematic = false;
+        GetComponent<MeshRenderer>().enabled = true;
         yield return new WaitForSeconds(0.5f);
         rb.isKinematic = true;
 
@@ -88,9 +89,7 @@ public class ProjectileSkill3 : ProjectileSkill
             IActor actor = other.GetComponent<IActor>();
             if (actor != null)
             {
-                // 공격 주체 - 플레이어
-                // 공격 매개체 - 마법 이펙트
-                // 공격 받는 대상 - 몬스터
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.GetHitSkill3);
                 SendDamageEvent damageEvent = new SendDamageEvent(this.actor, damage);
                 actor.OnReceiveEvent(damageEvent);
 

@@ -40,7 +40,7 @@ public class LoadSceneController : MonoBehaviour
             else
             {
                 timer += Time.unscaledDeltaTime;
-                progressBar.fillAmount = Mathf.Lerp(0.1f,1f,timer/5);
+                progressBar.fillAmount = Mathf.Lerp(0.1f,1f,timer/3);
                 if(progressBar.fillAmount >= 1f)
                 {
                     op.allowSceneActivation = true;

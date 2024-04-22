@@ -15,6 +15,7 @@ public class StatusPopup : MonoBehaviour, IPopup
     public Text expBarText;
     public Text characterName;
     public Text level;
+
     public void SetData(string name, float maxHP, float currentHP, float maxMP, float currentMP, float maxExp, float currentExp, int level)
     {
         characterName.text = name;

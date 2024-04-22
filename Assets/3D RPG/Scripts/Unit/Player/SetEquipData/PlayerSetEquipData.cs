@@ -15,8 +15,8 @@ public class PlayerSetEquipData : MonoBehaviour
     private void Start()
     {
         actor = characterStatus as IActor;
-        EventManager.instance.ChangeItemSlot += RefreshWeapon;
-        EventManager.instance.UnEquipPreItem += RemoveItem;
+        EventManager.instance.changeItemSlot += RefreshWeapon;
+        EventManager.instance.unEquipPreItem += RemoveItem;
     }
     void RefreshWeapon(ItemData item)
     {

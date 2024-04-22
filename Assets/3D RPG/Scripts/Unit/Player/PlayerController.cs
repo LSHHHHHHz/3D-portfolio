@@ -123,9 +123,9 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
         }
-        if (velocity.y < 1.7f && isGrounded)
+        else if (velocity.y <4f)
         {
-            velocity.y = 0;
+            velocity.y = -2f;
         }
     }
     void KeyBoardMove()

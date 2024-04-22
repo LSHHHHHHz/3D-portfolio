@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
     AudioSource[] sfxPlayers;
     int channelIndex;
 
-    public enum Sfx { BasicAttack, ConsumePortion, GetItem, KeyboardTyping, InventoryClick, ClashSkill, WindSkill, NPCTalk, Grunting1, Grunting2, Walk, Cancell, OKSound, Acquisition, FireSkill, SwordSound }
+    public enum Sfx { DragonSound, MonsterAttack, GetItem, LaunchSkill2, GetHitSkill3, ShootSKill3, WindSkill, NPCTalk, Grunting1, Grunting2, Walk, Cancell, OKSound, Acquisition, FireSkill, SwordSound }
 
 
     private void Awake()

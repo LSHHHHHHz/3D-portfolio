@@ -12,7 +12,6 @@ public class SetBaseSkill2 : SetBaseSkill
     {
         base.Start();
     }
-
     public override void Execute(IActor actor, int damage)
     {
         this.damage = damage;
@@ -20,7 +19,6 @@ public class SetBaseSkill2 : SetBaseSkill
         gameObject.SetActive(true);
         StartCoroutine(EnergySkill(actor));
     }
-
     IEnumerator EnergySkill(IActor actor)
     {
         UnitManager.instance.player.playerController.EnableMovement(false);
@@ -28,23 +26,25 @@ public class SetBaseSkill2 : SetBaseSkill
         animator.SetTrigger("Skill2");
         transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         Player player = UnitManager.instance.player;
+
         if (UnitManager.instance.player.playerTargettingEnemy.targetObj != null)
         {
             targetPos = UnitManager.instance.player.playerTargettingEnemy.targetObj.transform.position;
-            transform.position = UnitManager.instance.player.transform.position + new Vector3(0, 5, 0);
-            Sequence mySequence = DOTween.Sequence();
-            mySequence.Append(transform.DOScale(0.2f, 0.8f)).Append(transform.DOScale(0.1f, 0.8f));
-            mySequence.SetLoops(5, LoopType.Yoyo);
-            mySequence.Play();
-            yield return mySequence.WaitForCompletion();
-            mySequence.Kill();
+            transform.position = UnitManager.instance.player.transform.position + new Vector3(0, 3.5f, 0);
+
+            Sequence yoyoSequence = DOTween.Sequence();
+            yoyoSequence.Append(transform.DOScale(0.2f, 0.8f)).Append(transform.DOScale(0.1f, 0.8f));
+            yoyoSequence.SetLoops(5, LoopType.Yoyo);
+            yoyoSequence.Play();
+            yield return yoyoSequence.WaitForCompletion();
+            yoyoSequence.Kill(); 
 
             yield return new WaitForSeconds(0.1f);
-            mySequence = DOTween.Sequence();
-            mySequence.Append(transform.DOScale(0.4f, 0.2f));
-            mySequence.Play();
-            yield return mySequence.WaitForCompletion();
-            mySequence.Kill(); 
+            Sequence sizeUpSequence = DOTween.Sequence();
+            sizeUpSequence.Append(transform.DOScale(0.4f, 0.2f));
+            sizeUpSequence.Play();
+            yield return sizeUpSequence.WaitForCompletion();
+            sizeUpSequence.Kill(); 
 
             float elapsed = 0;
             player.playerController.EnableMovement(true);
@@ -57,7 +57,7 @@ public class SetBaseSkill2 : SetBaseSkill
             }
         }
         yield return new WaitForSeconds(2f);
-        StartCoroutine(DeActiveGameObject());
+       // StartCoroutine(DeActiveGameObject());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,13 +73,13 @@ public class SetBaseSkill2 : SetBaseSkill
                     {
                         EnemyStatus status = other.GetComponent<EnemyStatus>();
                         status.current_HP = 0;
-                        StartCoroutine(DeActiveGameObject());
+                      //  StartCoroutine(DeActiveGameObject());
                     }
                     else
                     {
                         SendDamageEvent sendDamageEvent = new SendDamageEvent(subject, damage);
                         actor.OnReceiveEvent(sendDamageEvent);
-                        StartCoroutine(DeActiveGameObject());
+                      //  StartCoroutine(DeActiveGameObject());
                     }
                 }
             }
@@ -94,13 +94,13 @@ public class SetBaseSkill2 : SetBaseSkill
         yield return shakeSequence.WaitForCompletion();
         shakeSequence.Kill();
 
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(transform.DOScaleY(10, 0.3f));
+        Sequence lastSequence = DOTween.Sequence();
+        lastSequence.Append(transform.DOScaleY(10, 0.3f));
         yield return new WaitForSeconds(0.5f);
-        mySequence.Append(transform.DOScaleX(0, 0.3f)).Join(transform.DOScaleZ(0, 0.3f));
-        mySequence.Play();
-        yield return mySequence.WaitForCompletion();
-        mySequence.Kill();
+        lastSequence.Append(transform.DOScaleX(0, 0.3f)).Join(transform.DOScaleZ(0, 0.3f));
+        lastSequence.Play();
+        yield return lastSequence.WaitForCompletion();
+        lastSequence.Kill(); 
 
         yield return new WaitForSeconds(1);
         gameObject.SetActive(false);

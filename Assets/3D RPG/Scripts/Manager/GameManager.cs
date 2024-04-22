@@ -9,9 +9,15 @@ public class GameManager : MonoBehaviour
     public event Action ChangeItemSlot;
     public event Action StartGachaPopup;
     public event Action SetSkillInventory;
+    public GameObject[] camera;
+
+    public GameObject TextBoss;
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
         PlayerData.Load();
     }
     public void ItemPurchased()
@@ -29,5 +35,26 @@ public class GameManager : MonoBehaviour
     public void SetSkillI()
     {
         SetSkillInventory?.Invoke();
+    }
+    public void ChangeCameraTarget(int num)
+    {
+        for (int i = 0; i < camera.Length; i++)
+        {
+            if (i == num)
+            {
+                camera[i].gameObject.SetActive(true);
+                camera[i].GetComponent<AudioListener>().enabled = true;
+            }
+            else
+            {
+                camera[i].gameObject.SetActive(false); 
+                camera[i].GetComponent<AudioListener>().enabled = false;
+            }
+        }
+    }
+
+    public void TestBoss()
+    {
+        TextBoss.SetActive(true);
     }
 }

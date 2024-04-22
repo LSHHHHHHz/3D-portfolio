@@ -19,7 +19,7 @@ public class EnemyStatus : CharacterStatusBase
     NormarMonster normarMonster;
     public int monsterNumber;
     public int rewardExp;
-    bool isRewardExp =false;
+    public bool isRewardExp =false;
     private void OnEnable()
     {
         normarMonster = EnemyData.Instance.normarMonster[monsterNumber];

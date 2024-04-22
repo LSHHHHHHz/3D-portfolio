@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FSMController : MonoBehaviour
 {
+    public BossPattern bossPattern;
     public EnemyStatus enemyStatus;
     public Animator anim;
     public float speed = 5.0f;

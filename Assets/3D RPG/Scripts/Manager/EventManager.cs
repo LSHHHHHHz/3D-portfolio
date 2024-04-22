@@ -5,8 +5,9 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     public static EventManager instance;
-    public event Action<ItemData> ChangeItemSlot;
-    public event Action<int> UnEquipPreItem;
+    public event Action<ItemData> changeItemSlot;
+    public event Action<int> unEquipPreItem;
+    public event Action<int,int> cameraTarget;
     private void Awake()
     {
         instance = this;
@@ -14,10 +15,14 @@ public class EventManager : MonoBehaviour
     }
     public void ChangeEquipSlot(ItemData itemData)
     {
-        ChangeItemSlot?.Invoke(itemData);
+        changeItemSlot?.Invoke(itemData);
     }
     public void UnEquipItem(int itemData)
     {
-        UnEquipPreItem?.Invoke(itemData);
+        unEquipPreItem?.Invoke(itemData);
+    }
+    public void ChangeCameraTarget(int y ,int z)
+    {
+        cameraTarget?.Invoke(y,z);
     }
 }

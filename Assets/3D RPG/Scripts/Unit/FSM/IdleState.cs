@@ -18,12 +18,17 @@ public class IdleState : IState<FSMController>
     public void Update(FSMController sender)
     {
         Debug.Log("기본 상태 업데이트");
+        Debug.Log(sender.name);
         if (sender.enemyStatus.current_HP <= 0)
         {
             sender.ChangeState(new DieState());
             return;
         }
         if (sender.enemyStatus.detectPlayer.closestTarget != null)
+        {
+            sender.ChangeState(new WalkState());
+        }
+        if (sender.enemyStatus.detectPlayer.closestTarget == null && Vector3.Distance(sender.enemyStatus.transform.position, sender.enemyStatus.detectPlayer.transform.position)<1)
         {
             sender.ChangeState(new WalkState());
         }

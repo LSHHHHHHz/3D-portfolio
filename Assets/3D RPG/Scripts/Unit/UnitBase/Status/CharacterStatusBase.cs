@@ -53,6 +53,7 @@ public class CharacterStatusBase : MonoBehaviour, IActor
     public void UpdateToTalHP(int additionalHp)
     {
         max_HP = 200 + additionalHp;
+        current_HP = 200 + additionalHp; 
     }
     public void DisplayStatus(Vector3 pos, int textStatus, string color, bool isPositive)
     {

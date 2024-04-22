@@ -17,7 +17,8 @@ public class CameraFollow : MonoBehaviour
     private float elapsedTime = 0f;
     private void Start()
     {
-        offset = transform.position - playerTransform.position;
+       // offset = transform.position - playerTransform.position;
+        offset = new Vector3(0, 4, 7);
     }
     private void OnEnable()
     {
@@ -31,7 +32,7 @@ public class CameraFollow : MonoBehaviour
         if (keyQ)
         {
             currentAngle += Input.GetAxis("Mouse X") * rotationSpeed;
-            currentPitch -= Input.GetAxis("Mouse Y") * rotationSpeed;
+            currentPitch += Input.GetAxis("Mouse Y") * rotationSpeed;
             currentPitch = Mathf.Clamp(currentPitch, -pitchRange, pitchRange);
         }
         Quaternion horizontalRotation = Quaternion.Euler(0, currentAngle, 0);
