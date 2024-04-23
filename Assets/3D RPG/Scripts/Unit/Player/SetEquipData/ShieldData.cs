@@ -6,23 +6,32 @@ using UnityEngine;
 public class ShieldData : MonoBehaviour, IEquip
 {
     public string shieldName;
-    public ItemData shieldData;
-    public void Equip(IActor actor, int stats, ItemData data)
+    public EquipType equipType;
+
+    public EquipType EquipType => equipType;
+
+    public void Equip(IActor actor, ItemData data)
     {
-        shieldData = data;
+        int stats = 0;
         if (actor is CharacterStatusBase character)
         {
-            gameObject.SetActive(true);
-            character.UpdateToTalHP(stats);
+            if (data is EquipData equipData)
+            {
+                gameObject.SetActive(true);
+                stats = equipData.addHp;
+                character.UpdateToTalHP(stats);
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
     }
-
-    public void Unequip(IActor actor, int stats)
+    public void Unequip(IActor actor)
     {
         if (actor is CharacterStatusBase character)
         {
             gameObject.SetActive(false);
-            character.UpdateToTalHP(-stats);
         }
     }
     public string GetItemName()

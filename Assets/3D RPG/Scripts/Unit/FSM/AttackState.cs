@@ -22,7 +22,6 @@ public class AttackState : IState<FSMController>
         {
             sender.anim.SetBool("Attack", true);
         }
-        sender.transform.LookAt(sender.enemyStatus.detectPlayer.closestTarget.transform.position);
     }
 
     public void Exit(FSMController sender)

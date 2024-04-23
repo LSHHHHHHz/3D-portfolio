@@ -26,6 +26,10 @@ public class PlayerStatus : CharacterStatusBase
         {
             current_HP= max_HP;
         }
+        if (max_MP < current_MP)
+        {
+            current_MP = max_MP;
+        }
 
         playerStatusPopup.SetData(characterName, max_HP, current_HP, max_MP, current_MP, maxExp,currentExp, currentLevel);
 

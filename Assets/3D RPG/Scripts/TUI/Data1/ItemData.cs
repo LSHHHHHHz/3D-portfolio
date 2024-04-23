@@ -47,6 +47,11 @@ public class EquipData : ItemData
         this.itemPrice = itemPrice;
         this.itemNum = itemNum;
     }
+
+    public bool IsSword()
+    {
+        return addAttack > 0;
+    }
 }
 [System.Serializable]
 public class SkillData : ItemData

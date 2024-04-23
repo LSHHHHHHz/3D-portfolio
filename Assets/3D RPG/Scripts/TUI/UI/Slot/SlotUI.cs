@@ -205,6 +205,10 @@ public class SlotUI : MonoBehaviour, ISlot
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if(currentDatatype == null)
+        {
+            return;
+        }
         if (currentDatatype == UserData.instance.quickPortionSlotData || currentDatatype == UserData.instance.quickSkillSlotData || currentSlotData.count == 0)
         {
             return;

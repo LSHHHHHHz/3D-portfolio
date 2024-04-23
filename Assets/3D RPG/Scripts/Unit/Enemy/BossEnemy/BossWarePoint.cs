@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Unity의 Cinemachine 
+
+// 시네마틱 구현
+// 시작 ~~ 끝 (20초 소요)
+
+
 public class BossWarePoint : MonoBehaviour
 {
     public Transform[] warePointPos;
@@ -71,20 +77,25 @@ public class BossWarePoint : MonoBehaviour
         UnitManager.instance.player.playerController.enabled = false;
         UnitManager.instance.player.GetComponent<CharacterController>().enabled = false;
         yield return new WaitForSeconds(0.1f);
+
         UnitManager.instance.player.transform.position = new Vector3(-297, 12, -130);
         UnitManager.instance.player.cameraFollow.transform.position = new Vector3(-297, 2.1f, -130);
         yield return new WaitForSeconds(4.6f);
+
         AudioManager.instance.PlaySfx(AudioManager.Sfx.DragonSound);
         UnitManager.instance.player.GetComponent<CharacterController>().enabled = true;
         UnitManager.instance.player.playerController.enabled = true;
         EventManager.instance.ChangeCameraTarget(2,-3);
         yield return new WaitForSeconds(2.4f);
+
         status.originalPosition = transform.position;
         rb.isKinematic = true;
         status.monsterFSMController.ChangeState(new IdleState());
         yield return new WaitForSeconds(1);
+
         FadeController.instance.BossFadeOut();
         yield return new WaitForSeconds(0.5f);
+
         status.navMeshAgent.enabled = true;
         GameManager.instance.ChangeCameraTarget(0);
         AudioManager.instance.PlayBGM(2, false);

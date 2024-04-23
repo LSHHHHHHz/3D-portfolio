@@ -19,6 +19,7 @@ public class UserData : MonoBehaviour
     public QuickPortionSlotData quickPortionSlotData;
     public QuickSkillSlotData quickSkillSlotData;
     public SkillInventoryData skillInventoryData;
+
     [ContextMenu("Save To Json Data")]
     private void Awake()
     {

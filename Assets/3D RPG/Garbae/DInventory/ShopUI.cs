@@ -8,8 +8,6 @@ public class ShopUI : MonoBehaviour
 {
     [SerializeField]
     private int itemID;
-    [SerializeField]
-    private Data itemDB;
 
     public RectTransform slotsParent;
     ItemSlot[] itemShopSlots;

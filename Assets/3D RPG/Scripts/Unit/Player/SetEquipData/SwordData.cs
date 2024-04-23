@@ -6,23 +6,32 @@ using UnityEngine;
 public class SwordData :MonoBehaviour, IEquip
 {
     public string swordName;
-    public ItemData swordData;
-    public void Equip(IActor actor, int stats, ItemData data)
+    public EquipType equipType;
+
+    public EquipType EquipType => equipType;
+
+    public void Equip(IActor actor, ItemData data)
     {
-        swordData = data;
+        int stats = 0;
         if (actor is CharacterStatusBase character)
         {
-            gameObject.SetActive(true);
-            character.UpdateTotalAttack(stats);
+            if (data is EquipData equipData)
+            {
+                gameObject.SetActive(true);
+                stats = equipData.addAttack;
+                character.UpdateTotalAttack(stats);
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
     }
-
-    public void Unequip(IActor actor, int stats)
+    public void Unequip(IActor actor)
     {
         if (actor is CharacterStatusBase character)
         {
             gameObject.SetActive(false);
-            character.UpdateTotalAttack(-stats);
         }
     }
     public string GetItemName()
