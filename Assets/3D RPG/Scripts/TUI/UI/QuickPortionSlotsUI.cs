@@ -81,10 +81,12 @@ public class QuickPortionSlotsUI : MonoBehaviour
             if (portion.hpRecovery > 0)
             {
                 playerStatus.RecoveryHP(portion.hpRecovery);
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.CunsumePortion);
             }
             if(portion.mpRecovery > 0)
             {
                 playerStatus.RecoveryMP(portion.mpRecovery);
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.CunsumePortion);
             }
             if (quickPortionSlotData.slotDatas[slotNum].count > 0)
             {

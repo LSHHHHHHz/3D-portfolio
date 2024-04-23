@@ -26,25 +26,46 @@ public class BossPattern : MonoBehaviour
     }
     IEnumerator Attack1(Animator anim)
     {
+        if (controller.enemyStatus.current_HP <= 0)
+        {
+            controller.ChangeState(new DieState());
+            yield break;
+        }
         anim.SetTrigger("Skill1");
+        Debug.Log("Skill1  계속 들어오나");
         controller.GetComponent<NavMeshAgent>().speed = 0;
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(2.2f);        
+        anim.ResetTrigger("Skill1");
         controller.GetComponent<NavMeshAgent>().speed = 4.9f;
         controller.ChangeState(new IdleState());
     }
     IEnumerator Attack2(Animator anim)
     {
+        if (controller.enemyStatus.current_HP <= 0)
+        {
+            controller.ChangeState(new DieState());
+            yield break;
+        }
+        Debug.Log("Skill2  계속 들어오나");
         anim.SetTrigger("Skill2");
         controller.GetComponent<NavMeshAgent>().speed = 0;
         yield return new WaitForSeconds(2.4f);
+        anim.ResetTrigger("Skill2");
         controller.GetComponent<NavMeshAgent>().speed = 4.9f;
         controller.ChangeState(new IdleState());
     }
     IEnumerator Attack3(Animator anim)
     {
+        if (controller.enemyStatus.current_HP <= 0)
+        {
+            controller.ChangeState(new DieState());
+            yield break;
+        }
+        Debug.Log("Skill3  계속 들어오나");
         anim.SetTrigger("Skill3");
         controller.GetComponent<NavMeshAgent>().speed = 0;
         yield return new WaitForSeconds(2.5f);
+        anim.ResetTrigger("Skill3");
         controller.GetComponent<NavMeshAgent>().speed = 4.9f;
         controller.ChangeState(new IdleState());
     }

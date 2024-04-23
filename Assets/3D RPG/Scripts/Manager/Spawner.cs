@@ -33,6 +33,7 @@ public class Spawner : MonoBehaviour
     IEnumerator ReactivateMonster(GameObject monster, float delay, int isActiveIndex)
     {
         yield return new WaitForSeconds(delay);  
+        monster.transform.position = spawnPoint[isActiveIndex].transform.position;
         monster.SetActive(true);
         isReactivate[isActiveIndex] = false;
     }

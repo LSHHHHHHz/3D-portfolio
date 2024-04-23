@@ -22,7 +22,7 @@ public class WalkState : IState<FSMController>
         {
             sender.ChangeState(new DieState());
         }
-        if (sender.enemyStatus.detectPlayer.closestTarget != null)
+        if (sender.enemyStatus.detectPlayer.closestTarget != null && sender.enemyStatus.current_HP > 0)
         {
             float distanceToTarget = Vector3.Distance(sender.transform.position, sender.enemyStatus.detectPlayer.closestTarget.transform.position);
             if (distanceToTarget > sender.attackRange)
@@ -38,10 +38,10 @@ public class WalkState : IState<FSMController>
                 sender.ChangeState(new AttackState());
             }
         }
-        else
+        if(sender.enemyStatus.detectPlayer.closestTarget == null && sender.enemyStatus.current_HP > 0)
         {
             sender.enemyStatus.navMeshAgent.SetDestination(sender.enemyStatus.originalPosition);
-            if (Vector3.Distance(sender.enemyStatus.transform.position, sender.enemyStatus.originalPosition) < 2.1f)
+            if (Vector3.Distance(sender.enemyStatus.transform.position, sender.enemyStatus.originalPosition) < sender.spawnAreaDis)
             {
                 sender.ChangeState(new IdleState());
             }

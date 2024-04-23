@@ -16,6 +16,7 @@ public class LVUPPopup : MonoBehaviour, IPopup
     }
     private void OnEnable()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.LevelUP);
         StartCoroutine(ShowLevelUpPopup());
     }
     public void UpdateLV(int level)

@@ -506,7 +506,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPrefab: {fileID: 1601880838855620440, guid: 4783069fb2bcdb94687c0925f61e9c4d, type: 3}
-  characerImage: {fileID: 0}
+  monsterType: 0
+  characterImage: {fileID: 0}
   max_HP: 300
   current_HP: 300
   baseAttack: 10
@@ -523,6 +524,7 @@ MonoBehaviour:
   capsuleCollider: {fileID: 1158601928799367410}
   monsterNumber: 0
   rewardExp: 0
+  isRewardExp: 0
 --- !u!1 &1158601928319543336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b07715a70efef4fa89ba9f5f5949b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossPattern: {fileID: 0}
   enemyStatus: {fileID: 1158601928298142468}
   anim: {fileID: 1158601928799367404}
   speed: 5

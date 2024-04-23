@@ -2173,7 +2173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2fd27f0089a4d4aa3553c47ca13831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera:
+  cameras:
   - {fileID: 195265808}
   - {fileID: 1281344371}
   TextBoss: {fileID: 1512548998}
@@ -3761,7 +3761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195265808}
   m_LocalRotation: {x: 0, y: 0.97629607, z: -0.2164396, w: 0}
-  m_LocalPosition: {x: 78, y: 49, z: 27.658}
+  m_LocalPosition: {x: 78, y: 49, z: 68.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10362,7 +10362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &528650288
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31868,7 +31868,7 @@ MonoBehaviour:
   - {fileID: 326582091}
   - {fileID: 270065884}
   - {fileID: 1960779211}
-  moveSpeed: 20
+  moveSpeed: 200
   rotationSpeed: 50
   targetPosition: {x: 0, y: 0, z: 0}
   status: {fileID: 804213912}
@@ -40292,26 +40292,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cccce3d0800dbd4fb3eb5017a2b5cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMClip: {fileID: 0}
-  BGMVolume: 0.2
+  BGMClips:
+  - {fileID: 8300000, guid: 2b376f6789badfc4eac1c5c0e38f888c, type: 3}
+  - {fileID: 8300000, guid: b60c5df966ddbc244a623de212eda001, type: 3}
+  - {fileID: 8300000, guid: 95b3ffe8fea19bb4fb87f7cb591fbaac, type: 3}
+  BGMVolume: 0.1
   SFXClip:
   - {fileID: 8300000, guid: 5084b1b8083c28e4e9083ef0fed62aee, type: 3}
-  - {fileID: 8300000, guid: 211dcf8f675051b4fa0c265325c15761, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 995fba3ad0d41b64ab0650d9415f7396, type: 3}
+  - {fileID: 8300000, guid: 41a8599401e9efd4990a38f755ea0504, type: 3}
   - {fileID: 8300000, guid: 0b1fec77702538446a61f394e6dae030, type: 3}
   - {fileID: 8300000, guid: 4a4c0816c9e4d6444a0255e239b67270, type: 3}
   - {fileID: 8300000, guid: bfe4c9a16f51c324fb6b51d5a71a510b, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  SFXVolume: 0.5
+  - {fileID: 8300000, guid: abfbe4959bb2ef54d9f3b346025db28c, type: 3}
+  - {fileID: 8300000, guid: 2e8fd5245e3550a439e670e62b1ee6f4, type: 3}
+  - {fileID: 8300000, guid: 9dfcf2163739ad143857f0e4de82a143, type: 3}
+  - {fileID: 8300000, guid: f3269b95d42bb6c49ae1077fe26a86f1, type: 3}
+  - {fileID: 8300000, guid: c4f011bc548974748aa385f98f1b1583, type: 3}
+  - {fileID: 8300000, guid: 2f1ecb380eef8394f9269d75db6f859a, type: 3}
+  - {fileID: 8300000, guid: 05ce86bcddc8e4247af5d994fdb4573c, type: 3}
+  - {fileID: 8300000, guid: b6bc0aab4b0f8b746836eeaf5f0b1034, type: 3}
+  - {fileID: 8300000, guid: 4d5d2dfd01c01a6429ce7ed45a47393c, type: 3}
+  - {fileID: 8300000, guid: 458ce533ed5fb6f41b43ba8d1c3a13c7, type: 3}
+  - {fileID: 8300000, guid: 1dd480d10219b3b43b75b20055581310, type: 3}
+  - {fileID: 8300000, guid: 5084b1b8083c28e4e9083ef0fed62aee, type: 3}
+  - {fileID: 8300000, guid: 194f4cbbedcea914b973f5ca5a8e6d1a, type: 3}
+  - {fileID: 8300000, guid: 2e0afdf5a40a31648bba27e6f402b792, type: 3}
+  - {fileID: 8300000, guid: a8c8e735a922b5f4fb024700a9595fcf, type: 3}
+  - {fileID: 8300000, guid: e797f021e4083804ea8726fa46a2487f, type: 3}
+  - {fileID: 8300000, guid: 194f4cbbedcea914b973f5ca5a8e6d1a, type: 3}
+  - {fileID: 8300000, guid: 194f4cbbedcea914b973f5ca5a8e6d1a, type: 3}
+  - {fileID: 8300000, guid: 194f4cbbedcea914b973f5ca5a8e6d1a, type: 3}
+  SFXVolume: 0.4
   channels: 16
 --- !u!4 &1657471345
 Transform:
@@ -61048,7 +61060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 1158601928319543336, guid: d86e5e59e7fb46b4197fa97c0fbd8bbd, type: 3}
+  - {fileID: 4303022195712384814, guid: d8cd2c2432204f14aa320c9b3b9af5a0, type: 3}
   - {fileID: 6688676001108919267, guid: 5e45b9fa335b8134e941ffa5ef48cf7b, type: 3}
   - {fileID: 5794285907723592265, guid: b79217c37f0a0474ebf35397409a9ce3, type: 3}
 --- !u!1001 &1928468942
@@ -66985,7 +66997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7679610153544269962, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17
+      value: 58.242
       objectReference: {fileID: 0}
     - target: {fileID: 7679610153544269962, guid: 78c4aa455202464418c56097d6ffe7ec, type: 3}
       propertyPath: m_LocalRotation.w

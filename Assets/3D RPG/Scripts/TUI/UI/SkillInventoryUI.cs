@@ -45,6 +45,7 @@ public class SkillInventoryUI : MonoBehaviour,IPopup
             {
                 int slotIndex = i;
                 Button slotButton = slot.GetComponent<Button>();
+                slot.viewSkillInfo += ViewSkilInfo;
                 slotButton.onClick.AddListener(() =>
                 {
                     ViewSkilInfo(slot.currentSlotData.item.itemName, slot.currentSlotData.item.itemDescription);
@@ -65,5 +66,6 @@ public class SkillInventoryUI : MonoBehaviour,IPopup
     public void ClosePopupUI()
     {
         gameObject.SetActive(false);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ClosePopup);
     }
 }

@@ -25,7 +25,7 @@ public class SkillSlotUI : MonoBehaviour,ISlot
     public Action beingDragSlot { get; set; } = null;
     public Action endDragSlot { get; set; } = null;
     public Action<SlotData> OnDropSlot { get; set; } = null;
-    public Action CheckPlayerLevel { get; set; } = null;
+    public Action<string, string> viewSkillInfo { get; set; } = null;
 
     private void Awake()
     {
@@ -103,6 +103,7 @@ public class SkillSlotUI : MonoBehaviour,ISlot
             }
         }
         DragDropManager.instance.SetDropItem(transform);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ClickSlot);
         OnDropSlot?.Invoke(currentSlotData);
     }
 
@@ -145,5 +146,6 @@ public class SkillSlotUI : MonoBehaviour,ISlot
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        viewSkillInfo?.Invoke(currentSlotData.item.itemName, currentSlotData.item.itemDescription);
     }
 }

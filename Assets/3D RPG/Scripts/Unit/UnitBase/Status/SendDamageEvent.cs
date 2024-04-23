@@ -18,6 +18,10 @@ public class SendDamageEvent : IEvent
     {
         if(target is CharacterStatusBase characterStatus)
         {
+            if(characterStatus is EnemyStatus enemyStatus)
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.GetHit);
+            }
             characterStatus.Damaged(damage);
         }
     }

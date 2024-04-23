@@ -32,14 +32,14 @@ public class BossEnemyStatus : EnemyStatus
             current_HP = 0;
             if (!isRewardExp)
             {
-                UnitManager.instance.player.playerStatus.currentExp += rewardExp;
                 navMeshAgent.enabled= false;
                 capsuleCollider.enabled= false;
-                isRewardExp = true;
             }
             elapsed += Time.deltaTime;
-            if (elapsed > 4)
+            if (elapsed > 5)
             {
+                UnitManager.instance.player.playerStatus.currentExp += rewardExp;
+                isRewardExp = true;
                 prefab.gameObject.SetActive(false);
             }
         }

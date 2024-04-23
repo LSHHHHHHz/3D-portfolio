@@ -6,9 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
     [Header("#BGM")]
-    public AudioClip BGMClip;
+    public AudioClip[] BGMClips;
     public float BGMVolume;
-    AudioSource BGMPlayer;
+    AudioSource[] BGMPlayers;
 
     [Header("#SFX")]
     public AudioClip[] SFXClip;
@@ -17,26 +17,30 @@ public class AudioManager : MonoBehaviour
     AudioSource[] sfxPlayers;
     int channelIndex;
 
-    public enum Sfx { DragonSound, MonsterAttack, GetItem, LaunchSkill2, GetHitSkill3, ShootSKill3, WindSkill, NPCTalk, Grunting1, Grunting2, Walk, Cancell, OKSound, Acquisition, FireSkill, SwordSound }
+    public enum Sfx { DragonSound, DragonDie, BaseAttack, LaunchSkill2, GetHitSkill3, ShootSKill3, BuyItem, Cansel, EquipItem, GetHit, Heal, Jump, Walk, ClosePopup,
+        LevelUP, GovlinDie, OpenPopup, DropSound, ClickSlot, CunsumePortion, DragonFling, DragonRotation}
 
 
     private void Awake()
     {
         instance = this;
         Init();
-        PlayerBGM(true);
     }
 
     void Init()
     {
         //배경음 초기화
-        GameObject bgmObject = new GameObject("BgmPlayer");
-        bgmObject.transform.parent = transform;
-        BGMPlayer = bgmObject.AddComponent<AudioSource>();
-        BGMPlayer.playOnAwake = false;
-        BGMPlayer.volume = BGMVolume;
-        BGMPlayer.loop = true;
-        BGMPlayer.clip = BGMClip;
+        BGMPlayers = new AudioSource[BGMClips.Length];
+        for (int i = 0; i < BGMClips.Length; i++)
+        {
+            GameObject bgmObject = new GameObject("BgmPlayer" + i);
+            bgmObject.transform.parent = transform;
+            BGMPlayers[i] = bgmObject.AddComponent<AudioSource>();
+            BGMPlayers[i].playOnAwake = false;
+            BGMPlayers[i].volume = BGMVolume;
+            BGMPlayers[i].loop = true;
+            BGMPlayers[i].clip = BGMClips[i];
+        }
 
         //효과음 초기화
         GameObject sfxObject = new GameObject("SfxPlayer");
@@ -50,15 +54,15 @@ public class AudioManager : MonoBehaviour
         }
 
     }
-    public void PlayerBGM(bool isPlay)
+    public void PlayBGM(int bgmIndex, bool isPlay)
     {
         if (isPlay)
         {
-            BGMPlayer.Play();
+            BGMPlayers[bgmIndex].Play();
         }
         else
         {
-            BGMPlayer.Stop();
+            BGMPlayers[bgmIndex].Stop();
         }
     }
     public void PlaySfx(Sfx sfx)

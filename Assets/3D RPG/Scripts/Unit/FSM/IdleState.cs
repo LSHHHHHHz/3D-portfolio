@@ -21,20 +21,23 @@ public class IdleState : IState<FSMController>
         Debug.Log(sender.name);
         if (sender.enemyStatus.current_HP <= 0)
         {
+            Debug.Log("어디로 들어가냐 Die");
             sender.ChangeState(new DieState());
             return;
         }
-        if (sender.enemyStatus.detectPlayer.closestTarget != null)
+        if (sender.enemyStatus.detectPlayer.closestTarget != null && sender.enemyStatus.current_HP > 0)
         {
+            Debug.Log("어디로 들어가냐 Walk");
             sender.ChangeState(new WalkState());
         }
-        if (sender.enemyStatus.detectPlayer.closestTarget == null && Vector3.Distance(sender.enemyStatus.transform.position, sender.enemyStatus.detectPlayer.transform.position)<1)
+        if (sender.enemyStatus.detectPlayer.closestTarget != null && Vector3.Distance(sender.transform.position, sender.enemyStatus.detectPlayer.closestTarget.transform.position)<sender.attackRange && sender.enemyStatus.current_HP>0)
         {
-            sender.ChangeState(new WalkState());
-        }
-        if (sender.enemyStatus.detectPlayer.closestTarget != null && Vector3.Distance(sender.transform.position, sender.enemyStatus.detectPlayer.closestTarget.transform.position)<sender.attackRange)
-        {
+            Debug.Log("어디로 들어가냐 Attack");
             sender.ChangeState(new AttackState());
+        }
+        if (sender.enemyStatus.navMeshAgent.isActiveAndEnabled && sender.enemyStatus.detectPlayer.closestTarget == null && Vector3.Distance(sender.transform.position, sender.enemyStatus.originalPosition) > sender.spawnAreaDis && sender.enemyStatus.current_HP > 0)
+        {
+            sender.ChangeState(new WalkState());
         }
     }
 }

@@ -82,12 +82,15 @@ public class InventoryUI : MonoBehaviour, IPopup
     {
         if (equipInventoryPopup == null)
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.OpenPopup);
             equipInventoryPopup = Instantiate(PopupFactory.instance.equipInventoryPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<EquipInventoryUI>();
         }
         else
         {
             equipInventoryPopup.OpenPopupUI();
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.OpenPopup);
         }
+
     }
     public void OpenPopupUI()
     {
@@ -101,5 +104,6 @@ public class InventoryUI : MonoBehaviour, IPopup
         {
             equipInventoryPopup.gameObject.SetActive(false);
         }
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ClosePopup);
     }
 }

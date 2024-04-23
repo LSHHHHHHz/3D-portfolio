@@ -59,7 +59,7 @@ public class EnemyStatus : CharacterStatusBase
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerAttack") && current_HP>0 || other.CompareTag("Skill") && current_HP>0)
+        if (other.CompareTag("PlayerAttack") && current_HP > 0 || other.CompareTag("Skill") && current_HP > 0)
         {
             monsterFSMController.ChangeState(new GetHitState());
         }

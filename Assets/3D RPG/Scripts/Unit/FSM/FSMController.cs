@@ -9,6 +9,8 @@ public class FSMController : MonoBehaviour
     public EnemyStatus enemyStatus;
     public Animator anim;
     public float speed = 5.0f;
+    public float spawnAreaDis;
+    public float turnSpeed = 5;
     public float attackRange = 1.5f;
     public float moveArea = 10;
     private IState<FSMController> currentState;

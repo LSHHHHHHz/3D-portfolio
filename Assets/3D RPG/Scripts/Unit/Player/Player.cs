@@ -21,12 +21,14 @@ public class Player : MonoBehaviour
                 shopPopup = Instantiate(PopupFactory.instance.ShopPopupPrefab, PopupFactory.instance.popupTransForm).GetComponent<NPCShopUI>();
                 shopPopup.shopNumer = npc.shopNum;
                 shopPopup.SetData();
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.OpenPopup);
             }
             else if (shopPopup != null && Input.GetButtonDown("Check"))
             {
                 shopPopup.shopNumer = npc.shopNum;
                 shopPopup.SetData();
                 shopPopup.OpenPopupUI();
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.OpenPopup);
             }
         }
     }

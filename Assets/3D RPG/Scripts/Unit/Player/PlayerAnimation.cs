@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     public PlayerController playerController;
     Animator anim;
+    public bool isAttack;
 
     //ÄÞº¸
-    int hashAttackCount = Animator.StringToHash("AttackCount"); 
+    int hashAttackCount = Animator.StringToHash("AttackCount");
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -32,7 +34,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void MovePlayerAnim()
     {
-        if(playerController.currentSpeed>0.5f)
+        if (playerController.currentSpeed > 0.5f)
         {
             anim.SetBool("IsWalk", true);
         }
@@ -44,7 +46,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     void JumpPlayerAnim()
     {
-        if(playerController.isGrounded == false)
+        if (playerController.isGrounded == false)
         {
             anim.SetTrigger("DoJump");
         }
@@ -55,10 +57,13 @@ public class PlayerAnimation : MonoBehaviour
     }
     void PlayerAttackAnim()
     {
-        if(Input.GetMouseButtonDown(0) && UnitManager.instance.player.playerTargettingEnemy.targetObj != null)
+        if (Input.GetMouseButtonDown(0) && UnitManager.instance.player.playerTargettingEnemy.targetObj != null)
         {
             anim.SetTrigger("IsAttack");
+            if (!isAttack)
+            {
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.BaseAttack);
+            }
         }
     }
-    
 }

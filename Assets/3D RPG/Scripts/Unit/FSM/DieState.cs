@@ -9,6 +9,14 @@ public class DieState :  IState<FSMController>
     {
         Debug.Log("Á×À½");
         sender.anim.SetTrigger("Die");
+        if (sender.enemyStatus is BossEnemyStatus)
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.DragonDie);
+        }
+        else
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.GovlinDie);
+        }
     }
 
     public void Exit(FSMController sender)

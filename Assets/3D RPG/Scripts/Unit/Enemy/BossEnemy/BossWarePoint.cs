@@ -25,7 +25,9 @@ public class BossWarePoint : MonoBehaviour
         UpdateTargetPosition();
         FadeController.instance.BossFadeIn();
         GameManager.instance.ChangeCameraTarget(1);
-        EventManager.instance.ChangeCameraTarget(-6, 10);        
+        EventManager.instance.ChangeCameraTarget(-6, 10);
+        AudioManager.instance.PlayBGM(0, false);
+        AudioManager.instance.PlayBGM(2, true);
     }
 
     private void Update()
@@ -51,6 +53,7 @@ public class BossWarePoint : MonoBehaviour
             {
                 currentIndex++;
                 UpdateTargetPosition();
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.DragonFling);
             }
             else
             {
@@ -59,6 +62,7 @@ public class BossWarePoint : MonoBehaviour
                 rb.useGravity= true;
                 rb.freezeRotation = true;
                 StartCoroutine(StartBossIdle());
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.DragonRotation);
             }
         }
     }
@@ -83,6 +87,8 @@ public class BossWarePoint : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         status.navMeshAgent.enabled = true;
         GameManager.instance.ChangeCameraTarget(0);
+        AudioManager.instance.PlayBGM(2, false);
+        AudioManager.instance.PlayBGM(1, true);
     }
     private void UpdateTargetPosition()
     {

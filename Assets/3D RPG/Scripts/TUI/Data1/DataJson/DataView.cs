@@ -40,6 +40,7 @@ public class DataView : MonoBehaviour
     {
         StaticData.Instance.Save();
         EnemyData.Instance.Save();
+        UserData.instance.Save();
     }
 
     [ContextMenu("Load All Data")]
@@ -47,5 +48,6 @@ public class DataView : MonoBehaviour
     {
         StaticData.Instance.Load();
         EnemyData.Instance.Load();
+        UserData.instance.Load();
     }
 }

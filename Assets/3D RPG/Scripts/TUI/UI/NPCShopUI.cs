@@ -60,7 +60,7 @@ public class NPCShopUI : MonoBehaviour, IPopup
 
     public void ClosePopupUI()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);;
     }
 }
 

@@ -74,5 +74,6 @@ public class EquipInventoryUI : MonoBehaviour, IPopup
     public void ClosePopupUI()
     {
         gameObject.SetActive(false);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ClosePopup);
     }
 }

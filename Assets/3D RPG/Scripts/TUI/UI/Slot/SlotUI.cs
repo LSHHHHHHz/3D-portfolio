@@ -107,6 +107,7 @@ public class SlotUI : MonoBehaviour, ISlot
     }
     public void OnDrop(PointerEventData eventData)
     {
+        bool playedSound = false;
         //드랍 데이터 매니저에 저장 2
         DragDropManager.instance.OnDrop(currentSlotData, transform, currentDatatype);
 
@@ -117,6 +118,8 @@ public class SlotUI : MonoBehaviour, ISlot
             {
                 return;
             }
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.EquipItem);
+            playedSound = true;
         }
         //드랍될 IData가 포션일 때
         if (currentDatatype == UserData.instance.quickPortionSlotData)
@@ -125,6 +128,8 @@ public class SlotUI : MonoBehaviour, ISlot
             {
                 return;
             }
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.ClickSlot);
+            playedSound = true;
         }
         //매니저에 저장한 드래그 데이터 드랍 슬롯에 저장 3 
         DragDropManager.instance.SetDropItem(transform);
@@ -144,6 +149,10 @@ public class SlotUI : MonoBehaviour, ISlot
             DragDropManager.instance.currentDragData = DragDropManager.instance.currentDropData;
             DragDropManager.instance.currentDropData = temp;
         }
+        if (!playedSound)
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.ClickSlot);
+        }
         OnDropSlot?.Invoke(DragDropManager.instance.currentDropData);
     }
 
@@ -157,7 +166,7 @@ public class SlotUI : MonoBehaviour, ISlot
         canvasGroup.blocksRaycasts = false;
         if (itemCountText == null)
         {
-           // itemCountText.gameObject.SetActive(false);
+            // itemCountText.gameObject.SetActive(false);
         }
     }
     public void OnDrag(PointerEventData eventData)
@@ -174,7 +183,7 @@ public class SlotUI : MonoBehaviour, ISlot
             rect.position = previousParent.GetComponent<RectTransform>().position;
             if (!RectTransformUtility.RectangleContainsScreenPoint(slotRectTransform, eventData.position, null))
             {
-             
+
             }
         }
         canvasGroup.alpha = 1.0f;
@@ -213,6 +222,4 @@ public class SlotUI : MonoBehaviour, ISlot
             infoPopupInstance.OpenPopupUI();
         }
     }
-
-
 }

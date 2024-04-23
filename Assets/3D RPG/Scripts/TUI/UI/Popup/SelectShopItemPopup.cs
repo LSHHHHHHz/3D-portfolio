@@ -56,6 +56,7 @@ public class SelectShopItemPopup : MonoBehaviour,IPopup
             if (UserData.instance.inventoryData.slotDatas[i].GetItem() == null || UserData.instance.inventoryData.slotDatas[i].GetItem().itemPrice == 0)
             {
                 UserData.instance.inventoryData.slotDatas[i].AddItem(itemData, itemCount);
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.BuyItem);
                 break;
             }
         }
@@ -71,5 +72,6 @@ public class SelectShopItemPopup : MonoBehaviour,IPopup
     public void OpenPopupUI()
     {
         gameObject.SetActive(true);
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.ClosePopup);
     }
 }

@@ -18,6 +18,7 @@ public class SendHealEvent : IEvent
     {
         if(excute is CharacterStatusBase characterStatus)
         {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Heal);
             characterStatus.RecoveryHP(heal);
         }
     }

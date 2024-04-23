@@ -25,11 +25,13 @@ public class ShopSlotUI : MonoBehaviour
             {
                 selectShopItemPopup= Instantiate(PopupFactory.instance.selectedShopItemPopupPrefab, PopupFactory.instance.selectTransform).GetComponent<SelectShopItemPopup>();
                 selectShopItemPopup.itemData = currentSlotData.item;
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.ClickSlot);
             }
             else
             {
                 selectShopItemPopup.OpenPopupUI();
                 selectShopItemPopup.itemData = currentSlotData.item;
+                AudioManager.instance.PlaySfx(AudioManager.Sfx.ClickSlot);
             }
         });
     }

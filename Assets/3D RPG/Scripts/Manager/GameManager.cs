@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public event Action ChangeItemSlot;
     public event Action StartGachaPopup;
     public event Action SetSkillInventory;
-    public GameObject[] camera;
+    public GameObject[] cameras;
 
     public GameObject TextBoss;
     private void Awake()
@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         PlayerData.Load();
+    }
+    private void Start()
+    {
+        AudioManager.instance.PlayBGM(0, true);
     }
     public void ItemPurchased()
     {
@@ -38,17 +42,17 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeCameraTarget(int num)
     {
-        for (int i = 0; i < camera.Length; i++)
+        for (int i = 0; i < cameras.Length; i++)
         {
             if (i == num)
             {
-                camera[i].gameObject.SetActive(true);
-                camera[i].GetComponent<AudioListener>().enabled = true;
+                cameras[i].gameObject.SetActive(true);
+                cameras[i].GetComponent<AudioListener>().enabled = true;
             }
             else
             {
-                camera[i].gameObject.SetActive(false); 
-                camera[i].GetComponent<AudioListener>().enabled = false;
+                cameras[i].gameObject.SetActive(false); 
+                cameras[i].GetComponent<AudioListener>().enabled = false;
             }
         }
     }
